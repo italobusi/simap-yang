@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Applicability of existing YANG data models to SIMAP"
+abbrev: "SIMAP YANG"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-xyz-nmop-simap-yang-applicability-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
