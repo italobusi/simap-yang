@@ -1,0 +1,530 @@
+module ietf-simap-deviation-example {
+  yang-version 1.1;
+  namespace "https://example.com/ns/ietf-simap-deviation-example";
+  prefix simapd;
+
+  import ietf-network {
+    prefix nw;
+    reference
+      "RFC 8345: A YANG Data Model for Network Topologies";
+  }
+  import ietf-network-topology {
+    prefix nt;
+    reference
+      "RFC 8345: A YANG Data Model for Network Topologies";
+  }
+  import ietf-te-topology {
+    prefix tet;
+    reference
+      "RFC 8795: YANG Data Model for Traffic Engineering (TE)
+                 Topologies";
+  }
+
+  organization
+    "Network Management Operations (NMOP) Working Group";
+  contact
+    "WG Web:   <https://datatracker.ietf.org/group/nmop/>
+     WG List:  <mailto:nmop@ietf.org>
+
+     Editor:   Italo Busi
+               <Italo.Busi@huawei.com>";
+  description
+    "This module defines an example of a YANG data model containing
+     the YANG deviation statements to support the implementation of
+     the SIMAP YANG data model re-using a sub-set of the TE topology
+     model.
+
+     Copyright (c) 2026 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices..";
+
+  revision 2026-02-12 {
+    description
+      "Initial version";
+    reference
+      "RFC XXXX: Applicability of existing YANG data models to
+                 SIMAP";
+  }
+
+  /*
+   * Deviations
+   */
+
+  deviation "/nw:networks/tet:te" {
+    description
+      "SIMAP implementations are not required to implement TE
+       templates.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/tet:te-topology-identifier" {
+    description
+      "SIMAP implementations are not required to implement TE
+       topology identifiers.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/tet:te" {
+    description
+      "SIMAP implementations are not required to implement the
+       augmentation for TE topologies.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te-node-id" {
+    description
+      "SIMAP implementations are not required to implement TE node
+       identifiers.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te" {
+    description
+      "SIMAP implementations are not required to implement TE node
+       identifiers.";
+    deviate delete {
+      must '../te-node-id';
+    }
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-template" {
+    description
+      "SIMAP implementations are not required to implement TE node
+       templates.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:admin-status" {
+    description
+      "SIMAP implementations are not required to implement the TE
+       node administrative status.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:label-restrictions" {
+    description
+      "SIMAP implementations are not required to implement the label
+       restrictions for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:underlay" {
+    description
+      "SIMAP implementations are not required to implement the
+       underlay paths for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:path-constraints" {
+    description
+      "SIMAP implementations are not required to implement the
+       path constraints for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:optimizations" {
+    description
+      "SIMAP implementations are not required to implement the
+       path optimizations for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:path-properties" {
+    description
+      "SIMAP implementations are not required to implement the
+       path properties for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:from"
+          + "/tet:label-restrictions" {
+    description
+      "SIMAP implementations are not required to implement the label
+       restrictions for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:to"
+          + "/tet:label-restrictions" {
+    description
+      "SIMAP implementations are not required to implement the label
+       restrictions for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:underlay" {
+    description
+      "SIMAP implementations are not required to implement the
+       underlay paths for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:path-constraints" {
+    description
+      "SIMAP implementations are not required to implement the
+       path constraints for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:optimizations" {
+    description
+      "SIMAP implementations are not required to implement the
+       path optimizations for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:path-properties" {
+    description
+      "SIMAP implementations are not required to implement the
+       path properties for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:signaling-address" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's signaling address.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:geolocation" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's geolocation.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:information-source" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:information-source-instance" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:information-source-state" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:information-source-entry" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:statistics" {
+    description
+      "SIMAP implementations are not required to implement the
+       node's statistics (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:tunnel-termination-point" {
+    description
+      "SIMAP implementations are not required to implement the
+       tunnel termination points (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-template" {
+    description
+      "SIMAP implementations are not required to implement the
+       TE link templates.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay/tet:primary-path"
+          + "/tet:path-element/tet:type/tet:label" {
+    description
+      "SIMAP implementations are not required to implement the
+       label hop.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
+          + "/tet:path-element/tet:type/tet:label" {
+    description
+      "SIMAP implementations are not required to implement the
+       label hop.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay"
+          + "/tet:tunnel-termination-points" {
+    description
+      "SIMAP implementations are not required to implement the
+       underlay tunnel termination points of a link
+       (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay"
+          + "/tet:tunnels" {
+    description
+      "SIMAP implementations are not required to implement the
+       underlay tunnels of a link (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:admin-status" {
+    description
+      "SIMAP implementations are not required to implement the
+       administrative status of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:administrative-group" {
+    description
+      "SIMAP implementations are not required to implement the
+       administrative groups of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes"
+          + "/tet:interface-switching-capability"
+          + "/tet:max-lsp-bandwidth" {
+    description
+      "SIMAP implementations are not required to implement the
+       maximum LSP bandwidth.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:label-restrictions" {
+    description
+      "SIMAP implementations are not required to implement the
+       label restrictions of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:max-link-bandwidth" {
+    description
+      "SIMAP implementations are not required to implement the
+       bandwidth information (capacity) of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:max-resv-link-bandwidth" {
+    description
+      "SIMAP implementations are not required to implement the
+       bandwidth information (capacity) of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:unreserved-bandwidth" {
+    description
+      "SIMAP implementations are not required to implement the
+       bandwidth information (capacity) of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:te-default-metric" {
+    description
+      "SIMAP implementations are not required to implement the
+       TE default metric of a link (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:te-delay-metric" {
+    description
+      "SIMAP implementations are not required to implement the
+       delay of a link (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:te-igp-metric" {
+    description
+      "SIMAP implementations are not required to implement the
+       IGP metric of a link (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:te-srlgs" {
+    description
+      "SIMAP implementations are not required to implement the
+       Shared Risk Link Groups (SRLGs) of a link (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:te-nsrlgs" {
+    description
+      "SIMAP implementations are not required to implement the
+       Non-Shared Risk Link Groups (NSRLGs) of a link
+       (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:information-source" {
+    description
+      "SIMAP implementations are not required to implement the
+       link's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:information-source-instance" {
+    description
+      "SIMAP implementations are not required to implement the
+       link's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:information-source-state" {
+    description
+      "SIMAP implementations are not required to implement the
+       link's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:information-source-entry" {
+    description
+      "SIMAP implementations are not required to implement the
+       link's information source (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:recovery" {
+    description
+      "SIMAP implementations are not required to report the status
+       of the recovery process on a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:underlay" {
+    description
+      "SIMAP implementations are not required to report the state
+       attributes for the TE link underlay.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:statistics" {
+    description
+      "SIMAP implementations are not required to implement the
+       link's statistics (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te-tp-id" {
+    description
+      "SIMAP implementations are not required to implement TE
+       termination point identifier.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te" {
+    description
+      "SIMAP implementations are not required to implement TE
+       termination point identifier.";
+    deviate delete {
+      must '../te-tp-id';
+    }
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te/tet:admin-status" {
+    description
+      "SIMAP implementations are not required to implement the
+       administrative status of a termination point.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te/tet:interface-switching-capability"
+          + "/tet:max-lsp-bandwidth" {
+    description
+      "SIMAP implementations are not required to implement the
+       maximum LSP bandwidth.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te/tet:inter-layer-lock-id" {
+    description
+      "SIMAP implementations are not required to implement the
+       inter-layer lock-id (to be confirmed).";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+          + "/tet:te/tet:geolocation" {
+    description
+      "SIMAP implementations are not required to implement the
+       geolocation of a termination point.";
+    deviate not-supported;
+  }
+}

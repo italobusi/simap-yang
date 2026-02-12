@@ -22,3 +22,5 @@ draft-xyz-nmop-simap-yang-applicability.xml
 package-lock.json
 report.xml
 !requirements.txt
+*.bash
+pretty/
