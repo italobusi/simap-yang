@@ -106,10 +106,10 @@ Table of Contents
    nodes since the two unidirectional links will be terminated on
    different termination points, as shown in Figure 1.
 
-  Add a figure showing a bidirectional link and two unidirectional links
+Insert a figure showing a bidirectional link supported by two unidirectional links.
 
-       Figure 1: Difference between one bidirectional link and two
-                           unidirectional links
+     Figure 1: Difference between one bidirectional link and two
+                         unidirectional links
 
       Open issue: discuss whether the bidirectional, which in turn might
       be supported as unidirectional links at the lower layer, is
@@ -235,9 +235,6 @@ Table of Contents
               topology-profiles-04>.
 
 Appendix A.  Example of deviation statements
-
-      Discuss the option to use deviation statements as a coarse grain
-      solution for profiling.
 
 Acknowledgments
 
