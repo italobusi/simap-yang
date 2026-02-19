@@ -75,11 +75,11 @@ Multipoint links can be modelled as pseudonodes, as described in {{Section 4.4.5
 
 The type of multipoint link (e.g., point-to-multipoint or multipoint-to-multipoint, as defined in {{?I-D.ietf-nmop-simap-concept}}) and the role of the termination points in the link (e.g., source, destination, hub, spoke, as defined in {{?I-D.ietf-nmop-simap-concept}}) can be unambiguously understood from the links connecting the termination points of the pseudonode and from the 'is-allowed' attibute of the connectivity matrix, as defined in {{!RFC8795}}, of the pseudonode.
 
-> Note: some examples for multipoint links are described in {{?Section 2.5 of I-D.ietf-teas-te-topology-profiles}}. More examples can be provided in future versions of this document.
+> Note: some examples for multipoint links are described in {{Section 2.5 of ?I-D.ietf-teas-te-topology-profiles}}. More examples can be provided in future versions of this document.
 
 ## Multi-domain Links
 
-Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{!Section 4.2 of RFC8795}}.
+Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
 
 ## Links and nodes down in topology
 

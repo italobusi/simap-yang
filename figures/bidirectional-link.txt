@@ -1,0 +1,1 @@
+Insert a figure showing a bidirectional link supported by two unidirectional links.
