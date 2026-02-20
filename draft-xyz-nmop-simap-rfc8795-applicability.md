@@ -28,6 +28,19 @@ author:
     name: Italo Busi
     org: Huawei
     email: italo.busi@huawei.com
+  -
+    name: Aihua Guo
+    org: Futurewei Technologies
+    email: aihuaguo.ietf@gmail.com
+  -
+    name: Vishnu Pavan Beeram
+    org: Juniper Networks
+    email: vbeeram@juniper.net
+# To be confirmed on the next call (2026-02-27)
+#  -
+#    name: Tarek Saad
+#    org: Cisco Systems Inc.
+#    email: tsaad.net@gmail.com
 
 normative:
 
@@ -67,7 +80,7 @@ It is worth noting that a bidirectional link can be unambiguously distinguished 
 ~~~~
 {: #fig-bidir-link title="Difference between one bidirectional link and two unidirectional links"}
 
-> Open issue: discuss whether the bidirectional, which in turn might be supported as unidirectional links at the lower layer, is modelled using the supporting-link or the underlay path
+> Open issue: discuss whether the bidirectional, which in turn might be supported as unidirectional links at the lower layer, is modelled using the supporting-link or the underlay path. Agreed in the 2026-02-20 TE call: use the underlay path and reference section 2.3.1 of the TE topology profile.
 
 ## Multipoint Links
 
@@ -82,8 +95,6 @@ The type of multipoint link (e.g., point-to-multipoint or multipoint-to-multipoi
 Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
 
 ## Links and nodes down in topology
-
-{{!RFC8345}} does not explicitly indicate whether links and nodes down in the topology should be reported or not.
 
 {{!RFC8795}} defines the 'oper-status' attribute for nodes, links and termination points, therefore allowing to report links and nodes down in the topology, and to unambiguously distinguishing between nodes and links which are up or down.
 
@@ -103,7 +114,7 @@ In the current version of {{!I-D.ietf-ivy-network-inventory-topology}}, a termin
 
 # Design Considerations
 
-> I think it would be worthwhile describing the possibility to transform the data model exposed by a network controller into an application-specific data model to be consumed by the application.
+> I think it would be worthwhile describing the possibility to transform the data model exposed by a network controller into an application-specific data model to be consumed by the application. Agreed
 
 # Security Considerations
 
@@ -118,6 +129,10 @@ This document has no IANA actions.
 --- back
 
 # Example of deviation statements
+
+> Agreed to describe the use of deviation statement as an example of how to do a coarse grain profiling of TE topology.
+
+> Action: investigate if it is possible to generate simple APIs from the YANG data model using the deviations
 
 # Acknowledgments
 {:numbered="false"}
