@@ -4,12 +4,12 @@
 
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
-Intended status: Informational                          19 February 2026
-Expires: 23 August 2026
+Intended status: Informational                          20 February 2026
+Expires: 24 August 2026
 
 
-          Applicability of existing YANG data models to SIMAP
-             draft-xyz-nmop-simap-yang-applicability-latest
+           Applicability of RFC8795 YANG data model to SIMAP
+           draft-xyz-nmop-simap-rfc8795-applicability-latest
 
 Abstract
 
@@ -22,8 +22,8 @@ About This Document
    The latest revision of this draft can be found at
    https://italobusi.github.io/simap-yang/draft-xyz-nmop-simap-yang-
    applicability.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-xyz-nmop-simap-yang-
-   applicability/.
+   found at https://datatracker.ietf.org/doc/draft-xyz-nmop-simap-
+   rfc8795-applicability/.
 
    Discussion of this document takes place on the Network Management
    Operations Working Group mailing list (mailto:nmop@ietf.org), which
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 August 2026.
+   This Internet-Draft will expire on 24 August 2026.
 
 Copyright Notice
 
