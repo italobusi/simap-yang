@@ -18,6 +18,7 @@
 /versioned/
 Gemfile.lock
 archive.json
+draft-xyz-nmop-simap-rfc8795-applicability.xml
 draft-xyz-nmop-simap-yang-applicability.xml
 package-lock.json
 report.xml
