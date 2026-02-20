@@ -1,13 +1,13 @@
 <!-- regenerate: on (set to off if you edit this file) -->
 
-# Applicability of existing YANG data models to SIMAP
+# Applicability of RFC8795 YANG data model to SIMAP
 
-This is the working area for the individual Internet-Draft, "Applicability of existing YANG data models to SIMAP".
+This is the working area for the individual Internet-Draft, "Applicability of RFC8795 YANG data model to SIMAP".
 
-* [Editor's Copy](https://italobusi.github.io/simap-yang/#go.draft-xyz-nmop-simap-yang-applicability.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-xyz-nmop-simap-yang-applicability)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-xyz-nmop-simap-yang-applicability)
-* [Compare Editor's Copy to Individual Draft](https://italobusi.github.io/simap-yang/#go.draft-xyz-nmop-simap-yang-applicability.diff)
+* [Editor's Copy](https://italobusi.github.io/simap-yang/#go.draft-xyz-nmop-simap-rfc8795-applicability.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-xyz-nmop-simap-rfc8795-applicability)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-xyz-nmop-simap-rfc8795-applicability)
+* [Compare Editor's Copy to Individual Draft](https://italobusi.github.io/simap-yang/#go.draft-xyz-nmop-simap-rfc8795-applicability.diff)
 
 
 ## Contributing
