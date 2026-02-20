@@ -1,9 +1,9 @@
 ---
-title: "Applicability of existing YANG data models to SIMAP"
-abbrev: "SIMAP YANG"
+title: "Applicability of RFC8795 YANG data model to SIMAP"
+abbrev: "RFC8795 for SIMAP"
 category: info
 
-docname: draft-xyz-nmop-simap-yang-applicability-latest
+docname: draft-xyz-nmop-simap-rfc8795-applicability-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
