@@ -4,8 +4,11 @@
 
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
-Intended status: Informational                          20 February 2026
-Expires: 24 August 2026
+Intended status: Informational                                    A. Guo
+Expires: 24 August 2026                           Futurewei Technologies
+                                                            V. P. Beeram
+                                                        Juniper Networks
+                                                        20 February 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -83,7 +86,7 @@ Table of Contents
      7.2.  Informative References
    Appendix A.  Example of deviation statements
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -113,7 +116,9 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
 
       Open issue: discuss whether the bidirectional, which in turn might
       be supported as unidirectional links at the lower layer, is
-      modelled using the supporting-link or the underlay path
+      modelled using the supporting-link or the underlay path.  Agreed
+      in the 2026-02-20 TE call: use the underlay path and reference
+      section 2.3.1 of the TE topology profile.
 
 3.2.  Multipoint Links
 
@@ -141,9 +146,6 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
    domain-plug-id, as described in Section 4.2 of [RFC8795].
 
 3.4.  Links and nodes down in topology
-
-   [RFC8345] does not explicitly indicate whether links and nodes down
-   in the topology should be reported or not.
 
    [RFC8795] defines the 'oper-status' attribute for nodes, links and
    termination points, therefore allowing to report links and nodes down
@@ -183,6 +185,7 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
       I think it would be worthwhile describing the possibility to
       transform the data model exposed by a network controller into an
       application-specific data model to be consumed by the application.
+      Agreed
 
 5.  Security Considerations
 
@@ -236,12 +239,28 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
 
 Appendix A.  Example of deviation statements
 
+      Agreed to describe the use of deviation statement as an example of
+      how to do a coarse grain profiling of TE topology.
+
+      Action: investigate if it is possible to generate simple APIs from
+      the YANG data model using the deviations
+
 Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Italo Busi
    Huawei
    Email: italo.busi@huawei.com
+
+
+   Aihua Guo
+   Futurewei Technologies
+   Email: aihuaguo.ietf@gmail.com
+
+
+   Vishnu Pavan Beeram
+   Juniper Networks
+   Email: vbeeram@juniper.net
