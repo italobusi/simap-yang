@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-19T02:42:07.648191+00:00",
+  "timestamp": "2026-02-22T02:42:36.383654+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -50,5 +50,32 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOROd98s7E4P4r",
+      "title": "Initial draft",
+      "url": "https://github.com/italobusi/simap-yang/pull/1",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-19T13:20:05Z",
+      "updatedAt": "2026-02-20T17:51:09Z",
+      "baseRepository": "italobusi/simap-yang",
+      "baseRefName": "main",
+      "baseRefOid": "5e0809da5c58966b481d8ee9afb78aa20f104a00",
+      "headRepository": "italobusi/simap-yang",
+      "headRefName": "initial-draft",
+      "headRefOid": "0df66345a32d04cdec66c396768e395d28f4c0e3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
