@@ -1053,7 +1053,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Busi, et al.</td>
-<td class="center">Expires 24 August 2026</td>
+<td class="center">Expires 28 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-xyz-nmop-simap-rfc8795-applicability-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-20" class="published">20 February 2026</time>
+<time datetime="2026-02-24" class="published">24 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-24">24 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-28">28 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1129,7 +1129,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1253,7 +1253,8 @@ terminated on the same two termination points, as described in <span><a href="ht
 <figure id="figure-1">
           <div id="section-3.1-3.1">
             <div class="alignLeft art-svg artwork" id="section-3.1-3.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="48" width="672" viewBox="0 0 672 48" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="112" width="536" viewBox="0 0 536 112" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 184,96 L 192,80" fill="none" stroke="black"></path>
                 <g class="text">
                   <text x="28" y="36">Insert</text>
                   <text x="64" y="36">a</text>
@@ -1265,8 +1266,15 @@ terminated on the same two termination points, as described in <span><a href="ht
                   <text x="400" y="36">supported</text>
                   <text x="452" y="36">by</text>
                   <text x="480" y="36">two</text>
-                  <text x="556" y="36">unidirectional</text>
-                  <text x="644" y="36">links.</text>
+                  <text x="60" y="52">unidirectional</text>
+                  <text x="148" y="52">links.</text>
+                  <text x="16" y="84">See</text>
+                  <text x="56" y="84">slide</text>
+                  <text x="88" y="84">1</text>
+                  <text x="112" y="84">of:</text>
+                  <text x="160" y="84">https:/</text>
+                  <text x="364" y="84">github.com/user-attachments/files/25503362</text>
+                  <text x="284" y="100">simap-applicability.pptx</text>
                 </g>
               </svg><a href="#section-3.1-3.1.1" class="pilcrow">¶</a>
 </div>
@@ -1346,11 +1354,92 @@ terminated on the same two termination points, as described in <span><a href="ht
       <h2 id="name-design-considerations">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-design-considerations" class="section-name selfRef">Design Considerations</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-4-1.1">
-          <p id="section-4-1.1.1">I think it would be worthwhile describing the possibility to transform the data model exposed by a network controller into an application-specific data model to be consumed by the application. Agreed<a href="#section-4-1.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
+<p id="section-4-1">Reusing existing YANG data models to support multiple applications is a key enabler to achieve multi-vendor interoperability.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">A network controller needs to support multiple applications (some of which may not be defined at the time the network controller is defined) and different applications have different requirements on the data model they use internally to perform their tasks.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">Exposing application-specific data models at the northbound of a network controller appears making the application simpler to implement when it is the only application to be implemented on top of a given controller but results in more complex implementations for network controllers and the applications and increase complexity to achieve multi-vendor interoperability and integration.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4"><a href="#fig-as-dm" class="auto internal xref">Figure 2</a> shows a case where a controller-A is interfacing an Application-1 through the application-specific data model designed for Application-1 (i.e., AS1-DM) and a controller-B is interfacing another Application-2 through the application-specific data model designed for Application-2 (i.e., AS2-DM).<a href="#section-4-4" class="pilcrow">¶</a></p>
+<span id="name-concerns-with-defining-appl"></span><div id="fig-as-dm">
+<figure id="figure-2">
+        <div id="section-4-5.1">
+          <div class="alignLeft art-svg artwork" id="section-4-5.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="112" width="536" viewBox="0 0 536 112" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 184,96 L 192,80" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="28" y="36">Insert</text>
+                <text x="64" y="36">a</text>
+                <text x="100" y="36">figure</text>
+                <text x="160" y="36">showing</text>
+                <text x="208" y="36">two</text>
+                <text x="276" y="36">applications</text>
+                <text x="376" y="36">interacting</text>
+                <text x="444" y="36">with</text>
+                <text x="480" y="36">two</text>
+                <text x="48" y="52">controllers</text>
+                <text x="120" y="52">using</text>
+                <text x="192" y="52">application</text>
+                <text x="276" y="52">specific</text>
+                <text x="332" y="52">data</text>
+                <text x="384" y="52">models.</text>
+                <text x="16" y="84">See</text>
+                <text x="56" y="84">slide</text>
+                <text x="88" y="84">2</text>
+                <text x="112" y="84">of:</text>
+                <text x="160" y="84">https:/</text>
+                <text x="364" y="84">github.com/user-attachments/files/25503362</text>
+                <text x="284" y="100">simap-applicability.pptx</text>
+              </g>
+            </svg><a href="#section-4-5.1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-concerns-with-defining-appl" class="selfRef">Concerns with defining application-specific data models</a>
+        </figcaption></figure>
+</div>
+<p id="section-4-6">The two application-specific data models can provide the same information but with different formatting. For example, Application-1 may need to model bidirectional links as a single entity (link of type bidirectional) while Application-2 may need to model bidirectional links as two unidirectional links.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">This solution works well as long as Application-1 and controller-A are deployed in different silos than Application-2 and controller-B. Otherwise, operational and implementation issues have to be faces when there is the need to run Application-1 over network controller-B or, Application-2 over network controller-A.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-8">This would require the operator to negotiate with the vendor and controller vendors customized solutions before integrating a new application or a new controller in the network and increased complexity in the application and network controller implementations.<a href="#section-4-8" class="pilcrow">¶</a></p>
+<p id="section-4-9"><a href="#fig-common-dm" class="auto internal xref">Figure 3</a> describes an architecture based on a common and standardized data model to support multi-vendor integration.<a href="#section-4-9" class="pilcrow">¶</a></p>
+<span id="name-use-of-a-common-and-standar"></span><div id="fig-common-dm">
+<figure id="figure-3">
+        <div id="section-4-10.1">
+          <div class="alignLeft art-svg artwork" id="section-4-10.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="112" width="536" viewBox="0 0 536 112" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 184,96 L 192,80" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="28" y="36">Insert</text>
+                <text x="64" y="36">a</text>
+                <text x="100" y="36">figure</text>
+                <text x="160" y="36">showing</text>
+                <text x="208" y="36">two</text>
+                <text x="276" y="36">applications</text>
+                <text x="376" y="36">interacting</text>
+                <text x="444" y="36">with</text>
+                <text x="480" y="36">two</text>
+                <text x="48" y="52">controllers</text>
+                <text x="120" y="52">using</text>
+                <text x="152" y="52">a</text>
+                <text x="188" y="52">common</text>
+                <text x="268" y="52">standardized</text>
+                <text x="340" y="52">data</text>
+                <text x="388" y="52">model.</text>
+                <text x="16" y="84">See</text>
+                <text x="56" y="84">slide</text>
+                <text x="88" y="84">3</text>
+                <text x="112" y="84">of:</text>
+                <text x="160" y="84">https:/</text>
+                <text x="364" y="84">github.com/user-attachments/files/25503362</text>
+                <text x="284" y="100">simap-applicability.pptx</text>
+              </g>
+            </svg><a href="#section-4-10.1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<a href="#name-use-of-a-common-and-standar" class="selfRef">Use of a common and standardized data model to support multi-vendor integration</a>
+        </figcaption></figure>
+</div>
+<p id="section-4-11">In this case, the data model exposed by network controllers (e.g., controller-A and controller-B) is the same and each application needs to translate/map the standardized data model exposed by the network controller to its own application-specific data model.<a href="#section-4-11" class="pilcrow">¶</a></p>
+<p id="section-4-12">Following this approach an existing application (e.g., Application-1) can be ported from one controller to another controller (e.g., from controller-A to controller-B) ideally with no change and additional testing.<a href="#section-4-12" class="pilcrow">¶</a></p>
+<p id="section-4-13">Reusing RFC8795 YANG data model for SIMAP applications will allow TE and SIMAP application to co-exist on top of the same network controller, allowing seamless migration from network scenarios supporting only on of these application to network scenarios where both applications are supported at the same time or even scenarios where either or both applications are supported together with new applications not yet defined.<a href="#section-4-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1403,7 +1492,7 @@ terminated on the same two termination points, as described in <span><a href="ht
 <dl class="references">
 <dt id="I-D.ietf-nmop-simap-concept">[I-D.ietf-nmop-simap-concept]</dt>
         <dd>
-<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"SIMAP: Concept, Requirements, and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-simap-concept-07</span>, <time datetime="2025-10-18" class="refDate">18 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-07">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-07</a>&gt;</span>. </dd>
+<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"SIMAP: Concept, Requirements, and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-simap-concept-08</span>, <time datetime="2026-02-23" class="refDate">23 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-08">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-te-topology-profiles">[I-D.ietf-teas-te-topology-profiles]</dt>
       <dd>

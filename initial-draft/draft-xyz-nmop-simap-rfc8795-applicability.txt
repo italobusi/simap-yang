@@ -5,10 +5,10 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 24 August 2026                           Futurewei Technologies
+Expires: 28 August 2026                           Futurewei Technologies
                                                             V. P. Beeram
                                                         Juniper Networks
-                                                        20 February 2026
+                                                        24 February 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2026.
+   This Internet-Draft will expire on 28 August 2026.
 
 Copyright Notice
 
@@ -109,10 +109,14 @@ Table of Contents
    nodes since the two unidirectional links will be terminated on
    different termination points, as shown in Figure 1.
 
-Insert a figure showing a bidirectional link supported by two unidirectional links.
+   Insert a figure showing a bidirectional link supported by two
+   unidirectional links.
 
-     Figure 1: Difference between one bidirectional link and two
-                         unidirectional links
+   See slide 1 of: https://github.com/user-attachments/files/25503362
+                         /simap-applicability.pptx
+
+        Figure 1: Difference between one bidirectional link and two
+                            unidirectional links
 
       Open issue: discuss whether the bidirectional, which in turn might
       be supported as unidirectional links at the lower layer, is
@@ -182,10 +186,81 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
 
 4.  Design Considerations
 
-      I think it would be worthwhile describing the possibility to
-      transform the data model exposed by a network controller into an
-      application-specific data model to be consumed by the application.
-      Agreed
+   Reusing existing YANG data models to support multiple applications is
+   a key enabler to achieve multi-vendor interoperability.
+
+   A network controller needs to support multiple applications (some of
+   which may not be defined at the time the network controller is
+   defined) and different applications have different requirements on
+   the data model they use internally to perform their tasks.
+
+   Exposing application-specific data models at the northbound of a
+   network controller appears making the application simpler to
+   implement when it is the only application to be implemented on top of
+   a given controller but results in more complex implementations for
+   network controllers and the applications and increase complexity to
+   achieve multi-vendor interoperability and integration.
+
+   Figure 2 shows a case where a controller-A is interfacing an
+   Application-1 through the application-specific data model designed
+   for Application-1 (i.e., AS1-DM) and a controller-B is interfacing
+   another Application-2 through the application-specific data model
+   designed for Application-2 (i.e., AS2-DM).
+
+   Insert a figure showing two applications interacting with two
+   controllers using application specific data models.
+
+   See slide 2 of: https://github.com/user-attachments/files/25503362
+                         /simap-applicability.pptx
+
+     Figure 2: Concerns with defining application-specific data models
+
+   The two application-specific data models can provide the same
+   information but with different formatting.  For example,
+   Application-1 may need to model bidirectional links as a single
+   entity (link of type bidirectional) while Application-2 may need to
+   model bidirectional links as two unidirectional links.
+
+   This solution works well as long as Application-1 and controller-A
+   are deployed in different silos than Application-2 and controller-B.
+   Otherwise, operational and implementation issues have to be faces
+   when there is the need to run Application-1 over network controller-B
+   or, Application-2 over network controller-A.
+
+   This would require the operator to negotiate with the vendor and
+   controller vendors customized solutions before integrating a new
+   application or a new controller in the network and increased
+   complexity in the application and network controller implementations.
+
+   Figure 3 describes an architecture based on a common and standardized
+   data model to support multi-vendor integration.
+
+   Insert a figure showing two applications interacting with two
+   controllers using a common standardized data model.
+
+   See slide 3 of: https://github.com/user-attachments/files/25503362
+                         /simap-applicability.pptx
+
+      Figure 3: Use of a common and standardized data model to support
+                          multi-vendor integration
+
+   In this case, the data model exposed by network controllers (e.g.,
+   controller-A and controller-B) is the same and each application needs
+   to translate/map the standardized data model exposed by the network
+   controller to its own application-specific data model.
+
+   Following this approach an existing application (e.g., Application-1)
+   can be ported from one controller to another controller (e.g., from
+   controller-A to controller-B) ideally with no change and additional
+   testing.
+
+   Reusing RFC8795 YANG data model for SIMAP applications will allow TE
+   and SIMAP application to co-exist on top of the same network
+   controller, allowing seamless migration from network scenarios
+   supporting only on of these application to network scenarios where
+   both applications are supported at the same time or even scenarios
+   where either or both applications are supported together with new
+   applications not yet defined.
 
 5.  Security Considerations
 
@@ -224,9 +299,9 @@ Insert a figure showing a bidirectional link supported by two unidirectional lin
               Havel, O., Claise, B., de Dios, O. G., and T. Graf,
               "SIMAP: Concept, Requirements, and Use Cases", Work in
               Progress, Internet-Draft, draft-ietf-nmop-simap-concept-
-              07, 18 October 2025,
+              08, 23 February 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
-              simap-concept-07>.
+              simap-concept-08>.
 
    [I-D.ietf-teas-te-topology-profiles]
               Busi, I., Liu, X., Bryskin, I., Saad, T., and O. G. de
