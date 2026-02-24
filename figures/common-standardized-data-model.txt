@@ -1,0 +1,5 @@
+Insert a figure showing two applications interacting with two
+controllers using a common standardized data model.
+
+See slide 3 of: https://github.com/user-attachments/files/25503362
+                      /simap-applicability.pptx

@@ -1,1 +1,5 @@
-Insert a figure showing a bidirectional link supported by two unidirectional links.
+Insert a figure showing a bidirectional link supported by two
+unidirectional links.
+
+See slide 1 of: https://github.com/user-attachments/files/25503362
+                      /simap-applicability.pptx

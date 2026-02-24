@@ -1,0 +1,5 @@
+Insert a figure showing two applications interacting with two
+controllers using application specific data models.
+
+See slide 2 of: https://github.com/user-attachments/files/25503362
+                      /simap-applicability.pptx

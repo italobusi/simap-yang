@@ -114,7 +114,37 @@ In the current version of {{!I-D.ietf-ivy-network-inventory-topology}}, a termin
 
 # Design Considerations
 
-> I think it would be worthwhile describing the possibility to transform the data model exposed by a network controller into an application-specific data model to be consumed by the application. Agreed
+Reusing existing YANG data models to support multiple applications is a key enabler to achieve multi-vendor interoperability.
+
+A network controller needs to support multiple applications (some of which may not be defined at the time the network controller is defined) and different applications have different requirements on the data model they use internally to perform their tasks.
+
+Exposing application-specific data models at the northbound of a network controller appears making the application simpler to implement when it is the only application to be implemented on top of a given controller but results in more complex implementations for network controllers and the applications and increase complexity to achieve multi-vendor interoperability and integration.
+
+{{fig-as-dm}} shows a case where a controller-A is interfacing an Application-1 through the application-specific data model designed for Application-1 (i.e., AS1-DM) and a controller-B is interfacing another Application-2 through the application-specific data model designed for Application-2 (i.e., AS2-DM).
+
+~~~~ aasvg
+{::include ./figures/application-specific-data-model.txt}
+~~~~
+{: #fig-as-dm title="Concerns with defining application-specific data models"}
+
+The two application-specific data models can provide the same information but with different formatting. For example, Application-1 may need to model bidirectional links as a single entity (link of type bidirectional) while Application-2 may need to model bidirectional links as two unidirectional links.
+
+This solution works well as long as Application-1 and controller-A are deployed in different silos than Application-2 and controller-B. Otherwise, operational and implementation issues have to be faces when there is the need to run Application-1 over network controller-B or, Application-2 over network controller-A.
+
+This would require the operator to negotiate with the vendor and controller vendors customized solutions before integrating a new application or a new controller in the network and increased complexity in the application and network controller implementations.
+
+{{fig-common-dm}} describes an architecture based on a common and standardized data model to support multi-vendor integration.
+
+~~~~ aasvg
+{::include ./figures/common-standardized-data-model.txt}
+~~~~
+{: #fig-common-dm title="Use of a common and standardized data model to support multi-vendor integration"}
+
+In this case, the data model exposed by network controllers (e.g., controller-A and controller-B) is the same and each application needs to translate/map the standardized data model exposed by the network controller to its own application-specific data model.
+
+Following this approach an existing application (e.g., Application-1) can be ported from one controller to another controller (e.g., from controller-A to controller-B) ideally with no change and additional testing.
+
+Reusing RFC8795 YANG data model for SIMAP applications will allow TE and SIMAP application to co-exist on top of the same network controller, allowing seamless migration from network scenarios supporting only on of these application to network scenarios where both applications are supported at the same time or even scenarios where either or both applications are supported together with new applications not yet defined.
 
 # Security Considerations
 
