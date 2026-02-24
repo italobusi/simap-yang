@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-22T02:42:36.383654+00:00",
+  "timestamp": "2026-02-24T02:40:13.123829+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -63,18 +63,26 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-02-19T13:20:05Z",
-      "updatedAt": "2026-02-20T17:51:09Z",
+      "updatedAt": "2026-02-24T00:24:11Z",
       "baseRepository": "italobusi/simap-yang",
       "baseRefName": "main",
       "baseRefOid": "5e0809da5c58966b481d8ee9afb78aa20f104a00",
       "headRepository": "italobusi/simap-yang",
       "headRefName": "initial-draft",
-      "headRefOid": "0df66345a32d04cdec66c396768e395d28f4c0e3",
+      "headRefOid": "0e7b61247145c07fe006fc9fcc164e1f092d6dac",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "OWNER",
+          "body": "Some slides with the figures to be translated in ASCII art: [simap-applicability.pptx](https://github.com/user-attachments/files/25503362/simap-applicability.pptx)\r\n\r\n",
+          "createdAt": "2026-02-24T00:21:28Z",
+          "updatedAt": "2026-02-24T00:21:28Z"
+        }
+      ],
       "reviews": []
     }
   ]
