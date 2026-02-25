@@ -98,7 +98,7 @@ terminated on the same two termination points, as described in {{Section 4.4.5 o
 It is worth noting that a bidirectional link can be unambiguously distinguished from two unidirectional links between the same two nodes since the two unidirectional links will be terminated on different termination points, as shown in {{fig-bidir-link}}.
 
 ~~~~ aasvg
-{::include ./figures/bidirectional-link.txt}
+{::include figures/bidirectional-link.txt}
 ~~~~
 {: #fig-bidir-link title="Difference between one bidirectional link and two unidirectional links"}
 
@@ -164,7 +164,7 @@ Exposing application-specific data models at the northbound of a network control
 {{fig-as-dm}} shows a case where a controller-A is interfacing an Application-1 through the application-specific data model designed for Application-1 (i.e., AS1-DM) and a controller-B is interfacing another Application-2 through the application-specific data model designed for Application-2 (i.e., AS2-DM).
 
 ~~~~ aasvg
-{::include ./figures/application-specific-data-model.txt}
+{::include figures/application-specific-data-model.txt}
 ~~~~
 {: #fig-as-dm title="Concerns with defining application-specific data models"}
 
@@ -177,7 +177,7 @@ This would require the operator to negotiate with the vendor and controller vend
 {{fig-common-dm}} describes an architecture based on a common and standardized data model to support multi-vendor integration.
 
 ~~~~ aasvg
-{::include ./figures/common-standardized-data-model.txt}
+{::include figures/common-standardized-data-model.txt}
 ~~~~
 {: #fig-common-dm title="Use of a common and standardized data model to support multi-vendor integration"}
 
@@ -201,7 +201,7 @@ This document has no IANA actions.
 
 {{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the provide to be supported may be different on different instances and it may depend on other attributes (e.g., the network type).
 
-Existing implementations of {{!RFC8795}} describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in {{!RFC8795}}.
+Existing implementations of {{!RFC8795}} describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in {{!RFC8795}}. The pruned YANG tree was sufficient to the implementers to generate proper APIs.
 
 However, it is possible to use the YANG deviation statements to programmatically generate a profiled YANG tree.
 
@@ -218,34 +218,6 @@ The profiled YANG tree is provided below:
 ~~~~ ascii-art
 {::include-fold yang/ietf-simap-deviation-example.tree}
 ~~~~
-
-It is worth noting that even if an ad-hoc data model is defined, a coarse grain API would get more data than actually needed by an application.
-
-For example, the following GET operation will get not only the data defined in {{!RFC8345}} but also all the data nodes defined in YANG data models which augment {{!RFC8345}} (e.g., technology-specific models):
-
-~~~~ ascii-art
-Add a GET operation for the data of a link
-
-    GET  /restconf/data/ietf-network:networks/\
-         /network=example:network/node=example:node-B/\
-         /ietf-network-topology:termination-point=example:tp-2\
-         / HTTP/1.1
-    Host: example.com
-    Accept: application/yang-data+json
-
-    {
-      "tp-id": "example:tp-2",
-      "ietf-l3-unicast-topology:l3-termination-point-attributes": {
-        "ip-address": [
-          "192.0.2.4"
-        ]
-      }
-    }
-~~~~
-
-An application that needs only a subset of the data nodes should either filter out the unnecessary information received from a coarse grain API or use a fine grained API to request only the data nodes that it needs.
-
-> The possibility to programmatically generate APIs filtering only the core attributes in {{!RFC8795}} is still under investigation.
 
 # Acknowledgments
 {:numbered="false"}
