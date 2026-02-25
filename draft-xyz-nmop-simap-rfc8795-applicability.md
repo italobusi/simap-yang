@@ -50,8 +50,6 @@ normative:
 
 informative:
 
-...
-
 --- abstract
 
 This document analyses the applicability of the RFC 8795 YANG data model to
@@ -243,12 +241,11 @@ Add a GET operation for the data of a link
         ]
       }
     }
-
 ~~~~
 
 An application that needs only a subset of the data nodes should either filter out the unnecessary information received from a coarse grain API or use a fine grained API to request only the data nodes that it needs.
 
-> Action: investigate if it is possible to generate simple APIs from the YANG data model using the deviations
+> The possibility to programmatically generate APIs filtering only the core attributes in {{!RFC8795}} is still under investigation.
 
 # Acknowledgments
 {:numbered="false"}
