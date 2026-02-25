@@ -75,7 +75,7 @@ It is worth noting that the YANG data model in {{!RFC8795}} defines a topology m
 - offers mechanisms to navigate amongst layers and correlate between them;
 - is applicable to multiple domains (access, core, data center, etc.) and technologies (Optical, IP, etc.).
 
-{{?I-D.ietf-teas-te-topology-profiles}} clarifies that 
+{{?I-D.ietf-teas-te-topology-profiles}} clarifies that
 
 It is therefore worthwhile analyzing the applicability of the YANG data model in {{!RFC8795}} to meet the SIMAP requirements and identify any gaps
 that need to be addressed before starting the work on new YANG data models to meet the SIMAP requirements, as outlined in {{?I-D.ietf-nmop-simap-concept}}.
@@ -124,7 +124,7 @@ As outlined in {{Section 2 of ?I-D.ietf-nmop-simap-concept}}:
 
 {{!RFC8795}} augments {{!RFC8345}} and therefore provide the same flexibility.
 
-As described in {{Section 3 of ?I-D}}:
+As described in {{Section 3 of ?I-D.havel-nmop-simap-yang}}:
 > - Layering relationships are expressed solely through the supporting
 construct, without additional semantics such as underlay, primary,
 backup, load-sharing, path, sequential, or parallel roles.
