@@ -1748,7 +1748,7 @@ backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-of-deviation-statem" class="section-name selfRef">Example of deviation statements</a>
       </h2>
 <p id="appendix-A-1"><span>[<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span> indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the provide to be supported may be different on different instances and it may depend on other attributes (e.g., the network type).<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">Existing implementations of <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Existing implementations of <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. The pruned YANG tree was sufficient to the implementers to generate proper APIs.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3">However, it is possible to use the YANG deviation statements to programmatically generate a profiled YANG tree.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
 <p id="appendix-A-4">An example of a YANG deviation module for SIMAP applications is provided below.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-example-of-sima-deviation-y"></span><div id="fig-deviation-yang">
@@ -2485,35 +2485,6 @@ module: ietf-network
 
 </pre><a href="#appendix-A-7" class="pilcrow">¶</a>
 </div>
-<p id="appendix-A-8">It is worth noting that even if an ad-hoc data model is defined, a coarse grain API would get more data than actually needed by an application.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
-<p id="appendix-A-9">For example, the following GET operation will get not only the data defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> but also all the data nodes defined in YANG data models which augment <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> (e.g., technology-specific models):<a href="#appendix-A-9" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="appendix-A-10">
-<pre>
-Add a GET operation for the data of a link
-
-    GET  /restconf/data/ietf-network:networks/\
-         /network=example:network/node=example:node-B/\
-         /ietf-network-topology:termination-point=example:tp-2\
-         / HTTP/1.1
-    Host: example.com
-    Accept: application/yang-data+json
-
-    {
-      "tp-id": "example:tp-2",
-      "ietf-l3-unicast-topology:l3-termination-point-attributes": {
-        "ip-address": [
-          "192.0.2.4"
-        ]
-      }
-    }
-</pre><a href="#appendix-A-10" class="pilcrow">¶</a>
-</div>
-<p id="appendix-A-11">An application that needs only a subset of the data nodes should either filter out the unnecessary information received from a coarse grain API or use a fine grained API to request only the data nodes that it needs.<a href="#appendix-A-11" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="appendix-A-12.1">
-          <p id="appendix-A-12.1.1">The possibility to programmatically generate APIs filtering only the core attributes in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> is still under investigation.<a href="#appendix-A-12.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
 </section>
 </div>
 <div id="acknowledgments">

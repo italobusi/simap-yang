@@ -447,7 +447,8 @@ Appendix A.  Example of deviation statements
 
    Existing implementations of [RFC8795] describes the implemented
    profiled by manually pruning the YANG tree generated fom the YANG
-   module defined in [RFC8795].
+   module defined in [RFC8795].  The pruned YANG tree was sufficient to
+   the implementers to generate proper APIs.
 
    However, it is possible to use the YANG deviation statements to
    programmatically generate a profiled YANG tree.
@@ -1178,40 +1179,6 @@ Appendix A.  Example of deviation statements
                  +--ro tet:oper-status?
                  |       te-types:te-oper-status
                  +--ro tet:is-transitional?         empty
-
-   It is worth noting that even if an ad-hoc data model is defined, a
-   coarse grain API would get more data than actually needed by an
-   application.
-
-   For example, the following GET operation will get not only the data
-   defined in [RFC8345] but also all the data nodes defined in YANG data
-   models which augment [RFC8345] (e.g., technology-specific models):
-
-   Add a GET operation for the data of a link
-
-       GET  /restconf/data/ietf-network:networks/\
-            /network=example:network/node=example:node-B/\
-            /ietf-network-topology:termination-point=example:tp-2\
-            / HTTP/1.1
-       Host: example.com
-       Accept: application/yang-data+json
-
-       {
-         "tp-id": "example:tp-2",
-         "ietf-l3-unicast-topology:l3-termination-point-attributes": {
-           "ip-address": [
-             "192.0.2.4"
-           ]
-         }
-       }
-
-   An application that needs only a subset of the data nodes should
-   either filter out the unnecessary information received from a coarse
-   grain API or use a fine grained API to request only the data nodes
-   that it needs.
-
-      The possibility to programmatically generate APIs filtering only
-      the core attributes in [RFC8795] is still under investigation.
 
 Acknowledgments
 
