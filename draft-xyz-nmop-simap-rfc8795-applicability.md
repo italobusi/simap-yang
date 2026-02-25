@@ -36,6 +36,10 @@ author:
     name: Vishnu Pavan Beeram
     org: Juniper Networks
     email: vbeeram@juniper.net
+  -
+    name: Sergio Belotti
+    org: Nokia
+    email: sergio.belotti@nokia.com
 # To be confirmed on the next call (2026-02-27)
 #  -
 #    name: Tarek Saad
@@ -50,15 +54,35 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+This document analyses the applicability of the RFC 8795 YANG data model to
+Service & Infrastructure Maps (SIMAP) and in particular analysis which requirements
+can be supported by the existing YANG data model defined in RFC 8795.
 
 --- middle
 
 # Introduction
 
-TODO Introduction
+The concept of Service & Infrastructure Maps (SIMAP) is being defined in {{?I-D.ietf-nmop-simap-concept}}
+together with a set of SIMP requirements and use cases.
 
+SIMAP is defined in {{?I-D.ietf-nmop-simap-concept}}, as:
+
+> SIMAP is a data model that provides a topological view of the operator's networks and services, including how it is connected to other models (e.g., inventory) and external data sources (e.g., observability data, and operational knowledge). This model represents a multi-layered topology and offers mechanisms to navigate amongst layers and correlate between them. This includes layers from physical topology to service topology. This model is applicable to multiple domains (access, core, data center, etc.) and technologies (Optical, IP, etc.).
+
+It is worth noting that the YANG data model in {{!RFC8795}} defines a topology model which:
+
+- represents a multi-layered topology;
+- offers mechanisms to navigate amongst layers and correlate between them;
+- is applicable to multiple domains (access, core, data center, etc.) and technologies (Optical, IP, etc.).
+
+{{?I-D.ietf-teas-te-topology-profiles}} clarifies that 
+
+It is therefore worthwhile analyzing the applicability of the YANG data model in {{!RFC8795}} to meet the SIMAP requirements and identify any gaps
+that need to be addressed before starting the work on new YANG data models to meet the SIMAP requirements, as outlined in {{?I-D.ietf-nmop-simap-concept}}.
+
+Understanding the degree of standardization and identifying potential gaps are crucial for supporting
+the SIMAP applications while ensuring multi-vendor interoperability and compatibility with other applications
+which can run on top of the same network controller.
 
 # Conventions and Definitions
 
@@ -80,8 +104,6 @@ It is worth noting that a bidirectional link can be unambiguously distinguished 
 ~~~~
 {: #fig-bidir-link title="Difference between one bidirectional link and two unidirectional links"}
 
-> Open issue: discuss whether the bidirectional, which in turn might be supported as unidirectional links at the lower layer, is modelled using the supporting-link or the underlay path. Agreed in the 2026-02-20 TE call: use the underlay path and reference section 2.3.1 of the TE topology profile.
-
 ## Multipoint Links
 
 Multipoint links can be modelled as pseudonodes, as described in {{Section 4.4.5 of !RFC8345}}.
@@ -90,17 +112,38 @@ The type of multipoint link (e.g., point-to-multipoint or multipoint-to-multipoi
 
 > Note: some examples for multipoint links are described in {{Section 2.5 of ?I-D.ietf-teas-te-topology-profiles}}. More examples can be provided in future versions of this document.
 
-## Multi-domain Links
-
-Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
-
 ## Links and nodes down in topology
 
 {{!RFC8795}} defines the 'oper-status' attribute for nodes, links and termination points, therefore allowing to report links and nodes down in the topology, and to unambiguously distinguishing between nodes and links which are up or down.
 
 ## Multi-Layer Topologies
 
-> Open issue: need some brainstorming for the simple case where there is 1:1 mapping from the link in the client layer and the link in the server layer
+As outlined in {{Section 2 of ?I-D.ietf-nmop-simap-concept}}:
+
+> {{!RFC8345}} is flexible and can support both the same network topology instance with multiple layers (e.g., Layer 2 and Layer 3) or separate network topology instances with supporting relations between them (e.g., separate Layer 2 and Layer 3). Therefore, multiple topology layers can be grouped into the same network topology instance, if solution requires.
+
+{{!RFC8795}} augments {{!RFC8345}} and therefore provide the same flexibility.
+
+As described in {{Section 3 of ?I-D}}:
+> - Layering relationships are expressed solely through the supporting
+construct, without additional semantics such as underlay, primary,
+backup, load-sharing, path, sequential, or parallel roles.
+
+This issue was taken into account when designing the YANG data model in {{!RFC8795}} and the 'underlay' relationship has been properly defined to support navigation between overlay and underlay layers, as described in {{Section 2.3 of ?I-D.ietf-teas-te-topology-profiles}}.
+
+Some guidelines on how to unambiguously use the supporting relationship, defined in {{!RFC8345}}, and the 'underlay' relationship defined in {{!RFC8795}}, have been clarified in {{Section 2.3.1 of ?I-D.ietf-teas-te-topology-profiles}}.
+
+As outlined in REQ-BIDIR of {{?I-D.ietf-nmop-simap-concept}}, a bidirectional link can be supported by two unidirectional links in the lower layer. For example, a Ethernet (bidirectional) link can be supported by two physical layer links associated with two unidirectional fibers.
+
+This relationship can be modelled using the link 'underlay' relationship: in this case each link is supported by a primary path composed by a single link.
+
+## Multi-domain Links
+
+Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
+
+## Multi-domain Nodes
+
+> Open issue: need further discussion about how to model the inter-area border nodes when belonging to different network topologies (one for each area)
 
 ## Termination points supported by physical devices
 
@@ -150,17 +193,60 @@ Reusing RFC8795 YANG data model for SIMAP applications will allow TE and SIMAP a
 
 TODO Security
 
-
 # IANA Considerations
 
 This document has no IANA actions.
-
 
 --- back
 
 # Example of deviation statements
 
-> Agreed to describe the use of deviation statement as an example of how to do a coarse grain profiling of TE topology.
+{{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the provide to be supported may be different on different instances and it may depend on other attributes (e.g., the network type).
+
+Existing implementations of {{!RFC8795}} describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in {{!RFC8795}}.
+
+However, it is possible to use the YANG deviation statements to programmatically generate a profiled YANG tree.
+
+An example of a YANG deviation module for SIMAP applications is provided below.
+
+~~~~ yang
+{::include yang/ietf-simap-deviation-example.yang}
+~~~~
+{: #fig-deviation-yang title="Example of SIMA deviation YANG module"
+sourcecode-name="ietf-simap-deviation-example@2026-02-12.yang"}
+
+The profiled YANG tree is provided below:
+
+~~~~ ascii-art
+{::include-fold yang/ietf-simap-deviation-example.tree}
+~~~~
+
+It is worth noting that even if an ad-hoc data model is defined, a coarse grain API would get more data than actually needed by an application.
+
+For example, the following GET operation will get not only the data defined in {{!RFC8345}} but also all the data nodes defined in YANG data models which augment {{!RFC8345}} (e.g., technology-specific models):
+
+~~~~ ascii-art
+Add a GET operation for the data of a link
+
+    GET  /restconf/data/ietf-network:networks/\
+         /network=example:network/node=example:node-B/\
+         /ietf-network-topology:termination-point=example:tp-2\
+         / HTTP/1.1
+    Host: example.com
+    Accept: application/yang-data+json
+
+    {
+      "tp-id": "example:tp-2",
+      "ietf-l3-unicast-topology:l3-termination-point-attributes": {
+        "ip-address": [
+          "192.0.2.4"
+        ]
+      }
+    }
+
+~~~~
+
+An application that needs only a subset of the data nodes should either filter out the unnecessary information received from a coarse grain API or use a fine grained API to request only the data nodes that it needs.
 
 > Action: investigate if it is possible to generate simple APIs from the YANG data model using the deviations
 
