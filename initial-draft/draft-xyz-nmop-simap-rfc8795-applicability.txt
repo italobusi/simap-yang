@@ -153,11 +153,26 @@ Table of Contents
    nodes since the two unidirectional links will be terminated on
    different termination points, as shown in Figure 1.
 
-   Insert a figure showing a bidirectional link supported by two
-   unidirectional links.
-
-   See slide 1 of: https://github.com/user-attachments/files/25503362
-                         /simap-applicability.pptx
+        ---------------                             ---------------
+       /+-------------+\                           /+-------------+\
+       ||             ||                           ||             ||
+       ||            |  |------------------------>|  |            ||
+       ||      A     |  |       |                 |  |     B      ||
+       ||            |  |<------------------------|  |            ||
+       ||             ||        |         |        ||             ||
+       \+-------------+/                           \+-------------+/
+        ---------------         |         |         ---------------
+                   underlay path           underlay path
+                                |         |
+        ---------------                             ---------------
+       /+-------------+\        |         |        /+-------------+\
+       ||             ||        V                  ||             ||
+       ||            |  |------------------------>|  |            ||
+       ||      A      ||                  V        ||      B      ||
+       ||            |  |<------------------------|  |            ||
+       ||             ||                           ||             ||
+       \+-------------+/                           \+-------------+/
+        ---------------                             ---------------
 
         Figure 1: Difference between one bidirectional link and two
                             unidirectional links
@@ -284,11 +299,22 @@ Table of Contents
    another Application-2 through the application-specific data model
    designed for Application-2 (i.e., AS2-DM).
 
-   Insert a figure showing two applications interacting with two
-   controllers using application specific data models.
-
-   See slide 2 of: https://github.com/user-attachments/files/25503362
-                         /simap-applicability.pptx
+     +-------+         +-------+         +-------+         +-------+
+     | APP-1 |         | APP-2 |         | APP-1 |         | APP-2 |
+     |(Core) |         |(Core) |         |(Core) |         |(Core) |
+     +-------+         +-------+         +-------+         +-------+
+         ^                 ^                 ^                 ^
+         |                /                   \                |
+         |               / ???             ??? \               |
+         |              /                       \              |
+         +--------+    /                         \    +--------+
+                  |   /                           \   |
+           AS1-DM |  /                             \  | AS2-DM
+                  | /                               \ |
+                  |/                                 \|
+     +-------------------------+         +-------------------------+
+     |       Controller-A      |         |       Controller-B      |
+     +-------------------------+         +-------------------------+
 
      Figure 2: Concerns with defining application-specific data models
 
@@ -312,11 +338,27 @@ Table of Contents
    Figure 3 describes an architecture based on a common and standardized
    data model to support multi-vendor integration.
 
-   Insert a figure showing two applications interacting with two
-   controllers using a common standardized data model.
-
-   See slide 3 of: https://github.com/user-attachments/files/25503362
-                         /simap-applicability.pptx
+     +-------+         +-------+         +-------+         +-------+
+     | APP-1 |         | APP-2 |         | APP-1 |         | APP-2 |
+     |(Core) |         |(Core) |         |(Core) |         |(Core) |
+     +-------+         +-------+         +-------+         +-------+
+         ^                 ^                 ^                 ^
+         | AS1-DM   AS2-DM |                 | AS1-DM   AS2-DM |
+         |                 |                 |                 |
+    +---------+       +---------+       +---------+       +---------+
+    |  APP-1  |       |  APP-2  |       |  APP-1  |       |  APP-2  |
+    | (DM-Map)|       | (DM-Map)|       | (DM-Map)|       | (DM-Map)|
+    +---------+       +---------+       +---------+       +---------+
+         ^                 ^                 ^                 ^
+         |                 |  /-----------\  |                 |
+         +-----------------+ /    Common   \ +-----------------+
+                  |          \   Standard  /          |
+         NBI-DM   |           \-----------/    NBI-DM |
+                  |                                   |
+                  |                                   |
+     +-------------------------+         +-------------------------+
+     |       Controller-A      |         |       Controller-B      |
+     +-------------------------+         +-------------------------+
 
       Figure 3: Use of a common and standardized data model to support
                           multi-vendor integration
