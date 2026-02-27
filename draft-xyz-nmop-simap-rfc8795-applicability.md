@@ -199,7 +199,7 @@ This document has no IANA actions.
 
 # Example of deviation statements
 
-{{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the provide to be supported may be different on different instances and it may depend on other attributes (e.g., the network type).
+{{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the profiles to be supported may be different on different instances, depending also on other attributes (e.g., the network type).
 
 Existing implementations of {{!RFC8795}} describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in {{!RFC8795}}. The pruned YANG tree was sufficient to the implementers to generate proper APIs.
 
