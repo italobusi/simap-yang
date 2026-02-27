@@ -1188,15 +1188,6 @@ can be supported by the existing YANG data model defined in RFC 8795.<a href="#s
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-multi-layer-topologies" class="internal xref">Multi-Layer Topologies</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-multi-domain-links" class="internal xref">Multi-domain Links</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
-                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-multi-domain-nodes" class="internal xref">Multi-domain Nodes</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
-                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-termination-points-supporte" class="internal xref">Termination points supported by physical devices</a></p>
-</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
@@ -1290,114 +1281,94 @@ terminated on the same two termination points, as described in <span><a href="ht
 <figure id="figure-1">
           <div id="section-3.1-3.1">
             <div class="alignLeft art-svg artwork" id="section-3.1-3.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="496" viewBox="0 0 496 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-                <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
-                <path d="M 8,240 L 8,304" fill="none" stroke="black"></path>
-                <path d="M 16,48 L 16,144" fill="none" stroke="black"></path>
-                <path d="M 16,224 L 16,320" fill="none" stroke="black"></path>
-                <path d="M 120,80 L 120,112" fill="none" stroke="black"></path>
-                <path d="M 128,48 L 128,64" fill="none" stroke="black"></path>
-                <path d="M 128,128 L 128,144" fill="none" stroke="black"></path>
-                <path d="M 128,224 L 128,240" fill="none" stroke="black"></path>
-                <path d="M 128,304 L 128,320" fill="none" stroke="black"></path>
-                <path d="M 144,80 L 144,112" fill="none" stroke="black"></path>
-                <path d="M 208,240 L 208,248" fill="none" stroke="black"></path>
-                <path d="M 352,80 L 352,112" fill="none" stroke="black"></path>
-                <path d="M 368,48 L 368,64" fill="none" stroke="black"></path>
-                <path d="M 368,128 L 368,144" fill="none" stroke="black"></path>
-                <path d="M 368,224 L 368,240" fill="none" stroke="black"></path>
-                <path d="M 368,304 L 368,320" fill="none" stroke="black"></path>
-                <path d="M 376,80 L 376,112" fill="none" stroke="black"></path>
-                <path d="M 480,48 L 480,144" fill="none" stroke="black"></path>
-                <path d="M 480,224 L 480,320" fill="none" stroke="black"></path>
-                <path d="M 488,64 L 488,128" fill="none" stroke="black"></path>
-                <path d="M 488,240 L 488,304" fill="none" stroke="black"></path>
-                <path d="M 16,32 L 128,32" fill="none" stroke="black"></path>
-                <path d="M 368,32 L 480,32" fill="none" stroke="black"></path>
-                <path d="M 24,48 L 120,48" fill="none" stroke="black"></path>
-                <path d="M 376,48 L 472,48" fill="none" stroke="black"></path>
-                <path d="M 152,80 L 344,80" fill="none" stroke="black"></path>
-                <path d="M 152,112 L 344,112" fill="none" stroke="black"></path>
-                <path d="M 24,144 L 120,144" fill="none" stroke="black"></path>
-                <path d="M 376,144 L 472,144" fill="none" stroke="black"></path>
-                <path d="M 16,160 L 128,160" fill="none" stroke="black"></path>
-                <path d="M 368,160 L 480,160" fill="none" stroke="black"></path>
-                <path d="M 16,208 L 128,208" fill="none" stroke="black"></path>
-                <path d="M 368,208 L 480,208" fill="none" stroke="black"></path>
-                <path d="M 24,224 L 120,224" fill="none" stroke="black"></path>
-                <path d="M 376,224 L 472,224" fill="none" stroke="black"></path>
-                <path d="M 152,256 L 344,256" fill="none" stroke="black"></path>
-                <path d="M 152,288 L 344,288" fill="none" stroke="black"></path>
-                <path d="M 24,320 L 120,320" fill="none" stroke="black"></path>
-                <path d="M 376,320 L 472,320" fill="none" stroke="black"></path>
-                <path d="M 16,336 L 128,336" fill="none" stroke="black"></path>
-                <path d="M 368,336 L 480,336" fill="none" stroke="black"></path>
-                <path d="M 24,48 C 15.16936,48 8,55.16936 8,64" fill="none" stroke="black"></path>
-                <path d="M 120,48 C 128.83064,48 136,55.16936 136,64" fill="none" stroke="black"></path>
-                <path d="M 376,48 C 367.16936,48 360,55.16936 360,64" fill="none" stroke="black"></path>
-                <path d="M 472,48 C 480.83064,48 488,55.16936 488,64" fill="none" stroke="black"></path>
-                <path d="M 24,144 C 15.16936,144 8,136.83064 8,128" fill="none" stroke="black"></path>
-                <path d="M 120,144 C 128.83064,144 136,136.83064 136,128" fill="none" stroke="black"></path>
-                <path d="M 376,144 C 367.16936,144 360,136.83064 360,128" fill="none" stroke="black"></path>
-                <path d="M 472,144 C 480.83064,144 488,136.83064 488,128" fill="none" stroke="black"></path>
-                <path d="M 24,224 C 15.16936,224 8,231.16936 8,240" fill="none" stroke="black"></path>
-                <path d="M 120,224 C 128.83064,224 136,231.16936 136,240" fill="none" stroke="black"></path>
-                <path d="M 376,224 C 367.16936,224 360,231.16936 360,240" fill="none" stroke="black"></path>
-                <path d="M 472,224 C 480.83064,224 488,231.16936 488,240" fill="none" stroke="black"></path>
-                <path d="M 24,320 C 15.16936,320 8,312.83064 8,304" fill="none" stroke="black"></path>
-                <path d="M 120,320 C 128.83064,320 136,312.83064 136,304" fill="none" stroke="black"></path>
-                <path d="M 376,320 C 367.16936,320 360,312.83064 360,304" fill="none" stroke="black"></path>
-                <path d="M 472,320 C 480.83064,320 488,312.83064 488,304" fill="none" stroke="black"></path>
-                <polygon class="arrowhead" points="352,256 340,250.4 340,261.6" fill="black" transform="rotate(0,344,256)"></polygon>
-                <polygon class="arrowhead" points="352,80 340,74.4 340,85.6" fill="black" transform="rotate(0,344,80)"></polygon>
-                <polygon class="arrowhead" points="216,248 204,242.4 204,253.6" fill="black" transform="rotate(90,208,248)"></polygon>
-                <polygon class="arrowhead" points="160,288 148,282.4 148,293.6" fill="black" transform="rotate(180,152,288)"></polygon>
-                <polygon class="arrowhead" points="160,112 148,106.4 148,117.6" fill="black" transform="rotate(180,152,112)"></polygon>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="464" width="528" viewBox="0 0 528 464" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,192" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 8,432" fill="none" stroke="black"></path>
+                <path d="M 24,48 L 24,176" fill="none" stroke="black"></path>
+                <path d="M 24,256 L 24,416" fill="none" stroke="black"></path>
+                <path d="M 128,80 L 128,144" fill="none" stroke="black"></path>
+                <path d="M 128,288 L 128,320" fill="none" stroke="black"></path>
+                <path d="M 128,352 L 128,384" fill="none" stroke="black"></path>
+                <path d="M 136,48 L 136,72" fill="none" stroke="black"></path>
+                <path d="M 136,152 L 136,176" fill="none" stroke="black"></path>
+                <path d="M 136,256 L 136,280" fill="none" stroke="black"></path>
+                <path d="M 136,328 L 136,344" fill="none" stroke="black"></path>
+                <path d="M 136,392 L 136,416" fill="none" stroke="black"></path>
+                <path d="M 152,32 L 152,72" fill="none" stroke="black"></path>
+                <path d="M 152,152 L 152,192" fill="none" stroke="black"></path>
+                <path d="M 152,240 L 152,280" fill="none" stroke="black"></path>
+                <path d="M 152,328 L 152,344" fill="none" stroke="black"></path>
+                <path d="M 152,392 L 152,432" fill="none" stroke="black"></path>
+                <path d="M 160,80 L 160,144" fill="none" stroke="black"></path>
+                <path d="M 160,288 L 160,320" fill="none" stroke="black"></path>
+                <path d="M 160,352 L 160,384" fill="none" stroke="black"></path>
+                <path d="M 368,80 L 368,144" fill="none" stroke="black"></path>
+                <path d="M 368,288 L 368,320" fill="none" stroke="black"></path>
+                <path d="M 368,352 L 368,384" fill="none" stroke="black"></path>
+                <path d="M 376,32 L 376,72" fill="none" stroke="black"></path>
+                <path d="M 376,152 L 376,192" fill="none" stroke="black"></path>
+                <path d="M 376,240 L 376,280" fill="none" stroke="black"></path>
+                <path d="M 376,328 L 376,344" fill="none" stroke="black"></path>
+                <path d="M 376,392 L 376,432" fill="none" stroke="black"></path>
+                <path d="M 392,48 L 392,72" fill="none" stroke="black"></path>
+                <path d="M 392,152 L 392,176" fill="none" stroke="black"></path>
+                <path d="M 392,256 L 392,280" fill="none" stroke="black"></path>
+                <path d="M 392,328 L 392,344" fill="none" stroke="black"></path>
+                <path d="M 392,392 L 392,416" fill="none" stroke="black"></path>
+                <path d="M 400,80 L 400,144" fill="none" stroke="black"></path>
+                <path d="M 400,288 L 400,320" fill="none" stroke="black"></path>
+                <path d="M 400,352 L 400,384" fill="none" stroke="black"></path>
+                <path d="M 504,48 L 504,176" fill="none" stroke="black"></path>
+                <path d="M 504,256 L 504,416" fill="none" stroke="black"></path>
+                <path d="M 520,32 L 520,192" fill="none" stroke="black"></path>
+                <path d="M 520,240 L 520,432" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
+                <path d="M 376,32 L 520,32" fill="none" stroke="black"></path>
+                <path d="M 24,48 L 136,48" fill="none" stroke="black"></path>
+                <path d="M 392,48 L 504,48" fill="none" stroke="black"></path>
+                <path d="M 128,80 L 160,80" fill="none" stroke="black"></path>
+                <path d="M 368,80 L 400,80" fill="none" stroke="black"></path>
+                <path d="M 160,96 L 360,96" fill="none" stroke="black"></path>
+                <path d="M 168,128 L 368,128" fill="none" stroke="black"></path>
+                <path d="M 128,144 L 160,144" fill="none" stroke="black"></path>
+                <path d="M 368,144 L 400,144" fill="none" stroke="black"></path>
+                <path d="M 24,176 L 136,176" fill="none" stroke="black"></path>
+                <path d="M 392,176 L 504,176" fill="none" stroke="black"></path>
+                <path d="M 8,192 L 152,192" fill="none" stroke="black"></path>
+                <path d="M 376,192 L 520,192" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 152,240" fill="none" stroke="black"></path>
+                <path d="M 376,240 L 520,240" fill="none" stroke="black"></path>
+                <path d="M 24,256 L 136,256" fill="none" stroke="black"></path>
+                <path d="M 392,256 L 504,256" fill="none" stroke="black"></path>
+                <path d="M 128,288 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 368,288 L 400,288" fill="none" stroke="black"></path>
+                <path d="M 160,304 L 360,304" fill="none" stroke="black"></path>
+                <path d="M 128,320 L 160,320" fill="none" stroke="black"></path>
+                <path d="M 368,320 L 400,320" fill="none" stroke="black"></path>
+                <path d="M 128,352 L 160,352" fill="none" stroke="black"></path>
+                <path d="M 368,352 L 400,352" fill="none" stroke="black"></path>
+                <path d="M 168,368 L 368,368" fill="none" stroke="black"></path>
+                <path d="M 128,384 L 160,384" fill="none" stroke="black"></path>
+                <path d="M 368,384 L 400,384" fill="none" stroke="black"></path>
+                <path d="M 24,416 L 136,416" fill="none" stroke="black"></path>
+                <path d="M 392,416 L 504,416" fill="none" stroke="black"></path>
+                <path d="M 8,432 L 152,432" fill="none" stroke="black"></path>
+                <path d="M 376,432 L 520,432" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="368,304 356,298.4 356,309.6" fill="black" transform="rotate(0,360,304)"></polygon>
+                <polygon class="arrowhead" points="368,96 356,90.4 356,101.6" fill="black" transform="rotate(0,360,96)"></polygon>
+                <polygon class="arrowhead" points="176,368 164,362.4 164,373.6" fill="black" transform="rotate(180,168,368)"></polygon>
+                <polygon class="arrowhead" points="176,128 164,122.4 164,133.6" fill="black" transform="rotate(180,168,128)"></polygon>
                 <g class="text">
-                  <text x="8" y="52">/</text>
-                  <text x="136" y="52">\</text>
-                  <text x="360" y="52">/</text>
-                  <text x="488" y="52">\</text>
-                  <text x="72" y="100">A</text>
-                  <text x="208" y="100">|</text>
-                  <text x="424" y="100">B</text>
-                  <text x="208" y="132">|</text>
-                  <text x="288" y="132">|</text>
-                  <text x="8" y="148">\</text>
-                  <text x="136" y="148">/</text>
-                  <text x="360" y="148">\</text>
-                  <text x="488" y="148">/</text>
-                  <text x="208" y="164">|</text>
-                  <text x="288" y="164">|</text>
-                  <text x="132" y="180">underlay</text>
-                  <text x="188" y="180">path</text>
-                  <text x="324" y="180">underlay</text>
-                  <text x="380" y="180">path</text>
-                  <text x="208" y="196">|</text>
-                  <text x="288" y="196">|</text>
-                  <text x="8" y="228">/</text>
-                  <text x="136" y="228">\</text>
-                  <text x="208" y="228">|</text>
-                  <text x="288" y="228">|</text>
-                  <text x="360" y="228">/</text>
-                  <text x="488" y="228">\</text>
-                  <text x="120" y="260">|</text>
-                  <text x="144" y="260">|</text>
-                  <text x="352" y="260">|</text>
-                  <text x="376" y="260">|</text>
-                  <text x="72" y="276">A</text>
-                  <text x="132" y="276">||</text>
-                  <text x="288" y="276">V</text>
-                  <text x="364" y="276">||</text>
-                  <text x="424" y="276">B</text>
-                  <text x="120" y="292">|</text>
-                  <text x="144" y="292">|</text>
-                  <text x="352" y="292">|</text>
-                  <text x="376" y="292">|</text>
-                  <text x="8" y="324">\</text>
-                  <text x="136" y="324">/</text>
-                  <text x="360" y="324">\</text>
-                  <text x="488" y="324">/</text>
+                  <text x="80" y="116">A</text>
+                  <text x="144" y="116">TP1</text>
+                  <text x="384" y="116">TP2</text>
+                  <text x="448" y="116">B</text>
+                  <text x="144" y="308">TP3</text>
+                  <text x="384" y="308">TP4</text>
+                  <text x="80" y="340">C</text>
+                  <text x="448" y="340">D</text>
+                  <text x="144" y="372">TP4</text>
+                  <text x="384" y="372">TP5</text>
                 </g>
               </svg><a href="#section-3.1-3.1.1" class="pilcrow">¶</a>
 </div>
@@ -1444,49 +1415,133 @@ terminated on the same two termination points, as described in <span><a href="ht
 </li>
         </ul>
 <p id="section-3.4-3"><span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> augments <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and therefore provide the same flexibility.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01#section-3" class="relref">Section 3</a> of [<a href="#I-D.havel-nmop-simap-yang" class="cite xref">I-D.havel-nmop-simap-yang</a>]</span>:
-&gt; - Layering relationships are expressed solely through the supporting
+<p id="section-3.4-4">As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01#section-3" class="relref">Section 3</a> of [<a href="#I-D.havel-nmop-simap-yang" class="cite xref">I-D.havel-nmop-simap-yang</a>]</span>:<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.4-5.1">
+            <ul class="normal">
+<li class="normal" id="section-3.4-5.1.1.1">
+                <p id="section-3.4-5.1.1.1.1">Layering relationships are expressed solely through the supporting
 construct, without additional semantics such as underlay, primary,
-backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
-<p id="section-3.4-5">This issue was taken into account when designing the YANG data model in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and the 'underlay' relationship has been properly defined to support navigation between overlay and underlay layers, as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-topology-profiles-04#section-2.3" class="relref">Section 2.3</a> of [<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span>.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
-<p id="section-3.4-6">Some guidelines on how to unambiguously use the supporting relationship, defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, and the 'underlay' relationship defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>, have been clarified in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-topology-profiles-04#section-2.3.1" class="relref">Section 2.3.1</a> of [<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span>.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
-<p id="section-3.4-7">As outlined in REQ-BIDIR of <span>[<a href="#I-D.ietf-nmop-simap-concept" class="cite xref">I-D.ietf-nmop-simap-concept</a>]</span>, a bidirectional link can be supported by two unidirectional links in the lower layer. For example, a Ethernet (bidirectional) link can be supported by two physical layer links associated with two unidirectional fibers.<a href="#section-3.4-7" class="pilcrow">¶</a></p>
-<p id="section-3.4-8">This relationship can be modelled using the link 'underlay' relationship: in this case each link is supported by a primary path composed by a single link.<a href="#section-3.4-8" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="multi-domain-links">
-<section id="section-3.5">
-        <h3 id="name-multi-domain-links">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-multi-domain-links" class="section-name selfRef">Multi-domain Links</a>
-        </h3>
-<p id="section-3.5-1">Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in <span><a href="https://rfc-editor.org/rfc/rfc8795#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="multi-domain-nodes">
-<section id="section-3.6">
-        <h3 id="name-multi-domain-nodes">
-<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-multi-domain-nodes" class="section-name selfRef">Multi-domain Nodes</a>
-        </h3>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3.6-1.1">
-            <p id="section-3.6-1.1.1">Open issue: need further discussion about how to model the inter-area border nodes when belonging to different network topologies (one for each area)<a href="#section-3.6-1.1.1" class="pilcrow">¶</a></p>
+backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-5.1.1.1.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
 </li>
         </ul>
-</section>
+<p id="section-3.4-6">This issue was taken into account when designing the YANG data model in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and the 'underlay' relationship has been properly defined to support navigation between overlay and underlay layers, as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-topology-profiles-04#section-2.3" class="relref">Section 2.3</a> of [<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span>.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+<p id="section-3.4-7">Some guidelines on how to unambiguously use the supporting relationship, defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, and the 'underlay' relationship defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>, have been clarified in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-topology-profiles-04#section-2.3.1" class="relref">Section 2.3.1</a> of [<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span>.<a href="#section-3.4-7" class="pilcrow">¶</a></p>
+<p id="section-3.4-8">As outlined in REQ-BIDIR of <span>[<a href="#I-D.ietf-nmop-simap-concept" class="cite xref">I-D.ietf-nmop-simap-concept</a>]</span>, a bidirectional link can be supported by two unidirectional links in the lower layer. For example, a Ethernet (bidirectional) link can be supported by two physical layer links associated with two unidirectional fibers.<a href="#section-3.4-8" class="pilcrow">¶</a></p>
+<p id="section-3.4-9">This relationship can be modelled using the link 'underlay' relationship, as shown in <a href="#fig-unidir-supporting-bidir-link" class="auto internal xref">Figure 2</a>:<a href="#section-3.4-9" class="pilcrow">¶</a></p>
+<span id="name-example-of-two-unidirection"></span><div id="fig-unidir-supporting-bidir-link">
+<figure id="figure-2">
+          <div id="section-3.4-10.1">
+            <div class="alignLeft art-svg artwork" id="section-3.4-10.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="464" width="528" viewBox="0 0 528 464" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,192" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 8,432" fill="none" stroke="black"></path>
+                <path d="M 24,48 L 24,176" fill="none" stroke="black"></path>
+                <path d="M 24,256 L 24,416" fill="none" stroke="black"></path>
+                <path d="M 128,80 L 128,144" fill="none" stroke="black"></path>
+                <path d="M 128,288 L 128,320" fill="none" stroke="black"></path>
+                <path d="M 128,352 L 128,384" fill="none" stroke="black"></path>
+                <path d="M 136,48 L 136,72" fill="none" stroke="black"></path>
+                <path d="M 136,152 L 136,176" fill="none" stroke="black"></path>
+                <path d="M 136,256 L 136,280" fill="none" stroke="black"></path>
+                <path d="M 136,328 L 136,344" fill="none" stroke="black"></path>
+                <path d="M 136,392 L 136,416" fill="none" stroke="black"></path>
+                <path d="M 152,32 L 152,72" fill="none" stroke="black"></path>
+                <path d="M 152,152 L 152,192" fill="none" stroke="black"></path>
+                <path d="M 152,240 L 152,280" fill="none" stroke="black"></path>
+                <path d="M 152,328 L 152,344" fill="none" stroke="black"></path>
+                <path d="M 152,392 L 152,432" fill="none" stroke="black"></path>
+                <path d="M 160,80 L 160,144" fill="none" stroke="black"></path>
+                <path d="M 160,288 L 160,320" fill="none" stroke="black"></path>
+                <path d="M 160,352 L 160,384" fill="none" stroke="black"></path>
+                <path d="M 224,96 L 224,120" fill="none" stroke="black"></path>
+                <path d="M 224,136 L 224,296" fill="none" stroke="black"></path>
+                <path d="M 304,128 L 304,296" fill="none" stroke="black"></path>
+                <path d="M 304,312 L 304,360" fill="none" stroke="black"></path>
+                <path d="M 368,80 L 368,144" fill="none" stroke="black"></path>
+                <path d="M 368,288 L 368,320" fill="none" stroke="black"></path>
+                <path d="M 368,352 L 368,384" fill="none" stroke="black"></path>
+                <path d="M 376,32 L 376,72" fill="none" stroke="black"></path>
+                <path d="M 376,152 L 376,192" fill="none" stroke="black"></path>
+                <path d="M 376,240 L 376,280" fill="none" stroke="black"></path>
+                <path d="M 376,328 L 376,344" fill="none" stroke="black"></path>
+                <path d="M 376,392 L 376,432" fill="none" stroke="black"></path>
+                <path d="M 392,48 L 392,72" fill="none" stroke="black"></path>
+                <path d="M 392,152 L 392,176" fill="none" stroke="black"></path>
+                <path d="M 392,256 L 392,280" fill="none" stroke="black"></path>
+                <path d="M 392,328 L 392,344" fill="none" stroke="black"></path>
+                <path d="M 392,392 L 392,416" fill="none" stroke="black"></path>
+                <path d="M 400,80 L 400,144" fill="none" stroke="black"></path>
+                <path d="M 400,288 L 400,320" fill="none" stroke="black"></path>
+                <path d="M 400,352 L 400,384" fill="none" stroke="black"></path>
+                <path d="M 504,48 L 504,176" fill="none" stroke="black"></path>
+                <path d="M 504,256 L 504,416" fill="none" stroke="black"></path>
+                <path d="M 520,32 L 520,192" fill="none" stroke="black"></path>
+                <path d="M 520,240 L 520,432" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
+                <path d="M 376,32 L 520,32" fill="none" stroke="black"></path>
+                <path d="M 24,48 L 136,48" fill="none" stroke="black"></path>
+                <path d="M 392,48 L 504,48" fill="none" stroke="black"></path>
+                <path d="M 128,80 L 160,80" fill="none" stroke="black"></path>
+                <path d="M 368,80 L 400,80" fill="none" stroke="black"></path>
+                <path d="M 160,96 L 360,96" fill="none" stroke="black"></path>
+                <path d="M 168,128 L 368,128" fill="none" stroke="black"></path>
+                <path d="M 128,144 L 160,144" fill="none" stroke="black"></path>
+                <path d="M 368,144 L 400,144" fill="none" stroke="black"></path>
+                <path d="M 24,176 L 136,176" fill="none" stroke="black"></path>
+                <path d="M 392,176 L 504,176" fill="none" stroke="black"></path>
+                <path d="M 8,192 L 152,192" fill="none" stroke="black"></path>
+                <path d="M 376,192 L 520,192" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 152,240" fill="none" stroke="black"></path>
+                <path d="M 376,240 L 520,240" fill="none" stroke="black"></path>
+                <path d="M 24,256 L 136,256" fill="none" stroke="black"></path>
+                <path d="M 392,256 L 504,256" fill="none" stroke="black"></path>
+                <path d="M 128,288 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 368,288 L 400,288" fill="none" stroke="black"></path>
+                <path d="M 160,304 L 360,304" fill="none" stroke="black"></path>
+                <path d="M 128,320 L 160,320" fill="none" stroke="black"></path>
+                <path d="M 368,320 L 400,320" fill="none" stroke="black"></path>
+                <path d="M 128,352 L 160,352" fill="none" stroke="black"></path>
+                <path d="M 368,352 L 400,352" fill="none" stroke="black"></path>
+                <path d="M 168,368 L 368,368" fill="none" stroke="black"></path>
+                <path d="M 128,384 L 160,384" fill="none" stroke="black"></path>
+                <path d="M 368,384 L 400,384" fill="none" stroke="black"></path>
+                <path d="M 24,416 L 136,416" fill="none" stroke="black"></path>
+                <path d="M 392,416 L 504,416" fill="none" stroke="black"></path>
+                <path d="M 8,432 L 152,432" fill="none" stroke="black"></path>
+                <path d="M 376,432 L 520,432" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="368,304 356,298.4 356,309.6" fill="black" transform="rotate(0,360,304)"></polygon>
+                <polygon class="arrowhead" points="368,96 356,90.4 356,101.6" fill="black" transform="rotate(0,360,96)"></polygon>
+                <polygon class="arrowhead" points="312,360 300,354.4 300,365.6" fill="black" transform="rotate(90,304,360)"></polygon>
+                <polygon class="arrowhead" points="232,296 220,290.4 220,301.6" fill="black" transform="rotate(90,224,296)"></polygon>
+                <polygon class="arrowhead" points="176,368 164,362.4 164,373.6" fill="black" transform="rotate(180,168,368)"></polygon>
+                <polygon class="arrowhead" points="176,128 164,122.4 164,133.6" fill="black" transform="rotate(180,168,128)"></polygon>
+                <g class="text">
+                  <text x="80" y="116">A</text>
+                  <text x="144" y="116">TP1</text>
+                  <text x="384" y="116">TP2</text>
+                  <text x="448" y="116">B</text>
+                  <text x="144" y="308">TP3</text>
+                  <text x="384" y="308">TP4</text>
+                  <text x="80" y="340">C</text>
+                  <text x="448" y="340">D</text>
+                  <text x="144" y="372">TP4</text>
+                  <text x="384" y="372">TP5</text>
+                </g>
+              </svg><a href="#section-3.4-10.1.1" class="pilcrow">¶</a>
 </div>
-<div id="termination-points-supported-by-physical-devices">
-<section id="section-3.7">
-        <h3 id="name-termination-points-supporte">
-<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-termination-points-supporte" class="section-name selfRef">Termination points supported by physical devices</a>
-        </h3>
-<p id="section-3.7-1"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> does not limit the type of components that can support a termination point.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
-<p id="section-3.7-2">The mapping between a termination point and an inventory component is under definition in <span>[<a href="#I-D.ietf-ivy-network-inventory-topology" class="cite xref">I-D.ietf-ivy-network-inventory-topology</a>]</span>.<a href="#section-3.7-2" class="pilcrow">¶</a></p>
-<p id="section-3.7-3">In the current version of <span>[<a href="#I-D.ietf-ivy-network-inventory-topology" class="cite xref">I-D.ietf-ivy-network-inventory-topology</a>]</span>, a termination point can only be mappted to a port component. However, if needed, the IVY WG could update <span>[<a href="#I-D.ietf-ivy-network-inventory-topology" class="cite xref">I-D.ietf-ivy-network-inventory-topology</a>]</span> to allow a termination point to be mapped to any type of component.<a href="#section-3.7-3" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3.7-4.1">
-            <p id="section-3.7-4.1.1">Open issue: need further discussion since the example provided in <span>[<a href="#I-D.ietf-nmop-simap-concept" class="cite xref">I-D.ietf-nmop-simap-concept</a>]</span> is the IP loopback interface which cannot be mapped to a port component. However, the IP loopback interface is logical interface where IP packets are terminated (layer transition) so it is worthwhile discussing whether it is mapped as a termination point or as a tunnel termination point, as defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#section-3.7-4.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-example-of-two-unidirection" class="selfRef">Example of two unidirectional links supporting one bidirectional link</a>
+          </figcaption></figure>
+</div>
+<p id="section-3.4-11">Note: in this case each link is supported by a primary path composed by a single link.<a href="#section-3.4-11" class="pilcrow">¶</a></p>
+<p id="section-3.4-12">It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.
+ls
+## Multi-domain Links<a href="#section-3.4-12" class="pilcrow">¶</a></p>
+<p id="section-3.4-13">Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in <span><a href="https://rfc-editor.org/rfc/rfc8795#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#section-3.4-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1499,178 +1554,251 @@ backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-
 <p id="section-4-1">Reusing existing YANG data models to support multiple applications is a key enabler to achieve multi-vendor interoperability.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">A network controller needs to support multiple applications (some of which may not be defined at the time the network controller is defined) and different applications have different requirements on the data model they use internally to perform their tasks.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">Exposing application-specific data models at the northbound of a network controller appears making the application simpler to implement when it is the only application to be implemented on top of a given controller but results in more complex implementations for network controllers and the applications and increase complexity to achieve multi-vendor interoperability and integration.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4"><a href="#fig-as-dm" class="auto internal xref">Figure 2</a> shows a case where a controller-A is interfacing an Application-1 through the application-specific data model designed for Application-1 (i.e., AS1-DM) and a controller-B is interfacing another Application-2 through the application-specific data model designed for Application-2 (i.e., AS2-DM).<a href="#section-4-4" class="pilcrow">¶</a></p>
+<p id="section-4-4"><a href="#fig-as-dm" class="auto internal xref">Figure 3</a> shows a case where a controller-A is interfacing an Application-1 through the application-specific data model designed for Application-1 (i.e., AS1-DM) and a controller-B is interfacing another Application-2 through the application-specific data model designed for Application-2 (i.e., AS2-DM).<a href="#section-4-4" class="pilcrow">¶</a></p>
 <span id="name-concerns-with-defining-appl"></span><div id="fig-as-dm">
-<figure id="figure-2">
+<figure id="figure-3">
         <div id="section-4-5.1">
           <div class="alignLeft art-svg artwork" id="section-4-5.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="304" width="512" viewBox="0 0 512 304" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-              <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
-              <path d="M 8,240 L 8,272" fill="none" stroke="black"></path>
-              <path d="M 40,88 L 40,160" fill="none" stroke="black"></path>
-              <path d="M 72,32 L 72,80" fill="none" stroke="black"></path>
-              <path d="M 112,160 L 112,232" fill="none" stroke="black"></path>
-              <path d="M 152,32 L 152,80" fill="none" stroke="black"></path>
-              <path d="M 216,32 L 216,80" fill="none" stroke="black"></path>
-              <path d="M 216,240 L 216,272" fill="none" stroke="black"></path>
-              <path d="M 296,32 L 296,80" fill="none" stroke="black"></path>
-              <path d="M 296,240 L 296,272" fill="none" stroke="black"></path>
-              <path d="M 360,32 L 360,80" fill="none" stroke="black"></path>
-              <path d="M 400,160 L 400,232" fill="none" stroke="black"></path>
-              <path d="M 440,32 L 440,80" fill="none" stroke="black"></path>
-              <path d="M 472,88 L 472,160" fill="none" stroke="black"></path>
-              <path d="M 504,32 L 504,80" fill="none" stroke="black"></path>
-              <path d="M 504,240 L 504,272" fill="none" stroke="black"></path>
-              <path d="M 8,32 L 72,32" fill="none" stroke="black"></path>
-              <path d="M 152,32 L 216,32" fill="none" stroke="black"></path>
-              <path d="M 296,32 L 360,32" fill="none" stroke="black"></path>
-              <path d="M 440,32 L 504,32" fill="none" stroke="black"></path>
-              <path d="M 8,80 L 72,80" fill="none" stroke="black"></path>
-              <path d="M 152,80 L 216,80" fill="none" stroke="black"></path>
-              <path d="M 296,80 L 360,80" fill="none" stroke="black"></path>
-              <path d="M 440,80 L 504,80" fill="none" stroke="black"></path>
-              <path d="M 40,160 L 112,160" fill="none" stroke="black"></path>
-              <path d="M 400,160 L 472,160" fill="none" stroke="black"></path>
-              <path d="M 8,240 L 216,240" fill="none" stroke="black"></path>
-              <path d="M 296,240 L 504,240" fill="none" stroke="black"></path>
-              <path d="M 8,272 L 216,272" fill="none" stroke="black"></path>
-              <path d="M 296,272 L 504,272" fill="none" stroke="black"></path>
-              <path d="M 324,88 L 396,232" fill="none" stroke="black"></path>
-              <path d="M 116,232 L 188,88" fill="none" stroke="black"></path>
-              <polygon class="arrowhead" points="480,88 468,82.4 468,93.6" fill="black" transform="rotate(270,472,88)"></polygon>
-              <polygon class="arrowhead" points="332,88 320,82.4 320,93.6" fill="black" transform="rotate(243.43494882292202,324,88)"></polygon>
-              <polygon class="arrowhead" points="196,88 184,82.4 184,93.6" fill="black" transform="rotate(296.565051177078,188,88)"></polygon>
-              <polygon class="arrowhead" points="48,88 36,82.4 36,93.6" fill="black" transform="rotate(270,40,88)"></polygon>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="528" viewBox="0 0 528 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 24,32 L 24,80" fill="none" stroke="black"></path>
+              <path d="M 24,240 L 24,272" fill="none" stroke="black"></path>
+              <path d="M 56,88 L 56,160" fill="none" stroke="black"></path>
+              <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 128,160 L 128,240" fill="none" stroke="black"></path>
+              <path d="M 168,32 L 168,80" fill="none" stroke="black"></path>
+              <path d="M 232,32 L 232,80" fill="none" stroke="black"></path>
+              <path d="M 232,240 L 232,272" fill="none" stroke="black"></path>
+              <path d="M 312,32 L 312,80" fill="none" stroke="black"></path>
+              <path d="M 312,240 L 312,272" fill="none" stroke="black"></path>
+              <path d="M 376,32 L 376,80" fill="none" stroke="black"></path>
+              <path d="M 416,160 L 416,240" fill="none" stroke="black"></path>
+              <path d="M 456,32 L 456,80" fill="none" stroke="black"></path>
+              <path d="M 488,88 L 488,160" fill="none" stroke="black"></path>
+              <path d="M 520,32 L 520,80" fill="none" stroke="black"></path>
+              <path d="M 520,240 L 520,272" fill="none" stroke="black"></path>
+              <path d="M 24,32 L 88,32" fill="none" stroke="black"></path>
+              <path d="M 168,32 L 232,32" fill="none" stroke="black"></path>
+              <path d="M 312,32 L 376,32" fill="none" stroke="black"></path>
+              <path d="M 456,32 L 520,32" fill="none" stroke="black"></path>
+              <path d="M 24,80 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 168,80 L 232,80" fill="none" stroke="black"></path>
+              <path d="M 312,80 L 376,80" fill="none" stroke="black"></path>
+              <path d="M 456,80 L 520,80" fill="none" stroke="black"></path>
+              <path d="M 56,160 L 128,160" fill="none" stroke="black"></path>
+              <path d="M 416,160 L 488,160" fill="none" stroke="black"></path>
+              <path d="M 24,240 L 232,240" fill="none" stroke="black"></path>
+              <path d="M 312,240 L 520,240" fill="none" stroke="black"></path>
+              <path d="M 24,272 L 232,272" fill="none" stroke="black"></path>
+              <path d="M 312,272 L 520,272" fill="none" stroke="black"></path>
+              <path d="M 340,88 L 416,240" fill="none" stroke="black"></path>
+              <path d="M 128,240 L 204,88" fill="none" stroke="black"></path>
+              <polygon class="arrowhead" points="496,88 484,82.4 484,93.6" fill="black" transform="rotate(270,488,88)"></polygon>
+              <polygon class="arrowhead" points="348,88 336,82.4 336,93.6" fill="black" transform="rotate(243.43494882292202,340,88)"></polygon>
+              <polygon class="arrowhead" points="212,88 200,82.4 200,93.6" fill="black" transform="rotate(296.565051177078,204,88)"></polygon>
+              <polygon class="arrowhead" points="64,88 52,82.4 52,93.6" fill="black" transform="rotate(270,56,88)"></polygon>
               <g class="text">
-                <text x="40" y="52">APP-1</text>
-                <text x="184" y="52">APP-2</text>
-                <text x="328" y="52">APP-1</text>
-                <text x="472" y="52">APP-2</text>
-                <text x="36" y="68">(Core)</text>
-                <text x="180" y="68">(Core)</text>
-                <text x="324" y="68">(Core)</text>
-                <text x="468" y="68">(Core)</text>
-                <text x="192" y="132">???</text>
-                <text x="320" y="132">???</text>
-                <text x="76" y="196">AS1-DM</text>
-                <text x="436" y="196">AS2-DM</text>
-                <text x="116" y="260">Controller-A</text>
-                <text x="404" y="260">Controller-B</text>
+                <text x="56" y="52">APP-1</text>
+                <text x="200" y="52">APP-2</text>
+                <text x="344" y="52">APP-1</text>
+                <text x="488" y="52">APP-2</text>
+                <text x="52" y="68">(Core)</text>
+                <text x="196" y="68">(Core)</text>
+                <text x="340" y="68">(Core)</text>
+                <text x="484" y="68">(Core)</text>
+                <text x="208" y="132">???</text>
+                <text x="336" y="132">???</text>
+                <text x="92" y="196">AS1-DM</text>
+                <text x="452" y="196">AS2-DM</text>
+                <text x="132" y="260">Controller-A</text>
+                <text x="420" y="260">Controller-B</text>
+                <text x="28" y="308">Notes:</text>
+                <text x="8" y="324">-</text>
+                <text x="48" y="324">AS1-DM:</text>
+                <text x="128" y="324">Application</text>
+                <text x="184" y="324">1</text>
+                <text x="224" y="324">(APP-1)</text>
+                <text x="340" y="324">application-specific</text>
+                <text x="444" y="324">data</text>
+                <text x="488" y="324">model</text>
+                <text x="8" y="340">-</text>
+                <text x="48" y="340">AS2-DM:</text>
+                <text x="128" y="340">Application</text>
+                <text x="184" y="340">1</text>
+                <text x="224" y="340">(APP-2)</text>
+                <text x="340" y="340">application-specific</text>
+                <text x="444" y="340">data</text>
+                <text x="488" y="340">model</text>
               </g>
             </svg><a href="#section-4-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-concerns-with-defining-appl" class="selfRef">Concerns with defining application-specific data models</a>
         </figcaption></figure>
 </div>
 <p id="section-4-6">The two application-specific data models can provide the same information but with different formatting. For example, Application-1 may need to model bidirectional links as a single entity (link of type bidirectional) while Application-2 may need to model bidirectional links as two unidirectional links.<a href="#section-4-6" class="pilcrow">¶</a></p>
 <p id="section-4-7">This solution works well as long as Application-1 and controller-A are deployed in different silos than Application-2 and controller-B. Otherwise, operational and implementation issues have to be faces when there is the need to run Application-1 over network controller-B or, Application-2 over network controller-A.<a href="#section-4-7" class="pilcrow">¶</a></p>
 <p id="section-4-8">This would require the operator to negotiate with the vendor and controller vendors customized solutions before integrating a new application or a new controller in the network and increased complexity in the application and network controller implementations.<a href="#section-4-8" class="pilcrow">¶</a></p>
-<p id="section-4-9"><a href="#fig-common-dm" class="auto internal xref">Figure 3</a> describes an architecture based on a common and standardized data model to support multi-vendor integration.<a href="#section-4-9" class="pilcrow">¶</a></p>
+<p id="section-4-9"><a href="#fig-common-dm" class="auto internal xref">Figure 4</a> describes an architecture based on a common and standardized data model to support multi-vendor integration.<a href="#section-4-9" class="pilcrow">¶</a></p>
 <span id="name-use-of-a-common-and-standar"></span><div id="fig-common-dm">
-<figure id="figure-3">
+<figure id="figure-4">
         <div id="section-4-10.1">
           <div class="alignLeft art-svg artwork" id="section-4-10.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="384" width="528" viewBox="0 0 528 384" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-              <path d="M 8,144 L 8,192" fill="none" stroke="black"></path>
-              <path d="M 16,32 L 16,80" fill="none" stroke="black"></path>
-              <path d="M 16,320 L 16,352" fill="none" stroke="black"></path>
-              <path d="M 48,88 L 48,136" fill="none" stroke="black"></path>
-              <path d="M 48,200 L 48,240" fill="none" stroke="black"></path>
-              <path d="M 80,32 L 80,80" fill="none" stroke="black"></path>
-              <path d="M 88,144 L 88,192" fill="none" stroke="black"></path>
-              <path d="M 120,248 L 120,312" fill="none" stroke="black"></path>
-              <path d="M 152,144 L 152,192" fill="none" stroke="black"></path>
-              <path d="M 160,32 L 160,80" fill="none" stroke="black"></path>
-              <path d="M 192,88 L 192,136" fill="none" stroke="black"></path>
-              <path d="M 192,200 L 192,240" fill="none" stroke="black"></path>
-              <path d="M 224,32 L 224,80" fill="none" stroke="black"></path>
-              <path d="M 224,320 L 224,352" fill="none" stroke="black"></path>
-              <path d="M 232,144 L 232,192" fill="none" stroke="black"></path>
-              <path d="M 296,144 L 296,192" fill="none" stroke="black"></path>
-              <path d="M 304,32 L 304,80" fill="none" stroke="black"></path>
-              <path d="M 304,320 L 304,352" fill="none" stroke="black"></path>
-              <path d="M 336,88 L 336,136" fill="none" stroke="black"></path>
-              <path d="M 336,200 L 336,240" fill="none" stroke="black"></path>
-              <path d="M 368,32 L 368,80" fill="none" stroke="black"></path>
-              <path d="M 376,144 L 376,192" fill="none" stroke="black"></path>
-              <path d="M 408,248 L 408,312" fill="none" stroke="black"></path>
-              <path d="M 440,144 L 440,192" fill="none" stroke="black"></path>
-              <path d="M 448,32 L 448,80" fill="none" stroke="black"></path>
-              <path d="M 480,88 L 480,136" fill="none" stroke="black"></path>
-              <path d="M 480,200 L 480,240" fill="none" stroke="black"></path>
-              <path d="M 512,32 L 512,80" fill="none" stroke="black"></path>
-              <path d="M 512,320 L 512,352" fill="none" stroke="black"></path>
-              <path d="M 520,144 L 520,192" fill="none" stroke="black"></path>
-              <path d="M 16,32 L 80,32" fill="none" stroke="black"></path>
-              <path d="M 160,32 L 224,32" fill="none" stroke="black"></path>
-              <path d="M 304,32 L 368,32" fill="none" stroke="black"></path>
-              <path d="M 448,32 L 512,32" fill="none" stroke="black"></path>
-              <path d="M 16,80 L 80,80" fill="none" stroke="black"></path>
-              <path d="M 160,80 L 224,80" fill="none" stroke="black"></path>
-              <path d="M 304,80 L 368,80" fill="none" stroke="black"></path>
-              <path d="M 448,80 L 512,80" fill="none" stroke="black"></path>
-              <path d="M 8,144 L 88,144" fill="none" stroke="black"></path>
-              <path d="M 152,144 L 232,144" fill="none" stroke="black"></path>
-              <path d="M 296,144 L 376,144" fill="none" stroke="black"></path>
-              <path d="M 440,144 L 520,144" fill="none" stroke="black"></path>
-              <path d="M 8,192 L 88,192" fill="none" stroke="black"></path>
-              <path d="M 152,192 L 232,192" fill="none" stroke="black"></path>
-              <path d="M 296,192 L 376,192" fill="none" stroke="black"></path>
-              <path d="M 440,192 L 520,192" fill="none" stroke="black"></path>
-              <path d="M 224,224 L 304,224" fill="none" stroke="black"></path>
-              <path d="M 48,240 L 192,240" fill="none" stroke="black"></path>
-              <path d="M 336,240 L 480,240" fill="none" stroke="black"></path>
-              <path d="M 224,272 L 304,272" fill="none" stroke="black"></path>
-              <path d="M 16,320 L 224,320" fill="none" stroke="black"></path>
-              <path d="M 304,320 L 512,320" fill="none" stroke="black"></path>
-              <path d="M 16,352 L 224,352" fill="none" stroke="black"></path>
-              <path d="M 304,352 L 512,352" fill="none" stroke="black"></path>
-              <path d="M 204,248 L 216,272" fill="none" stroke="black"></path>
-              <path d="M 312,224 L 324,248" fill="none" stroke="black"></path>
-              <path d="M 204,248 L 216,224" fill="none" stroke="black"></path>
-              <path d="M 312,272 L 324,248" fill="none" stroke="black"></path>
-              <polygon class="arrowhead" points="488,200 476,194.4 476,205.6" fill="black" transform="rotate(270,480,200)"></polygon>
-              <polygon class="arrowhead" points="488,88 476,82.4 476,93.6" fill="black" transform="rotate(270,480,88)"></polygon>
-              <polygon class="arrowhead" points="344,200 332,194.4 332,205.6" fill="black" transform="rotate(270,336,200)"></polygon>
-              <polygon class="arrowhead" points="344,88 332,82.4 332,93.6" fill="black" transform="rotate(270,336,88)"></polygon>
-              <polygon class="arrowhead" points="200,200 188,194.4 188,205.6" fill="black" transform="rotate(270,192,200)"></polygon>
-              <polygon class="arrowhead" points="200,88 188,82.4 188,93.6" fill="black" transform="rotate(270,192,88)"></polygon>
-              <polygon class="arrowhead" points="56,200 44,194.4 44,205.6" fill="black" transform="rotate(270,48,200)"></polygon>
-              <polygon class="arrowhead" points="56,88 44,82.4 44,93.6" fill="black" transform="rotate(270,48,88)"></polygon>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="512" width="552" viewBox="0 0 552 512" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 16,144 L 16,192" fill="none" stroke="black"></path>
+              <path d="M 24,32 L 24,80" fill="none" stroke="black"></path>
+              <path d="M 24,320 L 24,352" fill="none" stroke="black"></path>
+              <path d="M 56,88 L 56,136" fill="none" stroke="black"></path>
+              <path d="M 56,200 L 56,240" fill="none" stroke="black"></path>
+              <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 96,144 L 96,192" fill="none" stroke="black"></path>
+              <path d="M 128,240 L 128,320" fill="none" stroke="black"></path>
+              <path d="M 160,144 L 160,192" fill="none" stroke="black"></path>
+              <path d="M 168,32 L 168,80" fill="none" stroke="black"></path>
+              <path d="M 200,88 L 200,136" fill="none" stroke="black"></path>
+              <path d="M 200,200 L 200,240" fill="none" stroke="black"></path>
+              <path d="M 232,32 L 232,80" fill="none" stroke="black"></path>
+              <path d="M 232,320 L 232,352" fill="none" stroke="black"></path>
+              <path d="M 240,144 L 240,192" fill="none" stroke="black"></path>
+              <path d="M 304,144 L 304,192" fill="none" stroke="black"></path>
+              <path d="M 312,32 L 312,80" fill="none" stroke="black"></path>
+              <path d="M 312,320 L 312,352" fill="none" stroke="black"></path>
+              <path d="M 344,88 L 344,136" fill="none" stroke="black"></path>
+              <path d="M 344,200 L 344,240" fill="none" stroke="black"></path>
+              <path d="M 376,32 L 376,80" fill="none" stroke="black"></path>
+              <path d="M 384,144 L 384,192" fill="none" stroke="black"></path>
+              <path d="M 416,240 L 416,320" fill="none" stroke="black"></path>
+              <path d="M 448,144 L 448,192" fill="none" stroke="black"></path>
+              <path d="M 456,32 L 456,80" fill="none" stroke="black"></path>
+              <path d="M 488,88 L 488,136" fill="none" stroke="black"></path>
+              <path d="M 488,200 L 488,240" fill="none" stroke="black"></path>
+              <path d="M 520,32 L 520,80" fill="none" stroke="black"></path>
+              <path d="M 520,320 L 520,352" fill="none" stroke="black"></path>
+              <path d="M 528,144 L 528,192" fill="none" stroke="black"></path>
+              <path d="M 24,32 L 88,32" fill="none" stroke="black"></path>
+              <path d="M 168,32 L 232,32" fill="none" stroke="black"></path>
+              <path d="M 312,32 L 376,32" fill="none" stroke="black"></path>
+              <path d="M 456,32 L 520,32" fill="none" stroke="black"></path>
+              <path d="M 24,80 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 168,80 L 232,80" fill="none" stroke="black"></path>
+              <path d="M 312,80 L 376,80" fill="none" stroke="black"></path>
+              <path d="M 456,80 L 520,80" fill="none" stroke="black"></path>
+              <path d="M 16,144 L 96,144" fill="none" stroke="black"></path>
+              <path d="M 160,144 L 240,144" fill="none" stroke="black"></path>
+              <path d="M 304,144 L 384,144" fill="none" stroke="black"></path>
+              <path d="M 448,144 L 528,144" fill="none" stroke="black"></path>
+              <path d="M 16,192 L 96,192" fill="none" stroke="black"></path>
+              <path d="M 160,192 L 240,192" fill="none" stroke="black"></path>
+              <path d="M 304,192 L 384,192" fill="none" stroke="black"></path>
+              <path d="M 448,192 L 528,192" fill="none" stroke="black"></path>
+              <path d="M 232,224 L 312,224" fill="none" stroke="black"></path>
+              <path d="M 56,240 L 200,240" fill="none" stroke="black"></path>
+              <path d="M 344,240 L 488,240" fill="none" stroke="black"></path>
+              <path d="M 232,272 L 312,272" fill="none" stroke="black"></path>
+              <path d="M 24,320 L 232,320" fill="none" stroke="black"></path>
+              <path d="M 312,320 L 520,320" fill="none" stroke="black"></path>
+              <path d="M 24,352 L 232,352" fill="none" stroke="black"></path>
+              <path d="M 312,352 L 520,352" fill="none" stroke="black"></path>
+              <path d="M 212,248 L 224,272" fill="none" stroke="black"></path>
+              <path d="M 320,224 L 332,248" fill="none" stroke="black"></path>
+              <path d="M 212,248 L 224,224" fill="none" stroke="black"></path>
+              <path d="M 320,272 L 332,248" fill="none" stroke="black"></path>
+              <polygon class="arrowhead" points="496,200 484,194.4 484,205.6" fill="black" transform="rotate(270,488,200)"></polygon>
+              <polygon class="arrowhead" points="496,88 484,82.4 484,93.6" fill="black" transform="rotate(270,488,88)"></polygon>
+              <polygon class="arrowhead" points="352,200 340,194.4 340,205.6" fill="black" transform="rotate(270,344,200)"></polygon>
+              <polygon class="arrowhead" points="352,88 340,82.4 340,93.6" fill="black" transform="rotate(270,344,88)"></polygon>
+              <polygon class="arrowhead" points="208,200 196,194.4 196,205.6" fill="black" transform="rotate(270,200,200)"></polygon>
+              <polygon class="arrowhead" points="208,88 196,82.4 196,93.6" fill="black" transform="rotate(270,200,88)"></polygon>
+              <polygon class="arrowhead" points="64,200 52,194.4 52,205.6" fill="black" transform="rotate(270,56,200)"></polygon>
+              <polygon class="arrowhead" points="64,88 52,82.4 52,93.6" fill="black" transform="rotate(270,56,88)"></polygon>
               <g class="text">
-                <text x="48" y="52">APP-1</text>
-                <text x="192" y="52">APP-2</text>
-                <text x="336" y="52">APP-1</text>
-                <text x="480" y="52">APP-2</text>
-                <text x="44" y="68">(Core)</text>
-                <text x="188" y="68">(Core)</text>
-                <text x="332" y="68">(Core)</text>
-                <text x="476" y="68">(Core)</text>
-                <text x="84" y="116">AS1-DM</text>
-                <text x="156" y="116">AS2-DM</text>
-                <text x="372" y="116">AS1-DM</text>
-                <text x="444" y="116">AS2-DM</text>
-                <text x="48" y="164">APP-1</text>
-                <text x="192" y="164">APP-2</text>
-                <text x="336" y="164">APP-1</text>
-                <text x="480" y="164">APP-2</text>
-                <text x="52" y="180">(DM-Map)</text>
-                <text x="196" y="180">(DM-Map)</text>
-                <text x="340" y="180">(DM-Map)</text>
-                <text x="484" y="180">(DM-Map)</text>
-                <text x="268" y="244">Common</text>
-                <text x="268" y="260">Standard</text>
-                <text x="68" y="276">NBI-DM</text>
-                <text x="372" y="276">NBI-DM</text>
-                <text x="124" y="340">Controller-A</text>
-                <text x="412" y="340">Controller-B</text>
+                <text x="56" y="52">APP-1</text>
+                <text x="200" y="52">APP-2</text>
+                <text x="344" y="52">APP-1</text>
+                <text x="488" y="52">APP-2</text>
+                <text x="52" y="68">(Core)</text>
+                <text x="196" y="68">(Core)</text>
+                <text x="340" y="68">(Core)</text>
+                <text x="484" y="68">(Core)</text>
+                <text x="92" y="116">AS1-DM</text>
+                <text x="164" y="116">AS2-DM</text>
+                <text x="380" y="116">AS1-DM</text>
+                <text x="452" y="116">AS2-DM</text>
+                <text x="56" y="164">APP-1</text>
+                <text x="200" y="164">APP-2</text>
+                <text x="344" y="164">APP-1</text>
+                <text x="488" y="164">APP-2</text>
+                <text x="56" y="180">(DM-Map1)</text>
+                <text x="204" y="180">(DM-Map)</text>
+                <text x="348" y="180">(DM-Map)</text>
+                <text x="488" y="180">(DM-Map2)</text>
+                <text x="276" y="244">Common</text>
+                <text x="276" y="260">Standard</text>
+                <text x="76" y="276">NBI-DM</text>
+                <text x="380" y="276">NBI-DM</text>
+                <text x="132" y="340">Controller-A</text>
+                <text x="420" y="340">Controller-B</text>
+                <text x="28" y="388">Notes:</text>
+                <text x="8" y="404">-</text>
+                <text x="48" y="404">AS1-DM:</text>
+                <text x="128" y="404">Application</text>
+                <text x="184" y="404">1</text>
+                <text x="224" y="404">(APP-1)</text>
+                <text x="340" y="404">application-specific</text>
+                <text x="444" y="404">data</text>
+                <text x="488" y="404">model</text>
+                <text x="8" y="420">-</text>
+                <text x="48" y="420">AS2-DM:</text>
+                <text x="128" y="420">Application</text>
+                <text x="184" y="420">1</text>
+                <text x="224" y="420">(APP-2)</text>
+                <text x="340" y="420">application-specific</text>
+                <text x="444" y="420">data</text>
+                <text x="488" y="420">model</text>
+                <text x="8" y="436">-</text>
+                <text x="32" y="436">NBI</text>
+                <text x="64" y="436">DM:</text>
+                <text x="116" y="436">Standard</text>
+                <text x="172" y="436">data</text>
+                <text x="216" y="436">model</text>
+                <text x="272" y="436">exposed</text>
+                <text x="316" y="436">by</text>
+                <text x="348" y="436">both</text>
+                <text x="400" y="436">network</text>
+                <text x="480" y="436">controllers</text>
+                <text x="8" y="452">-</text>
+                <text x="52" y="452">DM-Map1:</text>
+                <text x="136" y="452">Application</text>
+                <text x="220" y="452">specific</text>
+                <text x="276" y="452">data</text>
+                <text x="320" y="452">model</text>
+                <text x="372" y="452">mapper</text>
+                <text x="432" y="452">between</text>
+                <text x="480" y="452">the</text>
+                <text x="512" y="452">NBI</text>
+                <text x="540" y="452">DM</text>
+                <text x="32" y="468">and</text>
+                <text x="64" y="468">the</text>
+                <text x="108" y="468">AS1-DM</text>
+                <text x="8" y="484">-</text>
+                <text x="52" y="484">DM-Map2:</text>
+                <text x="136" y="484">Application</text>
+                <text x="220" y="484">specific</text>
+                <text x="276" y="484">data</text>
+                <text x="320" y="484">model</text>
+                <text x="372" y="484">mapper</text>
+                <text x="432" y="484">between</text>
+                <text x="480" y="484">the</text>
+                <text x="512" y="484">NBI</text>
+                <text x="540" y="484">DM</text>
+                <text x="32" y="500">and</text>
+                <text x="64" y="500">the</text>
+                <text x="108" y="500">AS2-DM</text>
               </g>
             </svg><a href="#section-4-10.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-use-of-a-common-and-standar" class="selfRef">Use of a common and standardized data model to support multi-vendor integration</a>
         </figcaption></figure>
 </div>
@@ -1706,10 +1834,6 @@ backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-ivy-network-inventory-topology">[I-D.ietf-ivy-network-inventory-topology]</dt>
-        <dd>
-<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Zhou, C.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"A YANG Network Data Model for Inventory Topology Mapping"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ivy-network-inventory-topology-05</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ivy-network-inventory-topology-05">https://datatracker.ietf.org/doc/html/draft-ietf-ivy-network-inventory-topology-05</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
 <span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Medved, J.</span>, <span class="refAuthor">Varga, R.</span>, <span class="refAuthor">Bahadur, N.</span>, <span class="refAuthor">Ananthakrishnan, H.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"A YANG Data Model for Network Topologies"</span>, <span class="seriesInfo">RFC 8345</span>, <span class="seriesInfo">DOI 10.17487/RFC8345</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8345">https://www.rfc-editor.org/rfc/rfc8345</a>&gt;</span>. </dd>
@@ -1749,13 +1873,12 @@ backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-
       <h2 id="name-example-of-deviation-statem">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-of-deviation-statem" class="section-name selfRef">Example of deviation statements</a>
       </h2>
-<p id="appendix-A-1"><span>[<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span> indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the profiles to be supported may be different on different instances, depending also on other attributes (e.g., the network type).<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">Existing implementations of <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. The pruned YANG tree was sufficient to the implementers to generate proper APIs.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">However, it is possible to use the YANG deviation statements to programmatically generate a profiled YANG tree.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">An example of a YANG deviation module for SIMAP applications is provided below.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-1"><span>[<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span> notes that existing implementations of <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> have described the implemented profiled by manually pruning/profiling the YANG tree generated fom the YANG module defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and those pruned/profiled YANG trees provided sufficient input for the implementers to generate proper APIs.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">However, <span>[<a href="#I-D.ietf-teas-te-topology-profiles" class="cite xref">I-D.ietf-teas-te-topology-profiles</a>]</span> is also exploring the possibility to use the YANG deviation statements to programmatically generate pruned/profiled YANG trees.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">An example of a YANG deviation module for SIMAP applications is provided below.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
 <span id="name-example-of-sima-deviation-y"></span><div id="fig-deviation-yang">
-<figure id="figure-4">
-        <div class="breakable lang-yang sourcecode" id="appendix-A-5.1">
+<figure id="figure-5">
+        <div class="breakable lang-yang sourcecode" id="appendix-A-4.1">
 <pre>
 module ietf-simap-deviation-example {
   yang-version 1.1;
@@ -2289,12 +2412,12 @@ module ietf-simap-deviation-example {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-example-of-sima-deviation-y" class="selfRef">Example of SIMA deviation YANG module</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-6">The profiled YANG tree is provided below:<a href="#appendix-A-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="appendix-A-7">
+<p id="appendix-A-5">The pruned/profiled YANG tree, generated using 'pyang' tool, is provided below:<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="appendix-A-6">
 <pre>
 module: ietf-network
   +--rw networks
@@ -2485,7 +2608,7 @@ module: ietf-network
               |       te-types:te-oper-status
               +--ro tet:is-transitional?         empty
 
-</pre><a href="#appendix-A-7" class="pilcrow">¶</a>
+</pre><a href="#appendix-A-6" class="pilcrow">¶</a>
 </div>
 </section>
 </div>

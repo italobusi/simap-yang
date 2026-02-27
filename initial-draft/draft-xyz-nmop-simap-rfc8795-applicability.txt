@@ -81,9 +81,6 @@ Table of Contents
      3.2.  Multipoint Links
      3.3.  Links and nodes down in topology
      3.4.  Multi-Layer Topologies
-     3.5.  Multi-domain Links
-     3.6.  Multi-domain Nodes
-     3.7.  Termination points supported by physical devices
    4.  Design Considerations
    5.  Security Considerations
    6.  IANA Considerations
@@ -153,26 +150,32 @@ Table of Contents
    nodes since the two unidirectional links will be terminated on
    different termination points, as shown in Figure 1.
 
-        ---------------                             ---------------
-       /+-------------+\                           /+-------------+\
-       ||             ||                           ||             ||
-       ||            |  |------------------------>|  |            ||
-       ||      A     |  |       |                 |  |     B      ||
-       ||            |  |<------------------------|  |            ||
-       ||             ||        |         |        ||             ||
-       \+-------------+/                           \+-------------+/
-        ---------------         |         |         ---------------
-                   underlay path           underlay path
-                                |         |
-        ---------------                             ---------------
-       /+-------------+\        |         |        /+-------------+\
-       ||             ||        V                  ||             ||
-       ||            |  |------------------------>|  |            ||
-       ||      A      ||                  V        ||      B      ||
-       ||            |  |<------------------------|  |            ||
-       ||             ||                           ||             ||
-       \+-------------+/                           \+-------------+/
-        ---------------                             ---------------
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |   +------------------------>|   |            | |
+       | |      A     |TP1|                         |TP2|     B      | |
+       | |            |   |<------------------------+   |            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
+
+
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |TP3+------------------------>|TP4|            | |
+       | |            +---+                         +---+            | |
+       | |      C      | |                           | |      D      | |
+       | |            +---+                         +---+            | |
+       | |            |TP4|<------------------------+TP5|            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
 
         Figure 1: Difference between one bidirectional link and two
                             unidirectional links
@@ -216,10 +219,12 @@ Table of Contents
    [RFC8795] augments [RFC8345] and therefore provide the same
    flexibility.
 
-   As described in Section 3 of [I-D.havel-nmop-simap-yang]: > -
-   Layering relationships are expressed solely through the supporting
-   construct, without additional semantics such as underlay, primary,
-   backup, load-sharing, path, sequential, or parallel roles.
+   As described in Section 3 of [I-D.havel-nmop-simap-yang]:
+
+      -  Layering relationships are expressed solely through the
+         supporting construct, without additional semantics such as
+         underlay, primary, backup, load-sharing, path, sequential, or
+         parallel roles.
 
    This issue was taken into account when designing the YANG data model
    in [RFC8795] and the 'underlay' relationship has been properly
@@ -238,43 +243,51 @@ Table of Contents
    unidirectional fibers.
 
    This relationship can be modelled using the link 'underlay'
-   relationship: in this case each link is supported by a primary path
-   composed by a single link.
+   relationship, as shown in Figure 2:
 
-3.5.  Multi-domain Links
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |   +-------+---------------->|   |            | |
+       | |      A     |TP1|       |                 |TP2|     B      | |
+       | |            |   |<----------------+-------+   |            | |
+       | |            +---+       |         |       +---+            | |
+       | |             | |        |         |        | |             | |
+       | +-------------+ |        |         |        | +-------------+ |
+       +-----------------+        |         |        +-----------------+
+                                  |         |
+                                  |         |
+       +-----------------+        |         |        +-----------------+
+       | +-------------+ |        |         |        | +-------------+ |
+       | |             | |        |         |        | |             | |
+       | |            +---+       V         |       +---+            | |
+       | |            |TP3+------------------------>|TP4|            | |
+       | |            +---+                 |       +---+            | |
+       | |      C      | |                  |        | |      D      | |
+       | |            +---+                 V       +---+            | |
+       | |            |TP4|<------------------------+TP5|            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
+
+        Figure 2: Example of two unidirectional links supporting one
+                             bidirectional link
+
+   Note: in this case each link is supported by a primary path composed
+   by a single link.
+
+   It is worth noting that modelling the bidirectional link is modelled
+   as two unidirectional link instances allows also to unambiguously
+   understand which unidirectional underlay link/path supports which
+   direction (forward or reverse) of the overlay bidirectional link. ls
+   ## Multi-domain Links
 
    Multi-domain links can be represented as open-ended links on each
    topology instance and unambiguously associated as multi-domain links
    using either the remote node ID / link ID attribute or the inter-
    domain-plug-id, as described in Section 4.2 of [RFC8795].
-
-3.6.  Multi-domain Nodes
-
-      Open issue: need further discussion about how to model the inter-
-      area border nodes when belonging to different network topologies
-      (one for each area)
-
-3.7.  Termination points supported by physical devices
-
-   [RFC8345] does not limit the type of components that can support a
-   termination point.
-
-   The mapping between a termination point and an inventory component is
-   under definition in [I-D.ietf-ivy-network-inventory-topology].
-
-   In the current version of [I-D.ietf-ivy-network-inventory-topology],
-   a termination point can only be mappted to a port component.
-   However, if needed, the IVY WG could update
-   [I-D.ietf-ivy-network-inventory-topology] to allow a termination
-   point to be mapped to any type of component.
-
-      Open issue: need further discussion since the example provided in
-      [I-D.ietf-nmop-simap-concept] is the IP loopback interface which
-      cannot be mapped to a port component.  However, the IP loopback
-      interface is logical interface where IP packets are terminated
-      (layer transition) so it is worthwhile discussing whether it is
-      mapped as a termination point or as a tunnel termination point, as
-      defined in [RFC8795].
 
 4.  Design Considerations
 
@@ -293,7 +306,7 @@ Table of Contents
    network controllers and the applications and increase complexity to
    achieve multi-vendor interoperability and integration.
 
-   Figure 2 shows a case where a controller-A is interfacing an
+   Figure 3 shows a case where a controller-A is interfacing an
    Application-1 through the application-specific data model designed
    for Application-1 (i.e., AS1-DM) and a controller-B is interfacing
    another Application-2 through the application-specific data model
@@ -312,11 +325,15 @@ Table of Contents
            AS1-DM |  /                             \  | AS2-DM
                   | /                               \ |
                   |/                                 \|
-     +-------------------------+         +-------------------------+
+     +------------+------------+         +------------+------------+
      |       Controller-A      |         |       Controller-B      |
      +-------------------------+         +-------------------------+
 
-     Figure 2: Concerns with defining application-specific data models
+   Notes:
+   - AS1-DM: Application 1 (APP-1) application-specific data model
+   - AS2-DM: Application 1 (APP-2) application-specific data model
+
+     Figure 3: Concerns with defining application-specific data models
 
    The two application-specific data models can provide the same
    information but with different formatting.  For example,
@@ -335,7 +352,7 @@ Table of Contents
    application or a new controller in the network and increased
    complexity in the application and network controller implementations.
 
-   Figure 3 describes an architecture based on a common and standardized
+   Figure 4 describes an architecture based on a common and standardized
    data model to support multi-vendor integration.
 
      +-------+         +-------+         +-------+         +-------+
@@ -347,20 +364,29 @@ Table of Contents
          |                 |                 |                 |
     +---------+       +---------+       +---------+       +---------+
     |  APP-1  |       |  APP-2  |       |  APP-1  |       |  APP-2  |
-    | (DM-Map)|       | (DM-Map)|       | (DM-Map)|       | (DM-Map)|
+    |(DM-Map1)|       | (DM-Map)|       | (DM-Map)|       |(DM-Map2)|
     +---------+       +---------+       +---------+       +---------+
          ^                 ^                 ^                 ^
          |                 |  /-----------\  |                 |
-         +-----------------+ /    Common   \ +-----------------+
+         +--------+--------+ /    Common   \ +--------+--------+
                   |          \   Standard  /          |
          NBI-DM   |           \-----------/    NBI-DM |
                   |                                   |
                   |                                   |
-     +-------------------------+         +-------------------------+
+     +------------+------------+         +------------+------------+
      |       Controller-A      |         |       Controller-B      |
      +-------------------------+         +-------------------------+
 
-      Figure 3: Use of a common and standardized data model to support
+   Notes:
+   - AS1-DM: Application 1 (APP-1) application-specific data model
+   - AS2-DM: Application 1 (APP-2) application-specific data model
+   - NBI DM: Standard data model exposed by both network controllers
+   - DM-Map1: Application specific data model mapper between the NBI DM
+     and the AS1-DM
+   - DM-Map2: Application specific data model mapper between the NBI DM
+     and the AS2-DM
+
+      Figure 4: Use of a common and standardized data model to support
                           multi-vendor integration
 
    In this case, the data model exposed by network controllers (e.g.,
@@ -392,14 +418,6 @@ Table of Contents
 7.  References
 
 7.1.  Normative References
-
-   [I-D.ietf-ivy-network-inventory-topology]
-              Wu, B., Boucadair, M., Zhou, C., and Q. Wu, "A YANG
-              Network Data Model for Inventory Topology Mapping", Work
-              in Progress, Internet-Draft, draft-ietf-ivy-network-
-              inventory-topology-05, 20 October 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-ivy-
-              network-inventory-topology-05>.
 
    [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
@@ -440,18 +458,16 @@ Table of Contents
 
 Appendix A.  Example of deviation statements
 
-   [I-D.ietf-teas-te-topology-profiles] indicates that the YANG
-   deviation mechanism is not applicable for TE topology profiles since
-   the profiles to be supported may be different on different instances,
-   depending also on other attributes (e.g., the network type).
+   [I-D.ietf-teas-te-topology-profiles] notes that existing
+   implementations of [RFC8795] have described the implemented profiled
+   by manually pruning/profiling the YANG tree generated fom the YANG
+   module defined in [RFC8795] and those pruned/profiled YANG trees
+   provided sufficient input for the implementers to generate proper
+   APIs.
 
-   Existing implementations of [RFC8795] describes the implemented
-   profiled by manually pruning the YANG tree generated fom the YANG
-   module defined in [RFC8795].  The pruned YANG tree was sufficient to
-   the implementers to generate proper APIs.
-
-   However, it is possible to use the YANG deviation statements to
-   programmatically generate a profiled YANG tree.
+   However, [I-D.ietf-teas-te-topology-profiles] is also exploring the
+   possibility to use the YANG deviation statements to programmatically
+   generate pruned/profiled YANG trees.
 
    An example of a YANG deviation module for SIMAP applications is
    provided below.
@@ -987,9 +1003,10 @@ Appendix A.  Example of deviation statements
      }
    }
 
-              Figure 4: Example of SIMA deviation YANG module
+              Figure 5: Example of SIMA deviation YANG module
 
-   The profiled YANG tree is provided below:
+   The pruned/profiled YANG tree, generated using 'pyang' tool, is
+   provided below:
 
    module: ietf-network
      +--rw networks
