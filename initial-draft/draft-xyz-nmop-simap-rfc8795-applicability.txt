@@ -5,12 +5,12 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 29 August 2026                           Futurewei Technologies
+Expires: 31 August 2026                           Futurewei Technologies
                                                             V. P. Beeram
                                                         Juniper Networks
                                                               S. Belotti
                                                                    Nokia
-                                                        25 February 2026
+                                                        27 February 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 August 2026.
+   This Internet-Draft will expire on 31 August 2026.
 
 Copyright Notice
 
@@ -442,8 +442,8 @@ Appendix A.  Example of deviation statements
 
    [I-D.ietf-teas-te-topology-profiles] indicates that the YANG
    deviation mechanism is not applicable for TE topology profiles since
-   the provide to be supported may be different on different instances
-   and it may depend on other attributes (e.g., the network type).
+   the profiles to be supported may be different on different instances,
+   depending also on other attributes (e.g., the network type).
 
    Existing implementations of [RFC8795] describes the implemented
    profiled by manually pruning the YANG tree generated fom the YANG
