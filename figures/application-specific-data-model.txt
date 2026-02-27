@@ -11,6 +11,10 @@
         AS1-DM |  /                             \  | AS2-DM
                | /                               \ |
                |/                                 \|
-  +-------------------------+         +-------------------------+
+  +------------+------------+         +------------+------------+
   |       Controller-A      |         |       Controller-B      |
   +-------------------------+         +-------------------------+
+
+Notes:
+- AS1-DM: Application 1 (APP-1) application-specific data model
+- AS2-DM: Application 1 (APP-2) application-specific data model

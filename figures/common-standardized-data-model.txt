@@ -7,15 +7,24 @@
       |                 |                 |                 |
  +---------+       +---------+       +---------+       +---------+
  |  APP-1  |       |  APP-2  |       |  APP-1  |       |  APP-2  |
- | (DM-Map)|       | (DM-Map)|       | (DM-Map)|       | (DM-Map)|
+ |(DM-Map1)|       | (DM-Map)|       | (DM-Map)|       |(DM-Map2)|
  +---------+       +---------+       +---------+       +---------+
       ^                 ^                 ^                 ^
       |                 |  /-----------\  |                 |
-      +-----------------+ /    Common   \ +-----------------+
+      +--------+--------+ /    Common   \ +--------+--------+
                |          \   Standard  /          |
       NBI-DM   |           \-----------/    NBI-DM |
                |                                   |
                |                                   |
-  +-------------------------+         +-------------------------+
+  +------------+------------+         +------------+------------+
   |       Controller-A      |         |       Controller-B      |
   +-------------------------+         +-------------------------+
+
+Notes:
+- AS1-DM: Application 1 (APP-1) application-specific data model
+- AS2-DM: Application 1 (APP-2) application-specific data model
+- NBI DM: Standard data model exposed by both network controllers
+- DM-Map1: Application specific data model mapper between the NBI DM
+  and the AS1-DM
+- DM-Map2: Application specific data model mapper between the NBI DM
+  and the AS2-DM

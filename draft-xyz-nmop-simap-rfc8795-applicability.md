@@ -98,7 +98,7 @@ terminated on the same two termination points, as described in {{Section 4.4.5 o
 It is worth noting that a bidirectional link can be unambiguously distinguished from two unidirectional links between the same two nodes since the two unidirectional links will be terminated on different termination points, as shown in {{fig-bidir-link}}.
 
 ~~~~ aasvg
-{::include figures/bidirectional-link.txt}
+{::include figures/bidirectional-unidirectional-links.txt}
 ~~~~
 {: #fig-bidir-link title="Difference between one bidirectional link and two unidirectional links"}
 
@@ -125,6 +125,7 @@ As outlined in {{Section 2 of ?I-D.ietf-nmop-simap-concept}}:
 {{!RFC8795}} augments {{!RFC8345}} and therefore provide the same flexibility.
 
 As described in {{Section 3 of ?I-D.havel-nmop-simap-yang}}:
+
 > - Layering relationships are expressed solely through the supporting
 construct, without additional semantics such as underlay, primary,
 backup, load-sharing, path, sequential, or parallel roles.
@@ -135,25 +136,20 @@ Some guidelines on how to unambiguously use the supporting relationship, defined
 
 As outlined in REQ-BIDIR of {{?I-D.ietf-nmop-simap-concept}}, a bidirectional link can be supported by two unidirectional links in the lower layer. For example, a Ethernet (bidirectional) link can be supported by two physical layer links associated with two unidirectional fibers.
 
-This relationship can be modelled using the link 'underlay' relationship: in this case each link is supported by a primary path composed by a single link.
+This relationship can be modelled using the link 'underlay' relationship, as shown in {{fig-unidir-supporting-bidir-link}}:
 
+~~~~ aasvg
+{::include figures/unidir-supporting-bidir-link.txt}
+~~~~
+{: #fig-unidir-supporting-bidir-link title="Example of two unidirectional links supporting one bidirectional link"}
+
+Note: in this case each link is supported by a primary path composed by a single link.
+
+It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.
+ls
 ## Multi-domain Links
 
 Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
-
-## Multi-domain Nodes
-
-> Open issue: need further discussion about how to model the inter-area border nodes when belonging to different network topologies (one for each area)
-
-## Termination points supported by physical devices
-
-{{!RFC8345}} does not limit the type of components that can support a termination point.
-
-The mapping between a termination point and an inventory component is under definition in {{!I-D.ietf-ivy-network-inventory-topology}}.
-
-In the current version of {{!I-D.ietf-ivy-network-inventory-topology}}, a termination point can only be mappted to a port component. However, if needed, the IVY WG could update {{!I-D.ietf-ivy-network-inventory-topology}} to allow a termination point to be mapped to any type of component.
-
-> Open issue: need further discussion since the example provided in {{?I-D.ietf-nmop-simap-concept}} is the IP loopback interface which cannot be mapped to a port component. However, the IP loopback interface is logical interface where IP packets are terminated (layer transition) so it is worthwhile discussing whether it is mapped as a termination point or as a tunnel termination point, as defined in {{!RFC8795}}.
 
 # Design Considerations
 
@@ -201,11 +197,9 @@ This document has no IANA actions.
 
 # Example of deviation statements
 
-{{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the profiles to be supported may be different on different instances, depending also on other attributes (e.g., the network type).
+{{?I-D.ietf-teas-te-topology-profiles}} notes that existing implementations of {{!RFC8795}} have described the implemented profiled by manually pruning/profiling the YANG tree generated fom the YANG module defined in {{!RFC8795}} and those pruned/profiled YANG trees provided sufficient input for the implementers to generate proper APIs.
 
-Existing implementations of {{!RFC8795}} describes the implemented profiled by manually pruning the YANG tree generated fom the YANG module defined in {{!RFC8795}}. The pruned YANG tree was sufficient to the implementers to generate proper APIs.
-
-However, it is possible to use the YANG deviation statements to programmatically generate a profiled YANG tree.
+However, {{?I-D.ietf-teas-te-topology-profiles}} is also exploring the possibility to use the YANG deviation statements to programmatically generate pruned/profiled YANG trees.
 
 An example of a YANG deviation module for SIMAP applications is provided below.
 
@@ -215,7 +209,7 @@ An example of a YANG deviation module for SIMAP applications is provided below.
 {: #fig-deviation-yang title="Example of SIMA deviation YANG module"
 sourcecode-name="ietf-simap-deviation-example@2026-02-12.yang"}
 
-The profiled YANG tree is provided below:
+The pruned/profiled YANG tree, generated using 'pyang' tool, is provided below:
 
 ~~~~ ascii-art
 {::include-fold yang/ietf-simap-deviation-example.tree}
