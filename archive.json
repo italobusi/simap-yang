@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-26T02:35:53.767761+00:00",
+  "timestamp": "2026-03-01T02:49:48.194255+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -63,13 +63,13 @@
       "labels": [],
       "body": "Proposed text for the initial version of the draft",
       "createdAt": "2026-02-19T13:20:05Z",
-      "updatedAt": "2026-02-25T19:50:32Z",
+      "updatedAt": "2026-02-27T22:21:03Z",
       "baseRepository": "italobusi/simap-yang",
       "baseRefName": "main",
       "baseRefOid": "5e0809da5c58966b481d8ee9afb78aa20f104a00",
       "headRepository": "italobusi/simap-yang",
       "headRefName": "initial-draft",
-      "headRefOid": "8400c6b98a3f258f764af93997a63d030375334a",
+      "headRefOid": "66bfd3758919d7d5020db70fae5b41c4861b0560",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -101,6 +101,105 @@
               "body": "````suggestion\n{{?I-D.ietf-teas-te-topology-profiles}} clarifies that\n````",
               "createdAt": "2026-02-25T09:14:58Z",
               "updatedAt": "2026-02-25T09:14:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOROd98s7miLIS",
+          "commit": {
+            "abbreviatedOid": "8400c6b"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-02-27T15:57:40Z",
+          "updatedAt": "2026-02-27T16:00:38Z",
+          "comments": [
+            {
+              "originalPosition": 96,
+              "body": "to be better clarified: \"from the links connecting the termination points of the pseudonode and from the 'is-allowed' attibute of the connectivity matrix, as defined in {{!RFC8795}}, of the pseudonode.\"\nAre they not the same ? ",
+              "createdAt": "2026-02-27T15:57:40Z",
+              "updatedAt": "2026-02-27T16:00:38Z"
+            },
+            {
+              "originalPosition": 191,
+              "body": "\"since the provide to be supported may be different on different instances and it may depend on other attributes (e.g., the network type).\"\n\nnot sure I have understood what you mean here",
+              "createdAt": "2026-02-27T16:00:18Z",
+              "updatedAt": "2026-02-27T16:00:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOROd98s7miRel",
+          "commit": {
+            "abbreviatedOid": "8400c6b"
+          },
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-02-27T16:03:24Z",
+          "updatedAt": "2026-02-27T16:03:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOROd98s7mjlGU",
+          "commit": {
+            "abbreviatedOid": "8400c6b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-02-27T17:14:11Z",
+          "updatedAt": "2026-02-27T17:14:11Z",
+          "comments": [
+            {
+              "originalPosition": 96,
+              "body": "Split into two bullets to improve readability and rephrase as:\n\n- the links entering to or departing from the termination points of the pseudonode \n- the 'is-allowed' attibute of the connectivity matrix, as defined in {{!RFC8795}}, of the pseudonode.\"\n\n\n",
+              "createdAt": "2026-02-27T17:14:11Z",
+              "updatedAt": "2026-02-27T17:14:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOROd98s7mjo_f",
+          "commit": {
+            "abbreviatedOid": "8400c6b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-02-27T17:17:30Z",
+          "updatedAt": "2026-02-27T17:17:30Z",
+          "comments": [
+            {
+              "originalPosition": 191,
+              "body": "```suggestion\n{{?I-D.ietf-teas-te-topology-profiles}} indicates that the YANG deviation mechanism is not applicable for TE topology profiles since the profiles to be supported may be different on different instances, depending also on other attributes (e.g., the network type).\n```",
+              "createdAt": "2026-02-27T17:17:30Z",
+              "updatedAt": "2026-02-27T17:17:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOROd98s7mkndf",
+          "commit": {
+            "abbreviatedOid": "79b87ee"
+          },
+          "author": "italobusi",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-02-27T18:17:36Z",
+          "updatedAt": "2026-02-27T18:17:36Z",
+          "comments": [
+            {
+              "originalPosition": 96,
+              "body": "See: 79b87ee788beb3e4cd3ef125f7bb0f9f85068f3b",
+              "createdAt": "2026-02-27T18:17:36Z",
+              "updatedAt": "2026-02-27T18:17:36Z"
             }
           ]
         }
