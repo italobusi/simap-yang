@@ -22,12 +22,8 @@ module: ietf-network
         |  |  |  |       -> ../../../nw:supporting-node/node-ref
         |  |  |  +--rw nt:tp-ref         leafref
         |  |  +--rw tet:te!
-        |  |     +--rw tet:name?                             string
-        |  |     +--rw tet:interface-switching-capability*
-        |  |     |       [switching-capability encoding]
-        |  |     |  +--rw tet:switching-capability    identityref
-        |  |     |  +--rw tet:encoding                identityref
-        |  |     +--rw tet:inter-domain-plug-id?             binary
+        |  |     +--rw tet:name?                   string
+        |  |     +--rw tet:inter-domain-plug-id?   binary
         |  |     +--ro tet:oper-status?
         |  |             te-types:te-oper-status
         |  +--rw tet:te!
@@ -35,7 +31,6 @@ module: ietf-network
         |     |  +--rw tet:connectivity-matrices
         |     |  |  +--rw tet:number-of-entries?     uint16
         |     |  |  +--rw tet:is-allowed?            boolean
-        |     |  |  +--rw tet:tiebreaker?            identityref
         |     |  |  +--rw tet:connectivity-matrix* [id]
         |     |  |     +--rw tet:id            uint32
         |     |  |     +--rw tet:from
@@ -43,7 +38,6 @@ module: ietf-network
         |     |  |     +--rw tet:to
         |     |  |     |  +--rw tet:tp-ref?   leafref
         |     |  |     +--rw tet:is-allowed?   boolean
-        |     |  |     +--rw tet:tiebreaker?   identityref
         |     |  +--rw tet:domain-id?               uint32
         |     |  +--rw tet:is-abstract?             empty
         |     |  +--rw tet:name?                    string
@@ -51,7 +45,6 @@ module: ietf-network
         |     |     +--rw tet:network-ref?
         |     |             -> /nw:networks/network/network-id
         |     +--ro tet:oper-status?          te-types:te-oper-status
-        |     +--ro tet:is-multi-access-dr?   empty
         +--rw nt:link* [link-id]
            +--rw nt:link-id            link-id
            +--rw nt:source
@@ -67,17 +60,11 @@ module: ietf-network
            +--rw tet:te!
               +--rw (tet:bundle-stack-level)?
               |  +--:(tet:bundle)
-              |  |  +--rw tet:bundled-links
-              |  |     +--rw tet:bundled-link* [sequence]
-              |  |        +--rw tet:sequence      uint32
-              |  |        +--rw tet:src-tp-ref?   leafref
-              |  |        +--rw tet:des-tp-ref?   leafref
-              |  +--:(tet:component)
-              |     +--rw tet:component-links
-              |        +--rw tet:component-link* [sequence]
-              |           +--rw tet:sequence             uint32
-              |           +--rw tet:src-interface-ref?   string
-              |           +--rw tet:des-interface-ref?   string
+              |     +--rw tet:bundled-links
+              |        +--rw tet:bundled-link* [sequence]
+              |           +--rw tet:sequence      uint32
+              |           +--rw tet:src-tp-ref?   leafref
+              |           +--rw tet:des-tp-ref?   leafref
               +--rw tet:te-link-attributes
               |  +--rw tet:access-type?
               |  |       te-types:te-link-access-type
@@ -91,7 +78,7 @@ module: ietf-network
               |  +--rw tet:is-abstract?                      empty
               |  +--rw tet:name?                             string
               |  +--rw tet:underlay {te-topology-hierarchy}?
-              |  |  +--rw tet:enabled?           boolean
+              |  |  +--rw tet:enabled?        boolean
               |  |  +--rw tet:primary-path
               |  |  |  +--rw tet:network-ref?
               |  |  |  |       -> /nw:networks/network/network-id
@@ -115,75 +102,61 @@ module: ietf-network
               |  |  |        |     +--rw tet:direction?
               |  |  |        |             te-link-direction
               |  |  |        +--:(tet:unnumbered-link-hop)
-              |  |  |        |  +--rw tet:unnumbered-link-hop
-              |  |  |        |     +--rw tet:link-tp-id-uri?
-              |  |  |        |     |       nt:tp-id
-              |  |  |        |     +--rw tet:link-tp-id?
-              |  |  |        |     |       te-tp-id
-              |  |  |        |     +--rw tet:node-id-uri?
-              |  |  |        |     |       nw:node-id
-              |  |  |        |     +--rw tet:node-id?
-              |  |  |        |     |       te-node-id
-              |  |  |        |     +--rw tet:hop-type?
-              |  |  |        |     |       te-hop-type
-              |  |  |        |     +--rw tet:direction?
-              |  |  |        |             te-link-direction
-              |  |  |        +--:(tet:as-number)
-              |  |  |           +--rw tet:as-number-hop
-              |  |  |              +--rw tet:as-number
-              |  |  |              |       inet:as-number
-              |  |  |              +--rw tet:hop-type?    te-hop-type
+              |  |  |           +--rw tet:unnumbered-link-hop
+              |  |  |              +--rw tet:link-tp-id-uri?
+              |  |  |              |       nt:tp-id
+              |  |  |              +--rw tet:link-tp-id?
+              |  |  |              |       te-tp-id
+              |  |  |              +--rw tet:node-id-uri?
+              |  |  |              |       nw:node-id
+              |  |  |              +--rw tet:node-id?
+              |  |  |              |       te-node-id
+              |  |  |              +--rw tet:hop-type?
+              |  |  |              |       te-hop-type
+              |  |  |              +--rw tet:direction?
+              |  |  |                      te-link-direction
               |  |  +--rw tet:backup-path* [index]
-              |  |  |  +--rw tet:index           uint32
-              |  |  |  +--rw tet:network-ref?
-              |  |  |  |       -> /nw:networks/network/network-id
-              |  |  |  +--rw tet:path-element* [path-element-id]
-              |  |  |     +--rw tet:path-element-id
-              |  |  |     |       uint32
-              |  |  |     +--rw (tet:type)?
-              |  |  |        +--:(tet:numbered-node-hop)
-              |  |  |        |  +--rw tet:numbered-node-hop
-              |  |  |        |     +--rw tet:node-id-uri?
-              |  |  |        |     |       nw:node-id
-              |  |  |        |     +--rw tet:node-id?
-              |  |  |        |     |       te-node-id
-              |  |  |        |     +--rw tet:hop-type?
-              |  |  |        |             te-hop-type
-              |  |  |        +--:(tet:numbered-link-hop)
-              |  |  |        |  +--rw tet:numbered-link-hop
-              |  |  |        |     +--rw tet:link-tp-id    te-tp-id
-              |  |  |        |     +--rw tet:hop-type?
-              |  |  |        |     |       te-hop-type
-              |  |  |        |     +--rw tet:direction?
-              |  |  |        |             te-link-direction
-              |  |  |        +--:(tet:unnumbered-link-hop)
-              |  |  |        |  +--rw tet:unnumbered-link-hop
-              |  |  |        |     +--rw tet:link-tp-id-uri?
-              |  |  |        |     |       nt:tp-id
-              |  |  |        |     +--rw tet:link-tp-id?
-              |  |  |        |     |       te-tp-id
-              |  |  |        |     +--rw tet:node-id-uri?
-              |  |  |        |     |       nw:node-id
-              |  |  |        |     +--rw tet:node-id?
-              |  |  |        |     |       te-node-id
-              |  |  |        |     +--rw tet:hop-type?
-              |  |  |        |     |       te-hop-type
-              |  |  |        |     +--rw tet:direction?
-              |  |  |        |             te-link-direction
-              |  |  |        +--:(tet:as-number)
-              |  |  |           +--rw tet:as-number-hop
-              |  |  |              +--rw tet:as-number
-              |  |  |              |       inet:as-number
-              |  |  |              +--rw tet:hop-type?    te-hop-type
-              |  |  +--rw tet:protection-type?   identityref
-              |  +--rw tet:link-index?                       uint64
+              |  |     +--rw tet:index           uint32
+              |  |     +--rw tet:network-ref?
+              |  |     |       -> /nw:networks/network/network-id
+              |  |     +--rw tet:path-element* [path-element-id]
+              |  |        +--rw tet:path-element-id
+              |  |        |       uint32
+              |  |        +--rw (tet:type)?
+              |  |           +--:(tet:numbered-node-hop)
+              |  |           |  +--rw tet:numbered-node-hop
+              |  |           |     +--rw tet:node-id-uri?
+              |  |           |     |       nw:node-id
+              |  |           |     +--rw tet:node-id?
+              |  |           |     |       te-node-id
+              |  |           |     +--rw tet:hop-type?
+              |  |           |             te-hop-type
+              |  |           +--:(tet:numbered-link-hop)
+              |  |           |  +--rw tet:numbered-link-hop
+              |  |           |     +--rw tet:link-tp-id    te-tp-id
+              |  |           |     +--rw tet:hop-type?
+              |  |           |     |       te-hop-type
+              |  |           |     +--rw tet:direction?
+              |  |           |             te-link-direction
+              |  |           +--:(tet:unnumbered-link-hop)
+              |  |              +--rw tet:unnumbered-link-hop
+              |  |                 +--rw tet:link-tp-id-uri?
+              |  |                 |       nt:tp-id
+              |  |                 +--rw tet:link-tp-id?
+              |  |                 |       te-tp-id
+              |  |                 +--rw tet:node-id-uri?
+              |  |                 |       nw:node-id
+              |  |                 +--rw tet:node-id?
+              |  |                 |       te-node-id
+              |  |                 +--rw tet:hop-type?
+              |  |                 |       te-hop-type
+              |  |                 +--rw tet:direction?
+              |  |                         te-link-direction
               |  +--rw tet:interface-switching-capability*
-              |  |       [switching-capability encoding]
-              |  |  +--rw tet:switching-capability    identityref
-              |  |  +--rw tet:encoding                identityref
-              |  +--rw tet:link-protection-type?
-              |          identityref
+              |          [switching-capability encoding]
+              |     +--rw tet:switching-capability    identityref
+              |     +--rw tet:encoding                identityref
               +--ro tet:oper-status?
               |       te-types:te-oper-status
-              +--ro tet:is-transitional?         empty
+              +--ro tet:is-transitional?       empty
 

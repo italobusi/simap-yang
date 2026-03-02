@@ -150,6 +150,15 @@ module ietf-simap-deviation-example {
 
   deviation "/nw:networks/nw:network/nw:node/tet:te"
           + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:tiebreaker" {
+    description
+      "SIMAP implementations are not required to implement the
+       tiebreaker for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
           + "/tet:path-properties" {
     description
       "SIMAP implementations are not required to implement the
@@ -206,6 +215,15 @@ module ietf-simap-deviation-example {
 
   deviation "/nw:networks/nw:network/nw:node/tet:te"
           + "/tet:te-node-attributes/tet:connectivity-matrices"
+          + "/tet:connectivity-matrix/tet:tiebreaker" {
+    description
+      "SIMAP implementations are not required to implement the
+       tiebreaker for the connectivity matrix.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:te-node-attributes/tet:connectivity-matrices"
           + "/tet:connectivity-matrix/tet:path-properties" {
     description
       "SIMAP implementations are not required to implement the
@@ -226,6 +244,14 @@ module ietf-simap-deviation-example {
     description
       "SIMAP implementations are not required to implement the
        node's geolocation.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nw:node/tet:te"
+          + "/tet:is-multi-access-dr" {
+    description
+      "SIMAP implementations are not required to implement the
+       designated router information.";
     deviate not-supported;
   }
 
@@ -278,6 +304,14 @@ module ietf-simap-deviation-example {
   }
 
   deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:bundle-stack-level/tet:component" {
+    description
+      "SIMAP implementations are not required to implement the
+       bundle links as a set of component interfaces.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
           + "/tet:te-link-template" {
     description
       "SIMAP implementations are not required to implement the
@@ -295,11 +329,38 @@ module ietf-simap-deviation-example {
   }
 
   deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay/tet:primary-path"
+          + "/tet:path-element/tet:type/tet:as-number" {
+    description
+      "SIMAP implementations are not required to implement the
+       AS hop.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
           + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
           + "/tet:path-element/tet:type/tet:label" {
     description
       "SIMAP implementations are not required to implement the
        label hop.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
+          + "/tet:path-element/tet:type/tet:as-number" {
+    description
+      "SIMAP implementations are not required to implement the
+       AS hop.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:underlay/"
+          + "tet:protection-type" {
+    description
+      "SIMAP implementations are not required to implement the
+       protection type for the backup paths of a link.";
     deviate not-supported;
   }
 
@@ -331,6 +392,14 @@ module ietf-simap-deviation-example {
   }
 
   deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:link-index" {
+    description
+      "SIMAP implementations are not required to implement the
+       link identifier.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
           + "/tet:te-link-attributes/tet:administrative-group" {
     description
       "SIMAP implementations are not required to implement the
@@ -353,6 +422,14 @@ module ietf-simap-deviation-example {
     description
       "SIMAP implementations are not required to implement the
        label restrictions of a link.";
+    deviate not-supported;
+  }
+
+  deviation "/nw:networks/nw:network/nt:link/tet:te"
+          + "/tet:te-link-attributes/tet:link-protection-type" {
+    description
+      "SIMAP implementations are not required to implement the
+       link protection type.";
     deviate not-supported;
   }
 
