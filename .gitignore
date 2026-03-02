@@ -1,3 +1,4 @@
+*.bash
 *.html
 *.pdf
 *.redxml
@@ -18,12 +19,12 @@
 /versioned/
 Gemfile.lock
 archive.json
+draft-busi-nmop-simap-rfc8795-applicability.xml
 draft-xyz-nmop-simap-rfc8795-applicability.xml
 draft-xyz-nmop-simap-yang-applicability.xml
-package-lock.json
-report.xml
-!requirements.txt
-!figures/*
-*.bash
-pretty/
 json/
+package-lock.json
+pretty/
+report.xml
+!figures/*
+!requirements.txt
