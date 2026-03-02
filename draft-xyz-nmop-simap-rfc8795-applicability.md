@@ -40,11 +40,10 @@ author:
     name: Sergio Belotti
     org: Nokia
     email: sergio.belotti@nokia.com
-# To be confirmed on the next call (2026-02-27)
-#  -
-#    name: Tarek Saad
-#    org: Cisco Systems Inc.
-#    email: tsaad.net@gmail.com
+  -
+    name: Tarek Saad
+    org: Cisco Systems Inc.
+    email: tsaad.net@gmail.com
 
 normative:
 
@@ -212,7 +211,7 @@ sourcecode-name="ietf-simap-deviation-example@2026-02-12.yang"}
 The pruned/profiled YANG tree, generated using 'pyang' tool, is provided below:
 
 ~~~~ ascii-art
-{::include-fold yang/ietf-simap-deviation-example.tree}
+{::include-fold tree/ietf-simap-deviation-example.tree}
 ~~~~
 
 # Acknowledgments

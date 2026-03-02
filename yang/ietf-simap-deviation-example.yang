@@ -47,7 +47,7 @@ module ietf-simap-deviation-example {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices..";
 
-  revision 2026-02-12 {
+  revision 2026-03-02 {
     description
       "Initial version";
     reference
@@ -504,11 +504,10 @@ module ietf-simap-deviation-example {
   }
 
   deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
-          + "/tet:te/tet:interface-switching-capability"
-          + "/tet:max-lsp-bandwidth" {
+          + "/tet:te/tet:interface-switching-capability" {
     description
-      "SIMAP implementations are not required to implement the
-       maximum LSP bandwidth.";
+      "SIMAP implementations are not required to report the
+       'interface-switching-capability' on the termination points.";
     deviate not-supported;
   }
 
