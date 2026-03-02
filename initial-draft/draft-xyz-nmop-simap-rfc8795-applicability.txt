@@ -5,12 +5,14 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 31 August 2026                           Futurewei Technologies
+Expires: 3 September 2026                         Futurewei Technologies
                                                             V. P. Beeram
                                                         Juniper Networks
                                                               S. Belotti
                                                                    Nokia
-                                                        27 February 2026
+                                                                 T. Saad
+                                                      Cisco Systems Inc.
+                                                            2 March 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -56,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2026.
+   This Internet-Draft will expire on 3 September 2026.
 
 Copyright Notice
 
@@ -452,9 +454,9 @@ Table of Contents
               Dios, "Profiles for Traffic Engineering (TE) Topology Data
               Model and Applicability to non-TE-centric Use Cases", Work
               in Progress, Internet-Draft, draft-ietf-teas-te-topology-
-              profiles-04, 20 October 2025,
+              profiles-05, 2 March 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-
-              topology-profiles-04>.
+              topology-profiles-05>.
 
 Appendix A.  Example of deviation statements
 
@@ -521,7 +523,7 @@ Appendix A.  Example of deviation statements
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices..";
 
-     revision 2026-02-12 {
+     revision 2026-03-02 {
        description
          "Initial version";
        reference
@@ -624,6 +626,15 @@ Appendix A.  Example of deviation statements
 
      deviation "/nw:networks/nw:network/nw:node/tet:te"
              + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:tiebreaker" {
+       description
+         "SIMAP implementations are not required to implement the
+          tiebreaker for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
              + "/tet:path-properties" {
        description
          "SIMAP implementations are not required to implement the
@@ -680,6 +691,15 @@ Appendix A.  Example of deviation statements
 
      deviation "/nw:networks/nw:network/nw:node/tet:te"
              + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:tiebreaker" {
+       description
+         "SIMAP implementations are not required to implement the
+          tiebreaker for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
              + "/tet:connectivity-matrix/tet:path-properties" {
        description
          "SIMAP implementations are not required to implement the
@@ -700,6 +720,14 @@ Appendix A.  Example of deviation statements
        description
          "SIMAP implementations are not required to implement the
           node's geolocation.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:is-multi-access-dr" {
+       description
+         "SIMAP implementations are not required to implement the
+          designated router information.";
        deviate not-supported;
      }
 
@@ -752,6 +780,14 @@ Appendix A.  Example of deviation statements
      }
 
      deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:bundle-stack-level/tet:component" {
+       description
+         "SIMAP implementations are not required to implement the
+          bundle links as a set of component interfaces.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
              + "/tet:te-link-template" {
        description
          "SIMAP implementations are not required to implement the
@@ -769,11 +805,38 @@ Appendix A.  Example of deviation statements
      }
 
      deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:primary-path"
+             + "/tet:path-element/tet:type/tet:as-number" {
+       description
+         "SIMAP implementations are not required to implement the
+          AS hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
              + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
              + "/tet:path-element/tet:type/tet:label" {
        description
          "SIMAP implementations are not required to implement the
           label hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
+             + "/tet:path-element/tet:type/tet:as-number" {
+       description
+         "SIMAP implementations are not required to implement the
+          AS hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/"
+             + "tet:protection-type" {
+       description
+         "SIMAP implementations are not required to implement the
+          protection type for the backup paths of a link.";
        deviate not-supported;
      }
 
@@ -805,6 +868,14 @@ Appendix A.  Example of deviation statements
      }
 
      deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:link-index" {
+       description
+         "SIMAP implementations are not required to implement the
+          link identifier.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
              + "/tet:te-link-attributes/tet:administrative-group" {
        description
          "SIMAP implementations are not required to implement the
@@ -827,6 +898,14 @@ Appendix A.  Example of deviation statements
        description
          "SIMAP implementations are not required to implement the
           label restrictions of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:link-protection-type" {
+       description
+         "SIMAP implementations are not required to implement the
+          link protection type.";
        deviate not-supported;
      }
 
@@ -978,11 +1057,10 @@ Appendix A.  Example of deviation statements
      }
 
      deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
-             + "/tet:te/tet:interface-switching-capability"
-             + "/tet:max-lsp-bandwidth" {
+             + "/tet:te/tet:interface-switching-capability" {
        description
-         "SIMAP implementations are not required to implement the
-          maximum LSP bandwidth.";
+         "SIMAP implementations are not required to report the
+          'interface-switching-capability' on the termination points.";
        deviate not-supported;
      }
 
@@ -1032,12 +1110,8 @@ Appendix A.  Example of deviation statements
            |  |  |  |       -> ../../../nw:supporting-node/node-ref
            |  |  |  +--rw nt:tp-ref         leafref
            |  |  +--rw tet:te!
-           |  |     +--rw tet:name?                             string
-           |  |     +--rw tet:interface-switching-capability*
-           |  |     |       [switching-capability encoding]
-           |  |     |  +--rw tet:switching-capability    identityref
-           |  |     |  +--rw tet:encoding                identityref
-           |  |     +--rw tet:inter-domain-plug-id?             binary
+           |  |     +--rw tet:name?                   string
+           |  |     +--rw tet:inter-domain-plug-id?   binary
            |  |     +--ro tet:oper-status?
            |  |             te-types:te-oper-status
            |  +--rw tet:te!
@@ -1045,7 +1119,6 @@ Appendix A.  Example of deviation statements
            |     |  +--rw tet:connectivity-matrices
            |     |  |  +--rw tet:number-of-entries?     uint16
            |     |  |  +--rw tet:is-allowed?            boolean
-           |     |  |  +--rw tet:tiebreaker?            identityref
            |     |  |  +--rw tet:connectivity-matrix* [id]
            |     |  |     +--rw tet:id            uint32
            |     |  |     +--rw tet:from
@@ -1053,7 +1126,6 @@ Appendix A.  Example of deviation statements
            |     |  |     +--rw tet:to
            |     |  |     |  +--rw tet:tp-ref?   leafref
            |     |  |     +--rw tet:is-allowed?   boolean
-           |     |  |     +--rw tet:tiebreaker?   identityref
            |     |  +--rw tet:domain-id?               uint32
            |     |  +--rw tet:is-abstract?             empty
            |     |  +--rw tet:name?                    string
@@ -1061,7 +1133,6 @@ Appendix A.  Example of deviation statements
            |     |     +--rw tet:network-ref?
            |     |             -> /nw:networks/network/network-id
            |     +--ro tet:oper-status?          te-types:te-oper-status
-           |     +--ro tet:is-multi-access-dr?   empty
            +--rw nt:link* [link-id]
               +--rw nt:link-id            link-id
               +--rw nt:source
@@ -1077,17 +1148,11 @@ Appendix A.  Example of deviation statements
               +--rw tet:te!
                  +--rw (tet:bundle-stack-level)?
                  |  +--:(tet:bundle)
-                 |  |  +--rw tet:bundled-links
-                 |  |     +--rw tet:bundled-link* [sequence]
-                 |  |        +--rw tet:sequence      uint32
-                 |  |        +--rw tet:src-tp-ref?   leafref
-                 |  |        +--rw tet:des-tp-ref?   leafref
-                 |  +--:(tet:component)
-                 |     +--rw tet:component-links
-                 |        +--rw tet:component-link* [sequence]
-                 |           +--rw tet:sequence             uint32
-                 |           +--rw tet:src-interface-ref?   string
-                 |           +--rw tet:des-interface-ref?   string
+                 |     +--rw tet:bundled-links
+                 |        +--rw tet:bundled-link* [sequence]
+                 |           +--rw tet:sequence      uint32
+                 |           +--rw tet:src-tp-ref?   leafref
+                 |           +--rw tet:des-tp-ref?   leafref
                  +--rw tet:te-link-attributes
                  |  +--rw tet:access-type?
                  |  |       te-types:te-link-access-type
@@ -1101,7 +1166,7 @@ Appendix A.  Example of deviation statements
                  |  +--rw tet:is-abstract?                      empty
                  |  +--rw tet:name?                             string
                  |  +--rw tet:underlay {te-topology-hierarchy}?
-                 |  |  +--rw tet:enabled?           boolean
+                 |  |  +--rw tet:enabled?        boolean
                  |  |  +--rw tet:primary-path
                  |  |  |  +--rw tet:network-ref?
                  |  |  |  |       -> /nw:networks/network/network-id
@@ -1125,77 +1190,63 @@ Appendix A.  Example of deviation statements
                  |  |  |        |     +--rw tet:direction?
                  |  |  |        |             te-link-direction
                  |  |  |        +--:(tet:unnumbered-link-hop)
-                 |  |  |        |  +--rw tet:unnumbered-link-hop
-                 |  |  |        |     +--rw tet:link-tp-id-uri?
-                 |  |  |        |     |       nt:tp-id
-                 |  |  |        |     +--rw tet:link-tp-id?
-                 |  |  |        |     |       te-tp-id
-                 |  |  |        |     +--rw tet:node-id-uri?
-                 |  |  |        |     |       nw:node-id
-                 |  |  |        |     +--rw tet:node-id?
-                 |  |  |        |     |       te-node-id
-                 |  |  |        |     +--rw tet:hop-type?
-                 |  |  |        |     |       te-hop-type
-                 |  |  |        |     +--rw tet:direction?
-                 |  |  |        |             te-link-direction
-                 |  |  |        +--:(tet:as-number)
-                 |  |  |           +--rw tet:as-number-hop
-                 |  |  |              +--rw tet:as-number
-                 |  |  |              |       inet:as-number
-                 |  |  |              +--rw tet:hop-type?    te-hop-type
+                 |  |  |           +--rw tet:unnumbered-link-hop
+                 |  |  |              +--rw tet:link-tp-id-uri?
+                 |  |  |              |       nt:tp-id
+                 |  |  |              +--rw tet:link-tp-id?
+                 |  |  |              |       te-tp-id
+                 |  |  |              +--rw tet:node-id-uri?
+                 |  |  |              |       nw:node-id
+                 |  |  |              +--rw tet:node-id?
+                 |  |  |              |       te-node-id
+                 |  |  |              +--rw tet:hop-type?
+                 |  |  |              |       te-hop-type
+                 |  |  |              +--rw tet:direction?
+                 |  |  |                      te-link-direction
                  |  |  +--rw tet:backup-path* [index]
-                 |  |  |  +--rw tet:index           uint32
-                 |  |  |  +--rw tet:network-ref?
-                 |  |  |  |       -> /nw:networks/network/network-id
-                 |  |  |  +--rw tet:path-element* [path-element-id]
-                 |  |  |     +--rw tet:path-element-id
-                 |  |  |     |       uint32
-                 |  |  |     +--rw (tet:type)?
-                 |  |  |        +--:(tet:numbered-node-hop)
-                 |  |  |        |  +--rw tet:numbered-node-hop
-                 |  |  |        |     +--rw tet:node-id-uri?
-                 |  |  |        |     |       nw:node-id
-                 |  |  |        |     +--rw tet:node-id?
-                 |  |  |        |     |       te-node-id
-                 |  |  |        |     +--rw tet:hop-type?
-                 |  |  |        |             te-hop-type
-                 |  |  |        +--:(tet:numbered-link-hop)
-                 |  |  |        |  +--rw tet:numbered-link-hop
-                 |  |  |        |     +--rw tet:link-tp-id    te-tp-id
-                 |  |  |        |     +--rw tet:hop-type?
-                 |  |  |        |     |       te-hop-type
-                 |  |  |        |     +--rw tet:direction?
-                 |  |  |        |             te-link-direction
-                 |  |  |        +--:(tet:unnumbered-link-hop)
-                 |  |  |        |  +--rw tet:unnumbered-link-hop
-                 |  |  |        |     +--rw tet:link-tp-id-uri?
-                 |  |  |        |     |       nt:tp-id
-                 |  |  |        |     +--rw tet:link-tp-id?
-                 |  |  |        |     |       te-tp-id
-                 |  |  |        |     +--rw tet:node-id-uri?
-                 |  |  |        |     |       nw:node-id
-                 |  |  |        |     +--rw tet:node-id?
-                 |  |  |        |     |       te-node-id
-                 |  |  |        |     +--rw tet:hop-type?
-                 |  |  |        |     |       te-hop-type
-                 |  |  |        |     +--rw tet:direction?
-                 |  |  |        |             te-link-direction
-                 |  |  |        +--:(tet:as-number)
-                 |  |  |           +--rw tet:as-number-hop
-                 |  |  |              +--rw tet:as-number
-                 |  |  |              |       inet:as-number
-                 |  |  |              +--rw tet:hop-type?    te-hop-type
-                 |  |  +--rw tet:protection-type?   identityref
-                 |  +--rw tet:link-index?                       uint64
+                 |  |     +--rw tet:index           uint32
+                 |  |     +--rw tet:network-ref?
+                 |  |     |       -> /nw:networks/network/network-id
+                 |  |     +--rw tet:path-element* [path-element-id]
+                 |  |        +--rw tet:path-element-id
+                 |  |        |       uint32
+                 |  |        +--rw (tet:type)?
+                 |  |           +--:(tet:numbered-node-hop)
+                 |  |           |  +--rw tet:numbered-node-hop
+                 |  |           |     +--rw tet:node-id-uri?
+                 |  |           |     |       nw:node-id
+                 |  |           |     +--rw tet:node-id?
+                 |  |           |     |       te-node-id
+                 |  |           |     +--rw tet:hop-type?
+                 |  |           |             te-hop-type
+                 |  |           +--:(tet:numbered-link-hop)
+                 |  |           |  +--rw tet:numbered-link-hop
+                 |  |           |     +--rw tet:link-tp-id    te-tp-id
+                 |  |           |     +--rw tet:hop-type?
+                 |  |           |     |       te-hop-type
+                 |  |           |     +--rw tet:direction?
+                 |  |           |             te-link-direction
+                 |  |           +--:(tet:unnumbered-link-hop)
+                 |  |              +--rw tet:unnumbered-link-hop
+                 |  |                 +--rw tet:link-tp-id-uri?
+                 |  |                 |       nt:tp-id
+                 |  |                 +--rw tet:link-tp-id?
+                 |  |                 |       te-tp-id
+                 |  |                 +--rw tet:node-id-uri?
+                 |  |                 |       nw:node-id
+                 |  |                 +--rw tet:node-id?
+                 |  |                 |       te-node-id
+                 |  |                 +--rw tet:hop-type?
+                 |  |                 |       te-hop-type
+                 |  |                 +--rw tet:direction?
+                 |  |                         te-link-direction
                  |  +--rw tet:interface-switching-capability*
-                 |  |       [switching-capability encoding]
-                 |  |  +--rw tet:switching-capability    identityref
-                 |  |  +--rw tet:encoding                identityref
-                 |  +--rw tet:link-protection-type?
-                 |          identityref
+                 |          [switching-capability encoding]
+                 |     +--rw tet:switching-capability    identityref
+                 |     +--rw tet:encoding                identityref
                  +--ro tet:oper-status?
                  |       te-types:te-oper-status
-                 +--ro tet:is-transitional?         empty
+                 +--ro tet:is-transitional?       empty
 
 Acknowledgments
 
@@ -1221,3 +1272,8 @@ Authors' Addresses
    Sergio Belotti
    Nokia
    Email: sergio.belotti@nokia.com
+
+
+   Tarek Saad
+   Cisco Systems Inc.
+   Email: tsaad.net@gmail.com
