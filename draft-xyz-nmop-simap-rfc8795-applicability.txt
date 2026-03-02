@@ -2,10 +2,17 @@
 
 
 
-Network Management Operations                                  italobusi
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                          20 February 2026
-Expires: 24 August 2026
+Network Management Operations                                    I. Busi
+Internet-Draft                                                    Huawei
+Intended status: Informational                                    A. Guo
+Expires: 3 September 2026                         Futurewei Technologies
+                                                            V. P. Beeram
+                                                        Juniper Networks
+                                                              S. Belotti
+                                                                   Nokia
+                                                                 T. Saad
+                                                      Cisco Systems Inc.
+                                                            2 March 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -13,7 +20,10 @@ Expires: 24 August 2026
 
 Abstract
 
-   TODO Abstract
+   This document analyses the applicability of the RFC 8795 YANG data
+   model to Service & Infrastructure Maps (SIMAP) and in particular
+   analysis which requirements can be supported by the existing YANG
+   data model defined in RFC 8795.
 
 About This Document
 
@@ -48,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2026.
+   This Internet-Draft will expire on 3 September 2026.
 
 Copyright Notice
 
@@ -68,49 +78,1202 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Gap Analysis
+     3.1.  Bidirectional Links
+     3.2.  Multipoint Links
+     3.3.  Links and nodes down in topology
+     3.4.  Multi-Layer Topologies
+   4.  Design Considerations
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Appendix A.  Example of deviation statements
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
-   TODO Introduction
+   The concept of Service & Infrastructure Maps (SIMAP) is being defined
+   in [I-D.ietf-nmop-simap-concept] together with a set of SIMP
+   requirements and use cases.
+
+   SIMAP is defined in [I-D.ietf-nmop-simap-concept], as:
+
+      SIMAP is a data model that provides a topological view of the
+      operator's networks and services, including how it is connected to
+      other models (e.g., inventory) and external data sources (e.g.,
+      observability data, and operational knowledge).  This model
+      represents a multi-layered topology and offers mechanisms to
+      navigate amongst layers and correlate between them.  This includes
+      layers from physical topology to service topology.  This model is
+      applicable to multiple domains (access, core, data center, etc.)
+      and technologies (Optical, IP, etc.).
+
+   It is worth noting that the YANG data model in [RFC8795] defines a
+   topology model which:
+
+   *  represents a multi-layered topology;
+
+   *  offers mechanisms to navigate amongst layers and correlate between
+      them;
+
+   *  is applicable to multiple domains (access, core, data center,
+      etc.) and technologies (Optical, IP, etc.).
+
+   [I-D.ietf-teas-te-topology-profiles] clarifies that
+
+   It is therefore worthwhile analyzing the applicability of the YANG
+   data model in [RFC8795] to meet the SIMAP requirements and identify
+   any gaps that need to be addressed before starting the work on new
+   YANG data models to meet the SIMAP requirements, as outlined in
+   [I-D.ietf-nmop-simap-concept].
+
+   Understanding the degree of standardization and identifying potential
+   gaps are crucial for supporting the SIMAP applications while ensuring
+   multi-vendor interoperability and compatibility with other
+   applications which can run on top of the same network controller.
 
 2.  Conventions and Definitions
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
+   TODO Conventions and Definitions
 
-3.  Security Considerations
+3.  Gap Analysis
+
+3.1.  Bidirectional Links
+
+   Bidirectional links can be modelled as two unidirectional links, one
+   for each direction, terminated on the same two termination points, as
+   described in Section 4.4.5 of [RFC8345].
+
+   It is worth noting that a bidirectional link can be unambiguously
+   distinguished from two unidirectional links between the same two
+   nodes since the two unidirectional links will be terminated on
+   different termination points, as shown in Figure 1.
+
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |   +------------------------>|   |            | |
+       | |      A     |TP1|                         |TP2|     B      | |
+       | |            |   |<------------------------+   |            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
+
+
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |TP3+------------------------>|TP4|            | |
+       | |            +---+                         +---+            | |
+       | |      C      | |                           | |      D      | |
+       | |            +---+                         +---+            | |
+       | |            |TP4|<------------------------+TP5|            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
+
+        Figure 1: Difference between one bidirectional link and two
+                            unidirectional links
+
+3.2.  Multipoint Links
+
+   Multipoint links can be modelled as pseudonodes, as described in
+   Section 4.4.5 of [RFC8345].
+
+   The type of multipoint link (e.g., point-to-multipoint or multipoint-
+   to-multipoint, as defined in [I-D.ietf-nmop-simap-concept]) and the
+   role of the termination points in the link (e.g., source,
+   destination, hub, spoke, as defined in [I-D.ietf-nmop-simap-concept])
+   can be unambiguously understood from: - the links entering to or
+   departing from the termination points of the pseudonode, and - the
+   'is-allowed' attribute of the connectivity matrix of the pseudonode,
+   as defined in [RFC8795].
+
+      Note: some examples for multipoint links are described in
+      Section 2.5 of [I-D.ietf-teas-te-topology-profiles].  More
+      examples can be provided in future versions of this document.
+
+3.3.  Links and nodes down in topology
+
+   [RFC8795] defines the 'oper-status' attribute for nodes, links and
+   termination points, therefore allowing to report links and nodes down
+   in the topology, and to unambiguously distinguishing between nodes
+   and links which are up or down.
+
+3.4.  Multi-Layer Topologies
+
+   As outlined in Section 2 of [I-D.ietf-nmop-simap-concept]:
+
+      [RFC8345] is flexible and can support both the same network
+      topology instance with multiple layers (e.g., Layer 2 and Layer 3)
+      or separate network topology instances with supporting relations
+      between them (e.g., separate Layer 2 and Layer 3).  Therefore,
+      multiple topology layers can be grouped into the same network
+      topology instance, if solution requires.
+
+   [RFC8795] augments [RFC8345] and therefore provide the same
+   flexibility.
+
+   As described in Section 3 of [I-D.havel-nmop-simap-yang]:
+
+      -  Layering relationships are expressed solely through the
+         supporting construct, without additional semantics such as
+         underlay, primary, backup, load-sharing, path, sequential, or
+         parallel roles.
+
+   This issue was taken into account when designing the YANG data model
+   in [RFC8795] and the 'underlay' relationship has been properly
+   defined to support navigation between overlay and underlay layers, as
+   described in Section 2.3 of [I-D.ietf-teas-te-topology-profiles].
+
+   Some guidelines on how to unambiguously use the supporting
+   relationship, defined in [RFC8345], and the 'underlay' relationship
+   defined in [RFC8795], have been clarified in Section 2.3.1 of
+   [I-D.ietf-teas-te-topology-profiles].
+
+   As outlined in REQ-BIDIR of [I-D.ietf-nmop-simap-concept], a
+   bidirectional link can be supported by two unidirectional links in
+   the lower layer.  For example, a Ethernet (bidirectional) link can be
+   supported by two physical layer links associated with two
+   unidirectional fibers.
+
+   This relationship can be modelled using the link 'underlay'
+   relationship, as shown in Figure 2:
+
+       +-----------------+                           +-----------------+
+       | +-------------+ |                           | +-------------+ |
+       | |             | |                           | |             | |
+       | |            +---+                         +---+            | |
+       | |            |   +-------+---------------->|   |            | |
+       | |      A     |TP1|       |                 |TP2|     B      | |
+       | |            |   |<----------------+-------+   |            | |
+       | |            +---+       |         |       +---+            | |
+       | |             | |        |         |        | |             | |
+       | +-------------+ |        |         |        | +-------------+ |
+       +-----------------+        |         |        +-----------------+
+                                  |         |
+                                  |         |
+       +-----------------+        |         |        +-----------------+
+       | +-------------+ |        |         |        | +-------------+ |
+       | |             | |        |         |        | |             | |
+       | |            +---+       V         |       +---+            | |
+       | |            |TP3+------------------------>|TP4|            | |
+       | |            +---+                 |       +---+            | |
+       | |      C      | |                  |        | |      D      | |
+       | |            +---+                 V       +---+            | |
+       | |            |TP4|<------------------------+TP5|            | |
+       | |            +---+                         +---+            | |
+       | |             | |                           | |             | |
+       | +-------------+ |                           | +-------------+ |
+       +-----------------+                           +-----------------+
+
+        Figure 2: Example of two unidirectional links supporting one
+                             bidirectional link
+
+   Note: in this case each link is supported by a primary path composed
+   by a single link.
+
+   It is worth noting that modelling the bidirectional link is modelled
+   as two unidirectional link instances allows also to unambiguously
+   understand which unidirectional underlay link/path supports which
+   direction (forward or reverse) of the overlay bidirectional link. ls
+   ## Multi-domain Links
+
+   Multi-domain links can be represented as open-ended links on each
+   topology instance and unambiguously associated as multi-domain links
+   using either the remote node ID / link ID attribute or the inter-
+   domain-plug-id, as described in Section 4.2 of [RFC8795].
+
+4.  Design Considerations
+
+   Reusing existing YANG data models to support multiple applications is
+   a key enabler to achieve multi-vendor interoperability.
+
+   A network controller needs to support multiple applications (some of
+   which may not be defined at the time the network controller is
+   defined) and different applications have different requirements on
+   the data model they use internally to perform their tasks.
+
+   Exposing application-specific data models at the northbound of a
+   network controller appears making the application simpler to
+   implement when it is the only application to be implemented on top of
+   a given controller but results in more complex implementations for
+   network controllers and the applications and increase complexity to
+   achieve multi-vendor interoperability and integration.
+
+   Figure 3 shows a case where a controller-A is interfacing an
+   Application-1 through the application-specific data model designed
+   for Application-1 (i.e., AS1-DM) and a controller-B is interfacing
+   another Application-2 through the application-specific data model
+   designed for Application-2 (i.e., AS2-DM).
+
+     +-------+         +-------+         +-------+         +-------+
+     | APP-1 |         | APP-2 |         | APP-1 |         | APP-2 |
+     |(Core) |         |(Core) |         |(Core) |         |(Core) |
+     +-------+         +-------+         +-------+         +-------+
+         ^                 ^                 ^                 ^
+         |                /                   \                |
+         |               / ???             ??? \               |
+         |              /                       \              |
+         +--------+    /                         \    +--------+
+                  |   /                           \   |
+           AS1-DM |  /                             \  | AS2-DM
+                  | /                               \ |
+                  |/                                 \|
+     +------------+------------+         +------------+------------+
+     |       Controller-A      |         |       Controller-B      |
+     +-------------------------+         +-------------------------+
+
+   Notes:
+   - AS1-DM: Application 1 (APP-1) application-specific data model
+   - AS2-DM: Application 1 (APP-2) application-specific data model
+
+     Figure 3: Concerns with defining application-specific data models
+
+   The two application-specific data models can provide the same
+   information but with different formatting.  For example,
+   Application-1 may need to model bidirectional links as a single
+   entity (link of type bidirectional) while Application-2 may need to
+   model bidirectional links as two unidirectional links.
+
+   This solution works well as long as Application-1 and controller-A
+   are deployed in different silos than Application-2 and controller-B.
+   Otherwise, operational and implementation issues have to be faces
+   when there is the need to run Application-1 over network controller-B
+   or, Application-2 over network controller-A.
+
+   This would require the operator to negotiate with the vendor and
+   controller vendors customized solutions before integrating a new
+   application or a new controller in the network and increased
+   complexity in the application and network controller implementations.
+
+   Figure 4 describes an architecture based on a common and standardized
+   data model to support multi-vendor integration.
+
+     +-------+         +-------+         +-------+         +-------+
+     | APP-1 |         | APP-2 |         | APP-1 |         | APP-2 |
+     |(Core) |         |(Core) |         |(Core) |         |(Core) |
+     +-------+         +-------+         +-------+         +-------+
+         ^                 ^                 ^                 ^
+         | AS1-DM   AS2-DM |                 | AS1-DM   AS2-DM |
+         |                 |                 |                 |
+    +---------+       +---------+       +---------+       +---------+
+    |  APP-1  |       |  APP-2  |       |  APP-1  |       |  APP-2  |
+    |(DM-Map1)|       | (DM-Map)|       | (DM-Map)|       |(DM-Map2)|
+    +---------+       +---------+       +---------+       +---------+
+         ^                 ^                 ^                 ^
+         |                 |  /-----------\  |                 |
+         +--------+--------+ /    Common   \ +--------+--------+
+                  |          \   Standard  /          |
+         NBI-DM   |           \-----------/    NBI-DM |
+                  |                                   |
+                  |                                   |
+     +------------+------------+         +------------+------------+
+     |       Controller-A      |         |       Controller-B      |
+     +-------------------------+         +-------------------------+
+
+   Notes:
+   - AS1-DM: Application 1 (APP-1) application-specific data model
+   - AS2-DM: Application 1 (APP-2) application-specific data model
+   - NBI DM: Standard data model exposed by both network controllers
+   - DM-Map1: Application specific data model mapper between the NBI DM
+     and the AS1-DM
+   - DM-Map2: Application specific data model mapper between the NBI DM
+     and the AS2-DM
+
+      Figure 4: Use of a common and standardized data model to support
+                          multi-vendor integration
+
+   In this case, the data model exposed by network controllers (e.g.,
+   controller-A and controller-B) is the same and each application needs
+   to translate/map the standardized data model exposed by the network
+   controller to its own application-specific data model.
+
+   Following this approach an existing application (e.g., Application-1)
+   can be ported from one controller to another controller (e.g., from
+   controller-A to controller-B) ideally with no change and additional
+   testing.
+
+   Reusing RFC8795 YANG data model for SIMAP applications will allow TE
+   and SIMAP application to co-exist on top of the same network
+   controller, allowing seamless migration from network scenarios
+   supporting only on of these application to network scenarios where
+   both applications are supported at the same time or even scenarios
+   where either or both applications are supported together with new
+   applications not yet defined.
+
+5.  Security Considerations
 
    TODO Security
 
-4.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-5.  Normative References
+7.  References
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
+7.1.  Normative References
 
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+   [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
+              Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
+              Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
+              2018, <https://www.rfc-editor.org/rfc/rfc8345>.
+
+   [RFC8795]  Liu, X., Bryskin, I., Beeram, V., Saad, T., Shah, H., and
+              O. Gonzalez de Dios, "YANG Data Model for Traffic
+              Engineering (TE) Topologies", RFC 8795,
+              DOI 10.17487/RFC8795, August 2020,
+              <https://www.rfc-editor.org/rfc/rfc8795>.
+
+7.2.  Informative References
+
+   [I-D.havel-nmop-simap-yang]
+              Havel, O., Davis, N., Claise, B., de Dios, O. G., and T.
+              Graf, "A YANG Data Model for SIMAP", Work in Progress,
+              Internet-Draft, draft-havel-nmop-simap-yang-01, 20 October
+              2025, <https://datatracker.ietf.org/doc/html/draft-havel-
+              nmop-simap-yang-01>.
+
+   [I-D.ietf-nmop-simap-concept]
+              Havel, O., Claise, B., de Dios, O. G., and T. Graf,
+              "SIMAP: Concept, Requirements, and Use Cases", Work in
+              Progress, Internet-Draft, draft-ietf-nmop-simap-concept-
+              08, 23 February 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
+              simap-concept-08>.
+
+   [I-D.ietf-teas-te-topology-profiles]
+              Busi, I., Liu, X., Bryskin, I., Saad, T., and O. G. de
+              Dios, "Profiles for Traffic Engineering (TE) Topology Data
+              Model and Applicability to non-TE-centric Use Cases", Work
+              in Progress, Internet-Draft, draft-ietf-teas-te-topology-
+              profiles-05, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-te-
+              topology-profiles-05>.
+
+Appendix A.  Example of deviation statements
+
+   [I-D.ietf-teas-te-topology-profiles] notes that existing
+   implementations of [RFC8795] have described the implemented profiled
+   by manually pruning/profiling the YANG tree generated fom the YANG
+   module defined in [RFC8795] and those pruned/profiled YANG trees
+   provided sufficient input for the implementers to generate proper
+   APIs.
+
+   However, [I-D.ietf-teas-te-topology-profiles] is also exploring the
+   possibility to use the YANG deviation statements to programmatically
+   generate pruned/profiled YANG trees.
+
+   An example of a YANG deviation module for SIMAP applications is
+   provided below.
+
+   module ietf-simap-deviation-example {
+     yang-version 1.1;
+     namespace "https://example.com/ns/ietf-simap-deviation-example";
+     prefix simapd;
+
+     import ietf-network {
+       prefix nw;
+       reference
+         "RFC 8345: A YANG Data Model for Network Topologies";
+     }
+     import ietf-network-topology {
+       prefix nt;
+       reference
+         "RFC 8345: A YANG Data Model for Network Topologies";
+     }
+     import ietf-te-topology {
+       prefix tet;
+       reference
+         "RFC 8795: YANG Data Model for Traffic Engineering (TE)
+                    Topologies";
+     }
+
+     organization
+       "Network Management Operations (NMOP) Working Group";
+     contact
+       "WG Web:   <https://datatracker.ietf.org/group/nmop/>
+        WG List:  <mailto:nmop@ietf.org>
+
+        Editor:   Italo Busi
+                  <Italo.Busi@huawei.com>";
+     description
+       "This module defines an example of a YANG data model containing
+        the YANG deviation statements to support the implementation of
+        the SIMAP YANG data model re-using a sub-set of the TE topology
+        model.
+
+        Copyright (c) 2026 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices..";
+
+     revision 2026-03-02 {
+       description
+         "Initial version";
+       reference
+         "RFC XXXX: Applicability of existing YANG data models to
+                    SIMAP";
+     }
+
+     /*
+      * Deviations
+      */
+
+     deviation "/nw:networks/tet:te" {
+       description
+         "SIMAP implementations are not required to implement TE
+          templates.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/tet:te-topology-identifier" {
+       description
+         "SIMAP implementations are not required to implement TE
+          topology identifiers.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/tet:te" {
+       description
+         "SIMAP implementations are not required to implement the
+          augmentation for TE topologies.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te-node-id" {
+       description
+         "SIMAP implementations are not required to implement TE node
+          identifiers.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te" {
+       description
+         "SIMAP implementations are not required to implement TE node
+          identifiers.";
+       deviate delete {
+         must '../te-node-id';
+       }
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-template" {
+       description
+         "SIMAP implementations are not required to implement TE node
+          templates.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:admin-status" {
+       description
+         "SIMAP implementations are not required to implement the TE
+          node administrative status.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:label-restrictions" {
+       description
+         "SIMAP implementations are not required to implement the label
+          restrictions for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:underlay" {
+       description
+         "SIMAP implementations are not required to implement the
+          underlay paths for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:path-constraints" {
+       description
+         "SIMAP implementations are not required to implement the
+          path constraints for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:optimizations" {
+       description
+         "SIMAP implementations are not required to implement the
+          path optimizations for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:tiebreaker" {
+       description
+         "SIMAP implementations are not required to implement the
+          tiebreaker for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:path-properties" {
+       description
+         "SIMAP implementations are not required to implement the
+          path properties for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:from"
+             + "/tet:label-restrictions" {
+       description
+         "SIMAP implementations are not required to implement the label
+          restrictions for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:to"
+             + "/tet:label-restrictions" {
+       description
+         "SIMAP implementations are not required to implement the label
+          restrictions for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:underlay" {
+       description
+         "SIMAP implementations are not required to implement the
+          underlay paths for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:path-constraints" {
+       description
+         "SIMAP implementations are not required to implement the
+          path constraints for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:optimizations" {
+       description
+         "SIMAP implementations are not required to implement the
+          path optimizations for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:tiebreaker" {
+       description
+         "SIMAP implementations are not required to implement the
+          tiebreaker for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:connectivity-matrices"
+             + "/tet:connectivity-matrix/tet:path-properties" {
+       description
+         "SIMAP implementations are not required to implement the
+          path properties for the connectivity matrix.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:te-node-attributes/tet:signaling-address" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's signaling address.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:geolocation" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's geolocation.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:is-multi-access-dr" {
+       description
+         "SIMAP implementations are not required to implement the
+          designated router information.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:information-source" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:information-source-instance" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:information-source-state" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:information-source-entry" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:statistics" {
+       description
+         "SIMAP implementations are not required to implement the
+          node's statistics (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/tet:te"
+             + "/tet:tunnel-termination-point" {
+       description
+         "SIMAP implementations are not required to implement the
+          tunnel termination points (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:bundle-stack-level/tet:component" {
+       description
+         "SIMAP implementations are not required to implement the
+          bundle links as a set of component interfaces.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-template" {
+       description
+         "SIMAP implementations are not required to implement the
+          TE link templates.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:primary-path"
+             + "/tet:path-element/tet:type/tet:label" {
+       description
+         "SIMAP implementations are not required to implement the
+          label hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:primary-path"
+             + "/tet:path-element/tet:type/tet:as-number" {
+       description
+         "SIMAP implementations are not required to implement the
+          AS hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
+             + "/tet:path-element/tet:type/tet:label" {
+       description
+         "SIMAP implementations are not required to implement the
+          label hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/tet:backup-path"
+             + "/tet:path-element/tet:type/tet:as-number" {
+       description
+         "SIMAP implementations are not required to implement the
+          AS hop.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay/"
+             + "tet:protection-type" {
+       description
+         "SIMAP implementations are not required to implement the
+          protection type for the backup paths of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay"
+             + "/tet:tunnel-termination-points" {
+       description
+         "SIMAP implementations are not required to implement the
+          underlay tunnel termination points of a link
+          (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:underlay"
+             + "/tet:tunnels" {
+       description
+         "SIMAP implementations are not required to implement the
+          underlay tunnels of a link (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:admin-status" {
+       description
+         "SIMAP implementations are not required to implement the
+          administrative status of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:link-index" {
+       description
+         "SIMAP implementations are not required to implement the
+          link identifier.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:administrative-group" {
+       description
+         "SIMAP implementations are not required to implement the
+          administrative groups of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes"
+             + "/tet:interface-switching-capability"
+             + "/tet:max-lsp-bandwidth" {
+       description
+         "SIMAP implementations are not required to implement the
+          maximum LSP bandwidth.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:label-restrictions" {
+       description
+         "SIMAP implementations are not required to implement the
+          label restrictions of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:link-protection-type" {
+       description
+         "SIMAP implementations are not required to implement the
+          link protection type.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:max-link-bandwidth" {
+       description
+         "SIMAP implementations are not required to implement the
+          bandwidth information (capacity) of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:max-resv-link-bandwidth" {
+       description
+         "SIMAP implementations are not required to implement the
+          bandwidth information (capacity) of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:unreserved-bandwidth" {
+       description
+         "SIMAP implementations are not required to implement the
+          bandwidth information (capacity) of a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:te-default-metric" {
+       description
+         "SIMAP implementations are not required to implement the
+          TE default metric of a link (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:te-delay-metric" {
+       description
+         "SIMAP implementations are not required to implement the
+          delay of a link (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:te-igp-metric" {
+       description
+         "SIMAP implementations are not required to implement the
+          IGP metric of a link (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:te-srlgs" {
+       description
+         "SIMAP implementations are not required to implement the
+          Shared Risk Link Groups (SRLGs) of a link (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:te-link-attributes/tet:te-nsrlgs" {
+       description
+         "SIMAP implementations are not required to implement the
+          Non-Shared Risk Link Groups (NSRLGs) of a link
+          (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:information-source" {
+       description
+         "SIMAP implementations are not required to implement the
+          link's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:information-source-instance" {
+       description
+         "SIMAP implementations are not required to implement the
+          link's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:information-source-state" {
+       description
+         "SIMAP implementations are not required to implement the
+          link's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:information-source-entry" {
+       description
+         "SIMAP implementations are not required to implement the
+          link's information source (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:recovery" {
+       description
+         "SIMAP implementations are not required to report the status
+          of the recovery process on a link.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:underlay" {
+       description
+         "SIMAP implementations are not required to report the state
+          attributes for the TE link underlay.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nt:link/tet:te"
+             + "/tet:statistics" {
+       description
+         "SIMAP implementations are not required to implement the
+          link's statistics (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te-tp-id" {
+       description
+         "SIMAP implementations are not required to implement TE
+          termination point identifier.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te" {
+       description
+         "SIMAP implementations are not required to implement TE
+          termination point identifier.";
+       deviate delete {
+         must '../te-tp-id';
+       }
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te/tet:admin-status" {
+       description
+         "SIMAP implementations are not required to implement the
+          administrative status of a termination point.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te/tet:interface-switching-capability" {
+       description
+         "SIMAP implementations are not required to report the
+          'interface-switching-capability' on the termination points.";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te/tet:inter-layer-lock-id" {
+       description
+         "SIMAP implementations are not required to implement the
+          inter-layer lock-id (to be confirmed).";
+       deviate not-supported;
+     }
+
+     deviation "/nw:networks/nw:network/nw:node/nt:termination-point"
+             + "/tet:te/tet:geolocation" {
+       description
+         "SIMAP implementations are not required to implement the
+          geolocation of a termination point.";
+       deviate not-supported;
+     }
+   }
+
+              Figure 5: Example of SIMA deviation YANG module
+
+   The pruned/profiled YANG tree, generated using 'pyang' tool, is
+   provided below:
+
+   module: ietf-network
+     +--rw networks
+        +--rw network* [network-id]
+           +--rw network-id            network-id
+           +--rw network-types
+           |  +--rw tet:te-topology!
+           +--rw supporting-network* [network-ref]
+           |  +--rw network-ref    -> /networks/network/network-id
+           +--rw node* [node-id]
+           |  +--rw node-id                 node-id
+           |  +--rw supporting-node* [network-ref node-ref]
+           |  |  +--rw network-ref
+           |  |  |       -> ../../../supporting-network/network-ref
+           |  |  +--rw node-ref       -> /networks/network/node/node-id
+           |  +--rw nt:termination-point* [tp-id]
+           |  |  +--rw nt:tp-id                           tp-id
+           |  |  +--rw nt:supporting-termination-point*
+           |  |  |       [network-ref node-ref tp-ref]
+           |  |  |  +--rw nt:network-ref
+           |  |  |  |       -> ../../../nw:supporting-node/network-ref
+           |  |  |  +--rw nt:node-ref
+           |  |  |  |       -> ../../../nw:supporting-node/node-ref
+           |  |  |  +--rw nt:tp-ref         leafref
+           |  |  +--rw tet:te!
+           |  |     +--rw tet:name?                   string
+           |  |     +--rw tet:inter-domain-plug-id?   binary
+           |  |     +--ro tet:oper-status?
+           |  |             te-types:te-oper-status
+           |  +--rw tet:te!
+           |     +--rw tet:te-node-attributes
+           |     |  +--rw tet:connectivity-matrices
+           |     |  |  +--rw tet:number-of-entries?     uint16
+           |     |  |  +--rw tet:is-allowed?            boolean
+           |     |  |  +--rw tet:connectivity-matrix* [id]
+           |     |  |     +--rw tet:id            uint32
+           |     |  |     +--rw tet:from
+           |     |  |     |  +--rw tet:tp-ref?   leafref
+           |     |  |     +--rw tet:to
+           |     |  |     |  +--rw tet:tp-ref?   leafref
+           |     |  |     +--rw tet:is-allowed?   boolean
+           |     |  +--rw tet:domain-id?               uint32
+           |     |  +--rw tet:is-abstract?             empty
+           |     |  +--rw tet:name?                    string
+           |     |  +--rw tet:underlay-topology {te-topology-hierarchy}?
+           |     |     +--rw tet:network-ref?
+           |     |             -> /nw:networks/network/network-id
+           |     +--ro tet:oper-status?          te-types:te-oper-status
+           +--rw nt:link* [link-id]
+              +--rw nt:link-id            link-id
+              +--rw nt:source
+              |  +--rw nt:source-node?   -> ../../../nw:node/node-id
+              |  +--rw nt:source-tp?     leafref
+              +--rw nt:destination
+              |  +--rw nt:dest-node?   -> ../../../nw:node/node-id
+              |  +--rw nt:dest-tp?     leafref
+              +--rw nt:supporting-link* [network-ref link-ref]
+              |  +--rw nt:network-ref
+              |  |       -> ../../../nw:supporting-network/network-ref
+              |  +--rw nt:link-ref       leafref
+              +--rw tet:te!
+                 +--rw (tet:bundle-stack-level)?
+                 |  +--:(tet:bundle)
+                 |     +--rw tet:bundled-links
+                 |        +--rw tet:bundled-link* [sequence]
+                 |           +--rw tet:sequence      uint32
+                 |           +--rw tet:src-tp-ref?   leafref
+                 |           +--rw tet:des-tp-ref?   leafref
+                 +--rw tet:te-link-attributes
+                 |  +--rw tet:access-type?
+                 |  |       te-types:te-link-access-type
+                 |  +--rw tet:external-domain
+                 |  |  +--rw tet:network-ref?
+                 |  |  |       -> /nw:networks/network/network-id
+                 |  |  +--rw tet:remote-te-node-id?
+                 |  |  |       te-types:te-node-id
+                 |  |  +--rw tet:remote-te-link-tp-id?
+                 |  |          te-types:te-tp-id
+                 |  +--rw tet:is-abstract?                      empty
+                 |  +--rw tet:name?                             string
+                 |  +--rw tet:underlay {te-topology-hierarchy}?
+                 |  |  +--rw tet:enabled?        boolean
+                 |  |  +--rw tet:primary-path
+                 |  |  |  +--rw tet:network-ref?
+                 |  |  |  |       -> /nw:networks/network/network-id
+                 |  |  |  +--rw tet:path-element* [path-element-id]
+                 |  |  |     +--rw tet:path-element-id
+                 |  |  |     |       uint32
+                 |  |  |     +--rw (tet:type)?
+                 |  |  |        +--:(tet:numbered-node-hop)
+                 |  |  |        |  +--rw tet:numbered-node-hop
+                 |  |  |        |     +--rw tet:node-id-uri?
+                 |  |  |        |     |       nw:node-id
+                 |  |  |        |     +--rw tet:node-id?
+                 |  |  |        |     |       te-node-id
+                 |  |  |        |     +--rw tet:hop-type?
+                 |  |  |        |             te-hop-type
+                 |  |  |        +--:(tet:numbered-link-hop)
+                 |  |  |        |  +--rw tet:numbered-link-hop
+                 |  |  |        |     +--rw tet:link-tp-id    te-tp-id
+                 |  |  |        |     +--rw tet:hop-type?
+                 |  |  |        |     |       te-hop-type
+                 |  |  |        |     +--rw tet:direction?
+                 |  |  |        |             te-link-direction
+                 |  |  |        +--:(tet:unnumbered-link-hop)
+                 |  |  |           +--rw tet:unnumbered-link-hop
+                 |  |  |              +--rw tet:link-tp-id-uri?
+                 |  |  |              |       nt:tp-id
+                 |  |  |              +--rw tet:link-tp-id?
+                 |  |  |              |       te-tp-id
+                 |  |  |              +--rw tet:node-id-uri?
+                 |  |  |              |       nw:node-id
+                 |  |  |              +--rw tet:node-id?
+                 |  |  |              |       te-node-id
+                 |  |  |              +--rw tet:hop-type?
+                 |  |  |              |       te-hop-type
+                 |  |  |              +--rw tet:direction?
+                 |  |  |                      te-link-direction
+                 |  |  +--rw tet:backup-path* [index]
+                 |  |     +--rw tet:index           uint32
+                 |  |     +--rw tet:network-ref?
+                 |  |     |       -> /nw:networks/network/network-id
+                 |  |     +--rw tet:path-element* [path-element-id]
+                 |  |        +--rw tet:path-element-id
+                 |  |        |       uint32
+                 |  |        +--rw (tet:type)?
+                 |  |           +--:(tet:numbered-node-hop)
+                 |  |           |  +--rw tet:numbered-node-hop
+                 |  |           |     +--rw tet:node-id-uri?
+                 |  |           |     |       nw:node-id
+                 |  |           |     +--rw tet:node-id?
+                 |  |           |     |       te-node-id
+                 |  |           |     +--rw tet:hop-type?
+                 |  |           |             te-hop-type
+                 |  |           +--:(tet:numbered-link-hop)
+                 |  |           |  +--rw tet:numbered-link-hop
+                 |  |           |     +--rw tet:link-tp-id    te-tp-id
+                 |  |           |     +--rw tet:hop-type?
+                 |  |           |     |       te-hop-type
+                 |  |           |     +--rw tet:direction?
+                 |  |           |             te-link-direction
+                 |  |           +--:(tet:unnumbered-link-hop)
+                 |  |              +--rw tet:unnumbered-link-hop
+                 |  |                 +--rw tet:link-tp-id-uri?
+                 |  |                 |       nt:tp-id
+                 |  |                 +--rw tet:link-tp-id?
+                 |  |                 |       te-tp-id
+                 |  |                 +--rw tet:node-id-uri?
+                 |  |                 |       nw:node-id
+                 |  |                 +--rw tet:node-id?
+                 |  |                 |       te-node-id
+                 |  |                 +--rw tet:hop-type?
+                 |  |                 |       te-hop-type
+                 |  |                 +--rw tet:direction?
+                 |  |                         te-link-direction
+                 |  +--rw tet:interface-switching-capability*
+                 |          [switching-capability encoding]
+                 |     +--rw tet:switching-capability    identityref
+                 |     +--rw tet:encoding                identityref
+                 +--ro tet:oper-status?
+                 |       te-types:te-oper-status
+                 +--ro tet:is-transitional?       empty
 
 Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
-   italobusi
-   Your Organization Here
+   Italo Busi
+   Huawei
    Email: italo.busi@huawei.com
+
+
+   Aihua Guo
+   Futurewei Technologies
+   Email: aihuaguo.ietf@gmail.com
+
+
+   Vishnu Pavan Beeram
+   Juniper Networks
+   Email: vbeeram@juniper.net
+
+
+   Sergio Belotti
+   Nokia
+   Email: sergio.belotti@nokia.com
+
+
+   Tarek Saad
+   Cisco Systems Inc.
+   Email: tsaad.net@gmail.com
