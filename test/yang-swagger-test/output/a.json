@@ -1,0 +1,539 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "example-config API generated from example-config.yang",
+        "version": "1.0.0",
+        "title": "example-config API"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "tags": [
+        {
+            "name": "top-con"
+        }
+    ],
+    "paths": {
+        "/top-con/": {
+            "post": {
+                "summary": "Create top-con by ID",
+                "description": "Create operation of resource: top-con",
+                "operationId": "createTopConByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "createTopConCmd",
+                    "summary": "Create operation for top-con",
+                    "commandUse": "top-con",
+                    "parentCommand": "createCmd",
+                    "pathToPrint": "/top-con/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-2",
+                            "defaultValue": "",
+                            "description": "Second direct attribute of top-con."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "top-con",
+                        "schema": {
+                            "$ref": "#/definitions/TopConSchema"
+                        },
+                        "description": "top-conbody object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Read top-con",
+                "description": "Read operation of resource: top-con",
+                "operationId": "readTopCon",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "readTopConCmd",
+                    "summary": "Read operation for top-con",
+                    "commandUse": "top-con",
+                    "parentCommand": "readCmd",
+                    "pathToPrint": "/top-con/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-2",
+                            "defaultValue": "",
+                            "description": "Second direct attribute of top-con."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/TopConSchema"
+                        }
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update top-con by ID",
+                "description": "Update operation of resource: top-con",
+                "operationId": "updateTopConByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "updateTopConCmd",
+                    "summary": "Update operation for top-con",
+                    "commandUse": "top-con",
+                    "parentCommand": "updateCmd",
+                    "pathToPrint": "/top-con/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-2",
+                            "defaultValue": "",
+                            "description": "Second direct attribute of top-con."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "top-con",
+                        "schema": {
+                            "$ref": "#/definitions/TopConSchema"
+                        },
+                        "description": "top-conbody object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete top-con by ID",
+                "description": "Delete operation of resource: top-con",
+                "operationId": "deleteTopConByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "deleteTopConCmd",
+                    "summary": "Delete operation for top-con",
+                    "commandUse": "top-con",
+                    "parentCommand": "deleteCmd",
+                    "pathToPrint": "/top-con/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-2",
+                            "defaultValue": "",
+                            "description": "Second direct attribute of top-con."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            }
+        },
+        "/top-con/con-b/": {
+            "post": {
+                "summary": "Create con-b by ID",
+                "description": "Create operation of resource: con-b",
+                "operationId": "createTopConConBByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "createTopConConBCmd",
+                    "summary": "Create operation for con-b",
+                    "commandUse": "con-b",
+                    "parentCommand": "createTopConCmd",
+                    "pathToPrint": "/top-con/con-b/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-b-1",
+                            "defaultValue": "",
+                            "description": "The only leaf within container con-b."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "con-b",
+                        "schema": {
+                            "$ref": "#/definitions/ConBSchema"
+                        },
+                        "description": "con-bbody object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Read con-b",
+                "description": "Read operation of resource: con-b",
+                "operationId": "readTopConConB",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "readTopConConBCmd",
+                    "summary": "Read operation for con-b",
+                    "commandUse": "con-b",
+                    "parentCommand": "readTopConCmd",
+                    "pathToPrint": "/top-con/con-b/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-b-1",
+                            "defaultValue": "",
+                            "description": "The only leaf within container con-b."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ConBSchema"
+                        }
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update con-b by ID",
+                "description": "Update operation of resource: con-b",
+                "operationId": "updateTopConConBByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "updateTopConConBCmd",
+                    "summary": "Update operation for con-b",
+                    "commandUse": "con-b",
+                    "parentCommand": "updateTopConCmd",
+                    "pathToPrint": "/top-con/con-b/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-b-1",
+                            "defaultValue": "",
+                            "description": "The only leaf within container con-b."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "con-b",
+                        "schema": {
+                            "$ref": "#/definitions/ConBSchema"
+                        },
+                        "description": "con-bbody object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete con-b by ID",
+                "description": "Delete operation of resource: con-b",
+                "operationId": "deleteTopConConBByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "deleteTopConConBCmd",
+                    "summary": "Delete operation for con-b",
+                    "commandUse": "con-b",
+                    "parentCommand": "deleteTopConCmd",
+                    "pathToPrint": "/top-con/con-b/",
+                    "primitiveFlagParam": [
+                        {
+                            "name": "attr-b-1",
+                            "defaultValue": "",
+                            "description": "The only leaf within container con-b."
+                        }
+                    ]
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            }
+        },
+        "/top-con/con-b/attr-b-1/": {
+            "get": {
+                "summary": "Read attr-b-1 by ID",
+                "description": "Read operation of resource: attr-b-1",
+                "operationId": "readTopConConBAttrB1ByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "readTopConConBAttrB1Cmd",
+                    "summary": "Read operation for attr-b-1",
+                    "commandUse": "attr-b-1",
+                    "parentCommand": "readTopConConBCmd",
+                    "pathToPrint": "/top-con/con-b/attr-b-1/"
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "string",
+                            "description": "The only leaf within container con-b."
+                        }
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update attr-b-1 by ID",
+                "description": "Update operation of resource: attr-b-1",
+                "operationId": "updateTopConConBAttrB1ByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "updateTopConConBAttrB1Cmd",
+                    "summary": "Update operation for attr-b-1",
+                    "commandUse": "attr-b-1",
+                    "parentCommand": "updateTopConConBCmd",
+                    "pathToPrint": "/top-con/con-b/attr-b-1/"
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "attr-b-1",
+                        "schema": {
+                            "type": "string",
+                            "description": "The only leaf within container con-b."
+                        },
+                        "description": "The only leaf within container con-b."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            }
+        },
+        "/top-con/attr-2/": {
+            "get": {
+                "summary": "Read attr-2 by ID",
+                "description": "Read operation of resource: attr-2",
+                "operationId": "readTopConAttr2ByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "readTopConAttr2Cmd",
+                    "summary": "Read operation for attr-2",
+                    "commandUse": "attr-2",
+                    "parentCommand": "readTopConCmd",
+                    "pathToPrint": "/top-con/attr-2/"
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "Second direct attribute of top-con."
+                        }
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update attr-2 by ID",
+                "description": "Update operation of resource: attr-2",
+                "operationId": "updateTopConAttr2ByID",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "x-cliParam": {
+                    "commandName": "updateTopConAttr2Cmd",
+                    "summary": "Update operation for attr-2",
+                    "commandUse": "attr-2",
+                    "parentCommand": "updateTopConCmd",
+                    "pathToPrint": "/top-con/attr-2/"
+                },
+                "tags": [
+                    "top-con"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "attr-2",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "Second direct attribute of top-con."
+                        },
+                        "description": "Second direct attribute of top-con."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Internal Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "TopConSchema": {
+            "description": "The top-level root container.",
+            "properties": {
+                "conB": {
+                    "properties": {
+                        "attrB1": {
+                            "type": "string",
+                            "description": "The only leaf within container con-b."
+                        }
+                    }
+                },
+                "attr2": {
+                    "type": "boolean",
+                    "description": "Second direct attribute of top-con."
+                }
+            }
+        },
+        "ConBSchema": {
+            "properties": {
+                "attrB1": {
+                    "type": "string",
+                    "description": "The only leaf within container con-b."
+                }
+            }
+        }
+    }
+}

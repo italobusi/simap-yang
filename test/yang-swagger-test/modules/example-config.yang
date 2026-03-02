@@ -1,0 +1,53 @@
+module example-config {
+  yang-version 1.1;
+  namespace "urn:example:config";
+  prefix "ex";
+
+  organization "Data Architect Solutions";
+  description "A sample module demonstrating nested container structures.";
+
+  revision 2026-02-26 {
+    description "Initial version.";
+  }
+
+  container top-con {
+    description "The top-level root container.";
+
+    // Container B branch
+    container con-b {
+      leaf attr-b-1 {
+        type string;
+        description "The only leaf within container con-b.";
+      }
+    }
+
+    // Direct leaf attributes of top-con
+    leaf attr-1 {
+      type uint32;
+      description "First direct attribute of top-con.";
+    }
+
+    leaf attr-2 {
+      type boolean;
+      description "Second direct attribute of top-con.";
+    }
+
+    // Container A branch
+    container con-a {
+      description "Container con-a containing a child container and a leaf.";
+
+      container con-a-a {
+        leaf attr-a-a-1 {
+          type string;
+          description "The only leaf inside the nested con-a-a.";
+        }
+      }
+
+      leaf attr-a-1 {
+        type int16;
+        description "Direct leaf under con-a, sibling to con-a-a.";
+      }
+    }
+  }
+}
+

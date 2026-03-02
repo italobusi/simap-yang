@@ -1,0 +1,30 @@
+module example-deviation-a {
+  yang-version 1.1;
+  namespace "urn:example:deviations";
+  prefix "ex-dev";
+
+  // Import the original module to reference its paths
+  import example-config {
+    prefix "ex";
+  }
+
+  organization "Data Architect Solutions";
+  description "Deviations to prune top-con structure.";
+
+  revision 2026-02-26 {
+    description "Removed con-a and attr-1.";
+  }
+
+  // Deviation to remove the 'con-a' container and all its children
+  deviation "/ex:top-con/ex:con-a" {
+    description "Removing con-a and its nested children (con-a-a, attr-a-1).";
+    deviate not-supported;
+  }
+
+  // Deviation to remove the 'attr-1' leaf
+  deviation "/ex:top-con/ex:attr-1" {
+    description "Removing the attr-1 leaf from top-con.";
+    deviate not-supported;
+  }
+}
+
