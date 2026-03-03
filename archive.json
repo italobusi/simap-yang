@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-01T02:49:48.194255+00:00",
+  "timestamp": "2026-03-03T02:40:53.497712+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -56,24 +56,26 @@
       "id": "PR_kwDOROd98s7E4P4r",
       "title": "Initial draft",
       "url": "https://github.com/italobusi/simap-yang/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "italobusi",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Proposed text for the initial version of the draft",
       "createdAt": "2026-02-19T13:20:05Z",
-      "updatedAt": "2026-02-27T22:21:03Z",
+      "updatedAt": "2026-03-02T18:48:36Z",
       "baseRepository": "italobusi/simap-yang",
       "baseRefName": "main",
       "baseRefOid": "5e0809da5c58966b481d8ee9afb78aa20f104a00",
       "headRepository": "italobusi/simap-yang",
       "headRefName": "initial-draft",
-      "headRefOid": "66bfd3758919d7d5020db70fae5b41c4861b0560",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "801022ae476f46104a8a3a23f832fb9be27fab5e",
+      "closedAt": "2026-03-02T18:48:36Z",
+      "mergedAt": "2026-03-02T18:48:36Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "be9914ecbb09e50b1a011606b11304dfd410ff45"
+      },
       "comments": [
         {
           "author": "italobusi",
