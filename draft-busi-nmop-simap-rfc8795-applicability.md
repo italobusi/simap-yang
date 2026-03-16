@@ -34,8 +34,8 @@ author:
     email: aihuaguo.ietf@gmail.com
   -
     name: Vishnu Pavan Beeram
-    org: Juniper Networks
-    email: vbeeram@juniper.net
+    org: HPE
+    email: vbeeram@hpe.com
   -
     name: Sergio Belotti
     org: Nokia
@@ -44,6 +44,10 @@ author:
     name: Tarek Saad
     org: Cisco Systems Inc.
     email: tsaad.net@gmail.com
+  -
+    name: Julien Meuric
+    org: Orange
+    email: julien.meuric@orange.com
 
 normative:
 
