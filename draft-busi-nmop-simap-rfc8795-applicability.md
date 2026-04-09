@@ -149,7 +149,7 @@ This relationship can be modelled using the link 'underlay' relationship, as sho
 Note: in this case each link is supported by a primary path composed by a single link.
 
 It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.
-ls
+
 ## Multi-domain Links
 
 Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
