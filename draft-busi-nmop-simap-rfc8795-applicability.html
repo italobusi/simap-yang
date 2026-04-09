@@ -1054,11 +1054,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">RFC8795 for SIMAP</td>
-<td class="right">March 2026</td>
+<td class="right">April 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Busi, et al.</td>
-<td class="center">Expires 17 September 2026</td>
+<td class="center">Expires 11 October 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-busi-nmop-simap-rfc8795-applicability-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-16" class="published">16 March 2026</time>
+<time datetime="2026-04-09" class="published">9 April 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-09-17">17 September 2026</time></dd>
+<dd class="expires"><time datetime="2026-10-11">11 October 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1148,7 +1148,7 @@ can be supported by the existing YANG data model defined in RFC 8795.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 11 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1197,6 +1197,9 @@ can be supported by the existing YANG data model defined in RFC 8795.<a href="#s
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-multi-layer-topologies" class="internal xref">Multi-Layer Topologies</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-multi-domain-links" class="internal xref">Multi-domain Links</a></p>
 </li>
             </ul>
 </li>
@@ -1418,14 +1421,14 @@ terminated on the same two termination points, as described in <span><a href="ht
         <h3 id="name-multi-layer-topologies">
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-multi-layer-topologies" class="section-name selfRef">Multi-Layer Topologies</a>
         </h3>
-<p id="section-3.4-1">As outlined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-08#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-nmop-simap-concept" class="cite xref">I-D.ietf-nmop-simap-concept</a>]</span>:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-1">As outlined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-10#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-nmop-simap-concept" class="cite xref">I-D.ietf-nmop-simap-concept</a>]</span>:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.4-2.1">
             <p id="section-3.4-2.1.1"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> is flexible and can support both the same network topology instance with multiple layers (e.g., Layer 2 and Layer 3) or separate network topology instances with supporting relations between them (e.g., separate Layer 2 and Layer 3). Therefore, multiple topology layers can be grouped into the same network topology instance, if solution requires.<a href="#section-3.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-3.4-3"><span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> augments <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and therefore provide the same flexibility.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01#section-3" class="relref">Section 3</a> of [<a href="#I-D.havel-nmop-simap-yang" class="cite xref">I-D.havel-nmop-simap-yang</a>]</span>:<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<p id="section-3.4-4">As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-02#section-3" class="relref">Section 3</a> of [<a href="#I-D.havel-nmop-simap-yang" class="cite xref">I-D.havel-nmop-simap-yang</a>]</span>:<a href="#section-3.4-4" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.4-5.1">
             <ul class="normal">
@@ -1548,10 +1551,15 @@ backup, load-sharing, path, sequential, or parallel roles.<a href="#section-3.4-
           </figcaption></figure>
 </div>
 <p id="section-3.4-11">Note: in this case each link is supported by a primary path composed by a single link.<a href="#section-3.4-11" class="pilcrow">¶</a></p>
-<p id="section-3.4-12">It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.
-ls
-## Multi-domain Links<a href="#section-3.4-12" class="pilcrow">¶</a></p>
-<p id="section-3.4-13">Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in <span><a href="https://rfc-editor.org/rfc/rfc8795#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#section-3.4-13" class="pilcrow">¶</a></p>
+<p id="section-3.4-12">It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.<a href="#section-3.4-12" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="multi-domain-links">
+<section id="section-3.5">
+        <h3 id="name-multi-domain-links">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-multi-domain-links" class="section-name selfRef">Multi-domain Links</a>
+        </h3>
+<p id="section-3.5-1">Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in <span><a href="https://rfc-editor.org/rfc/rfc8795#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1863,11 +1871,11 @@ ls
 <dl class="references">
 <dt id="I-D.havel-nmop-simap-yang">[I-D.havel-nmop-simap-yang]</dt>
         <dd>
-<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Davis, N.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"A YANG Data Model for SIMAP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-havel-nmop-simap-yang-01</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01">https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Davis, N.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"A YANG Data Model for SIMAP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-havel-nmop-simap-yang-02</span>, <time datetime="2026-03-19" class="refDate">19 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-02">https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-nmop-simap-concept">[I-D.ietf-nmop-simap-concept]</dt>
         <dd>
-<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"SIMAP: Concept, Requirements, and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-simap-concept-08</span>, <time datetime="2026-02-23" class="refDate">23 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-08">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-08</a>&gt;</span>. </dd>
+<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"SIMAP: Concept, Requirements, and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-simap-concept-10</span>, <time datetime="2026-03-31" class="refDate">31 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-10">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-te-topology-profiles">[I-D.ietf-teas-te-topology-profiles]</dt>
       <dd>

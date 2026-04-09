@@ -5,7 +5,7 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 17 September 2026                        Futurewei Technologies
+Expires: 11 October 2026                          Futurewei Technologies
                                                             V. P. Beeram
                                                                      HPE
                                                               S. Belotti
@@ -14,7 +14,7 @@ Expires: 17 September 2026                        Futurewei Technologies
                                                       Cisco Systems Inc.
                                                                J. Meuric
                                                                   Orange
-                                                           16 March 2026
+                                                            9 April 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 September 2026.
+   This Internet-Draft will expire on 11 October 2026.
 
 Copyright Notice
 
@@ -85,6 +85,7 @@ Table of Contents
      3.2.  Multipoint Links
      3.3.  Links and nodes down in topology
      3.4.  Multi-Layer Topologies
+     3.5.  Multi-domain Links
    4.  Design Considerations
    5.  Security Considerations
    6.  IANA Considerations
@@ -285,8 +286,9 @@ Table of Contents
    It is worth noting that modelling the bidirectional link is modelled
    as two unidirectional link instances allows also to unambiguously
    understand which unidirectional underlay link/path supports which
-   direction (forward or reverse) of the overlay bidirectional link. ls
-   ## Multi-domain Links
+   direction (forward or reverse) of the overlay bidirectional link.
+
+3.5.  Multi-domain Links
 
    Multi-domain links can be represented as open-ended links on each
    topology instance and unambiguously associated as multi-domain links
@@ -439,17 +441,16 @@ Table of Contents
    [I-D.havel-nmop-simap-yang]
               Havel, O., Davis, N., Claise, B., de Dios, O. G., and T.
               Graf, "A YANG Data Model for SIMAP", Work in Progress,
-              Internet-Draft, draft-havel-nmop-simap-yang-01, 20 October
-              2025, <https://datatracker.ietf.org/doc/html/draft-havel-
-              nmop-simap-yang-01>.
+              Internet-Draft, draft-havel-nmop-simap-yang-02, 19 March
+              2026, <https://datatracker.ietf.org/doc/html/draft-havel-
+              nmop-simap-yang-02>.
 
    [I-D.ietf-nmop-simap-concept]
               Havel, O., Claise, B., de Dios, O. G., and T. Graf,
               "SIMAP: Concept, Requirements, and Use Cases", Work in
               Progress, Internet-Draft, draft-ietf-nmop-simap-concept-
-              08, 23 February 2026,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
-              simap-concept-08>.
+              10, 31 March 2026, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-nmop-simap-concept-10>.
 
    [I-D.ietf-teas-te-topology-profiles]
               Busi, I., Liu, X., Bryskin, I., Saad, T., and O. G. de
