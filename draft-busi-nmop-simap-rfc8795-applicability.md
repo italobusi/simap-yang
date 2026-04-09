@@ -154,6 +154,20 @@ It is worth noting that modelling the bidirectional link is modelled as two unid
 
 Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
 
+## Multi-domain Nodes
+
+> Open issue: need further discussion about how to model the inter-area border nodes when belonging to different network topologies (one for each area)
+
+## Termination points supported by physical devices
+
+{{!RFC8345}} does not limit the type of components that can support a termination point.
+
+The mapping between a termination point and an inventory component is under definition in {{!I-D.ietf-ivy-network-inventory-topology}}.
+
+In the current version of {{!I-D.ietf-ivy-network-inventory-topology}}, a termination point can only be mappted to a port component. However, if needed, the IVY WG could update {{!I-D.ietf-ivy-network-inventory-topology}} to allow a termination point to be mapped to any type of component.
+
+> Open issue: need further discussion since the example provided in {{?I-D.ietf-nmop-simap-concept}} is the IP loopback interface which cannot be mapped to a port component. However, the IP loopback interface is logical interface where IP packets are terminated (layer transition) so it is worthwhile discussing whether it is mapped as a termination point or as a tunnel termination point, as defined in {{!RFC8795}}.
+
 # Design Considerations
 
 Reusing existing YANG data models to support multiple applications is a key enabler to achieve multi-vendor interoperability.
