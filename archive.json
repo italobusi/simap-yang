@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-09T02:49:03.462186+00:00",
+  "timestamp": "2026-04-12T03:24:02.609352+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -49,7 +49,56 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOROd98s78RZ_n",
+      "title": "Initial notes",
+      "url": "https://github.com/italobusi/simap-yang/issues/2",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Requirements already supported by RFC8795 and RFC8795: Section 7.10, Section 7.11, Section 7.12, Section 7.14, and Section 7.15.\n\nRequirements that need more discussion with TEAS WG to assess whether it is or not a gap in RFC8795: Section 7.5, Section 7.6, and Section 7.13.\n\nGaps to be addressed also for TE-centric networks or in general in scenarios where RFC8795 is implemented together with SIMAP: Section 7.4\n\n===\n\nSection 7.1: addressed in section 7.5 & section 7.6\n\nSection 7.2: Supported by RFC8795 for the requirements already supported by RFC8795 (likewise RFC8345)\n\nSection 7.3: Supported by RFC8345 and therefore by RFC8795. The description of the identify gap is not clear\n\n\nSection 7.4: Gap to be addressed also for TE-centric networks\n\nSection 7.5: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.6: Already supported by RFC8795 and RFC8795\n\nSection 7.7:\n\n- relationship properties: supported by RFC8795\n- TP/link role: not clear where is the gap: UNI and E-NNI are external links from a network topology perspective. Technology-specific augmentations can be different\n- node role: gap not clear, access, metro and core definitions are sometimes operators specific\n- layer/sub-layers: supported by RFC8795\n- tunnels and paths: supported by RFC8795 and TE tunnel models\n\nSection 7.8: requirement to be discussed\n\nSection 7.10: already supported by RFC8345 and RFC8795\n\nSection 7.11: already supported by RFC8345 and RFC8795\n\nSection 7.12: already supported by RFC8345 and RFC8795\n\nSection 7.13: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.14: already supported by RFC8345 and RFC8795\n\nSection 7.15: already supported by RFC8345 and RFC8795\n\nDESIGN\n\nSection 7.16: requirement needs clarification\n\nSection 7.17: requirement needs clarification\n\nSection 7.18: requirement needs clarification\n",
+      "createdAt": "2026-04-09T13:01:26Z",
+      "updatedAt": "2026-04-09T13:01:26Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOROd98s78S_P2",
+      "title": "Multi-domain node",
+      "url": "https://github.com/italobusi/simap-yang/issues/3",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-09T14:09:44Z",
+      "updatedAt": "2026-04-09T14:09:44Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOROd98s78S_hk",
+      "title": "Termination points supported by physical devices",
+      "url": "https://github.com/italobusi/simap-yang/issues/4",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-09T14:09:56Z",
+      "updatedAt": "2026-04-09T14:09:56Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,
@@ -206,6 +255,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOROd98s7RJ6pF",
+      "title": "Adding scenarios/requirements applicable mainly to IP networks",
+      "url": "https://github.com/italobusi/simap-yang/pull/5",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Multi-domain node: fix #3 \r\nTermination points supported by physical devices: fix #4 ",
+      "createdAt": "2026-04-09T14:10:16Z",
+      "updatedAt": "2026-04-09T14:10:16Z",
+      "baseRepository": "italobusi/simap-yang",
+      "baseRefName": "main",
+      "baseRefOid": "99dd85302c5af6874298672f692b8b9228502592",
+      "headRepository": "italobusi/simap-yang",
+      "headRefName": "ip-scenarios",
+      "headRefOid": "18b929a9312e3182368cf56e3eaea6c40b30d763",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
