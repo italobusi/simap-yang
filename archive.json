@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-12T03:24:02.609352+00:00",
+  "timestamp": "2026-04-23T03:24:30.189524+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -96,6 +96,22 @@
       "createdAt": "2026-04-09T14:09:56Z",
       "updatedAt": "2026-04-09T14:09:56Z",
       "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOROd98s8AAAABAIuDnA",
+      "title": "Add Jeff and Luis",
+      "url": "https://github.com/italobusi/simap-yang/issues/6",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "JEAN-FRANCOIS BOUQUIER, Vodafone <jeff.bouquier@vodafone.com>\n\nLUIS ANGEL MU\u00d1OZ, Vodafone <luis-angel.munoz@vodafone.com>",
+      "createdAt": "2026-04-21T16:55:34Z",
+      "updatedAt": "2026-04-21T16:57:01Z",
+      "closedAt": "2026-04-21T16:57:01Z",
       "comments": []
     }
   ],
