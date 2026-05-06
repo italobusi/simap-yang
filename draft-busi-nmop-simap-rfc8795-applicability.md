@@ -21,7 +21,7 @@ venue:
   mail: "nmop@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/nmop/"
   github: "italobusi/simap-yang"
-  latest: "https://italobusi.github.io/simap-yang/draft-xyz-nmop-simap-yang-applicability.html"
+  latest: "https://italobusi.github.io/simap-yang/draft-busi-nmop-simap-rfc8795-applicability.html"
 
 author:
   -
