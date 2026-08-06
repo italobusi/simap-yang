@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-24T04:08:03.935812+00:00",
+  "timestamp": "2026-08-06T02:57:01.922195+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -121,6 +121,38 @@
           "updatedAt": "2026-05-21T15:29:57Z"
         }
       ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOROd98s8AAAABLcpqWQ",
+      "title": "Add navigation from L2NM/L3NM and underlay tunnels (TE or non-TE)",
+      "url": "https://github.com/italobusi/simap-yang/issues/7",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-04T17:30:07Z",
+      "updatedAt": "2026-08-04T17:30:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOROd98s8AAAABLcpxDA",
+      "title": "Add description of TE tunnels",
+      "url": "https://github.com/italobusi/simap-yang/issues/8",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-04T17:30:19Z",
+      "updatedAt": "2026-08-04T17:30:19Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
