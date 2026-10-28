@@ -5,7 +5,7 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 7 January 2027                           Futurewei Technologies
+Expires: 1 May 2027                               Futurewei Technologies
                                                             V. P. Beeram
                                                                      HPE
                                                               S. Belotti
@@ -14,7 +14,7 @@ Expires: 7 January 2027                           Futurewei Technologies
                                                       Cisco Systems Inc.
                                                                J. Meuric
                                                                   Orange
-                                                             6 July 2026
+                                                         28 October 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2027.
+   This Internet-Draft will expire on 1 May 2027.
 
 Copyright Notice
 
@@ -442,18 +442,19 @@ Table of Contents
 7.2.  Informative References
 
    [I-D.havel-nmop-simap-yang]
-              Havel, O., Davis, N., Claise, B., de Dios, O. G., and T.
-              Graf, "A YANG Data Model for SIMAP", Work in Progress,
-              Internet-Draft, draft-havel-nmop-simap-yang-02, 19 March
-              2026, <https://datatracker.ietf.org/doc/html/draft-havel-
-              nmop-simap-yang-02>.
+              Havel, O., Davis, N., de Dios, O. G., and T. Graf, "A YANG
+              Data Model for SIMAP", Work in Progress, Internet-Draft,
+              draft-havel-nmop-simap-yang-03, 7 July 2026,
+              <https://datatracker.ietf.org/doc/html/draft-havel-nmop-
+              simap-yang-03>.
 
    [I-D.ietf-nmop-simap-concept]
               Havel, O., Claise, B., de Dios, O. G., and T. Graf,
               "SIMAP: Concept, Requirements, and Use Cases", Work in
               Progress, Internet-Draft, draft-ietf-nmop-simap-concept-
-              12, 19 June 2026, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-nmop-simap-concept-12>.
+              15, 23 October 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
+              simap-concept-15>.
 
    [I-D.ietf-teas-te-topology-profiles]
               Busi, I., Liu, X., Bryskin, I., Saad, T., and O. G. de
