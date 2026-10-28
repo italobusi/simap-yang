@@ -39,7 +39,7 @@ author:
   -
     name: Sergio Belotti
     org: Nokia
-    email: sergio.belotti@nokia.com
+    email: s.belotti.ietf@gmail.com
   -
     name: Tarek Saad
     org: Cisco Systems Inc.
