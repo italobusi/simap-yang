@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-06T02:57:01.922195+00:00",
+  "timestamp": "2026-10-29T05:03:38.143442+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -60,11 +60,19 @@
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
-      "body": "Requirements already supported by RFC8795 and RFC8795: Section 7.10, Section 7.11, Section 7.12, Section 7.14, and Section 7.15.\n\nRequirements that need more discussion with TEAS WG to assess whether it is or not a gap in RFC8795: Section 7.5, Section 7.6, and Section 7.13.\n\nGaps to be addressed also for TE-centric networks or in general in scenarios where RFC8795 is implemented together with SIMAP: Section 7.4\n\n===\n\nSection 7.1: addressed in section 7.5 & section 7.6\n\nSection 7.2: Supported by RFC8795 for the requirements already supported by RFC8795 (likewise RFC8345)\n\nSection 7.3: Supported by RFC8345 and therefore by RFC8795. The description of the identify gap is not clear\n\n\nSection 7.4: Gap to be addressed also for TE-centric networks\n\nSection 7.5: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.6: Already supported by RFC8795 and RFC8795\n\nSection 7.7:\n\n- relationship properties: supported by RFC8795\n- TP/link role: not clear where is the gap: UNI and E-NNI are external links from a network topology perspective. Technology-specific augmentations can be different\n- node role: gap not clear, access, metro and core definitions are sometimes operators specific\n- layer/sub-layers: supported by RFC8795\n- tunnels and paths: supported by RFC8795 and TE tunnel models\n\nSection 7.8: requirement to be discussed\n\nSection 7.10: already supported by RFC8345 and RFC8795\n\nSection 7.11: already supported by RFC8345 and RFC8795\n\nSection 7.12: already supported by RFC8345 and RFC8795\n\nSection 7.13: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.14: already supported by RFC8345 and RFC8795\n\nSection 7.15: already supported by RFC8345 and RFC8795\n\nDESIGN\n\nSection 7.16: requirement needs clarification\n\nSection 7.17: requirement needs clarification\n\nSection 7.18: requirement needs clarification\n",
+      "body": "# Analysis of requirements in [draft-havel-nmop-simap-yang-01](https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01)\n\nRequirements already supported by RFC8795 and RFC8795: Section 7.10, Section 7.11, Section 7.12, Section 7.14, and Section 7.15.\n\nRequirements that need more discussion with TEAS WG to assess whether it is or not a gap in RFC8795: Section 7.5, Section 7.6, and Section 7.13.\n\nGaps to be addressed also for TE-centric networks or in general in scenarios where RFC8795 is implemented together with SIMAP: Section 7.4\n\n===\n\nSection 7.1: addressed in section 7.5 & section 7.6\n\nSection 7.2: Supported by RFC8795 for the requirements already supported by RFC8795 (likewise RFC8345)\n\nSection 7.3: Supported by RFC8345 and therefore by RFC8795. The description of the identify gap is not clear\n\n\nSection 7.4: Gap to be addressed also for TE-centric networks\n\nSection 7.5: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.6: Already supported by RFC8795 and RFC8795\n\nSection 7.7:\n\n- relationship properties: supported by RFC8795\n- TP/link role: not clear where is the gap: UNI and E-NNI are external links from a network topology perspective. Technology-specific augmentations can be different\n- node role: gap not clear, access, metro and core definitions are sometimes operators specific\n- layer/sub-layers: supported by RFC8795\n- tunnels and paths: supported by RFC8795 and TE tunnel models\n\nSection 7.8: requirement to be discussed\n\nSection 7.10: already supported by RFC8345 and RFC8795\n\nSection 7.11: already supported by RFC8345 and RFC8795\n\nSection 7.12: already supported by RFC8345 and RFC8795\n\nSection 7.13: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n\nSection 7.14: already supported by RFC8345 and RFC8795\n\nSection 7.15: already supported by RFC8345 and RFC8795\n\nDESIGN\n\nSection 7.16: requirement needs clarification\n\nSection 7.17: requirement needs clarification\n\nSection 7.18: requirement needs clarification\n",
       "createdAt": "2026-04-09T13:01:26Z",
-      "updatedAt": "2026-04-09T13:01:26Z",
+      "updatedAt": "2026-10-28T22:12:21Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "OWNER",
+          "body": "# Updated Analysis of requirements in [draft-havel-nmop-simap-yang-03](https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-03)\n\nSee also: [SIMAP Drafts Proposal - 27 Oct 2026 .xlsx](https://github.com/user-attachments/files/34103824/SIMAP.Drafts.Proposal.-.27.Oct.2026.xlsx)\n\n> Section 7.1: addressed in section 7.5 & section 7.6\n> \n\nNow Section 7.4.1 (REQ-PROG-OPEN-MODEL)\n\nPartial overlap: not the full SIMAP lifecycle/what-if model\n\n**Action**: check whether the proposed solution can be used also with RFC8795\n\n> Section 7.2: Supported by RFC8795 for the requirements already supported by RFC8795 (likewise RFC8345)\n> \n\nNow Section 7.5.1 (REQ-STD-API-BASED)\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n\n> Section 7.3: Supported by RFC8345 and therefore by RFC8795. The description of the identify gap is not clear\n> \n\nNow Section 7.3.1 (REQ-GRAPH-TRAVERSAL)\n\n**Open Issue**: It will be added as feature so that RFC8795 can pick it or not.\n\n> Section 7.4: Gap to be addressed also for TE-centric networks\n> \n\nNow Section 7.4.2 (REQ-SNAPSHOT)\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n\n> Section 7.5: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n> \n\nNow Section 7.4.3 (REQ-POTENTIAL)\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n\n> Section 7.6: Already supported by RFC8795 and RFC8795\n> \n\nNow Section 7.4.4 (REQ-INTENDED)\n\n**Open Issue**: Check if NMDA is supporting it\n\n> Section 7.7:\n> \n> * relationship properties: supported by RFC8795\n> * TP/link role: not clear where is the gap: UNI and E-NNI are external links from a network topology perspective. Technology-specific augmentations can be different\n> * node role: gap not clear, access, metro and core definitions are sometimes operators specific\n> * layer/sub-layers: supported by RFC8795\n> * tunnels and paths: supported by RFC8795 and TE tunnel models\n> \n\nNow Section 7.2.8 (REQ-SEMANTIC)\n\nClarified that it is supported by RFC8795\n\n> Section 7.8: requirement to be discussed\n> \n\nNow Section 7.2.2 (REQ-EXTENSIBLE)\n\nGap clarified: no generic metadata mechanism\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n\n**Section 7.9 was missing**\n\nNow Section 7.5.2 (REQ-PLUGG)\n\nGap clarified: no reusable references from topology objects to external models/data sources\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n\n> Section 7.10: already supported by RFC8345 and RFC8795\n> \n\nNow Section 7.2.3 (REQ-BIDIR)\n\n> Section 7.11: already supported by RFC8345 and RFC8795\n> \n\nNow Section 7.2.4 (REQ-MULTI-POINT)\n\n> Section 7.12: already supported by RFC8345 and RFC8795\n> \n\nNow split into:\n\n- Section 7.2.5 (REQ-MULTI-DOMAIN: Multi-domain links)\n\n   Already supported by RFC8795\n\n- Section 7.2.6 (REQ-MULTI-DOMAIN: Multi-domain nodes)\n\n   **Open issue** to discuss with TEAS WG experts\n\n> Section 7.13: Need more discussion with TEAS WG. If it is a gap, it should be also addressed for TE-centric networks.\n> \n\nNow Section 7.2.7 (REQ-SUBNETWORK)\n\n> Section 7.14: already supported by RFC8345 and RFC8795\n> \n\nNow Section 7.2.9 (REQ-SUPPORTING)\n\n> Section 7.15: already supported by RFC8345 and RFC8795\n> \n\nNow Section 7.4.5 (REQ-STATUS)\n\n> DESIGN\n> \n> Section 7.16: requirement needs clarification\n> \n\nNow Section 7.2.1 (REQ-PROPERTIES)\n\n> Section 7.17: requirement needs clarification\n> \n\nNow Section 7.2.10 (REQ-RELATIONSHIPS)\n\nClarified it is supported by RFC8795\n\n> Section 7.18: requirement needs clarification\n\nNow Section 7.4.6 (REQ-TEMPO-HISTORY)\n\nGap clarified: no generic temporal/historical topology mechanism identified\n\n**Action**: confirm that the proposed solution can be used also with RFC8795\n",
+          "createdAt": "2026-10-28T22:10:36Z",
+          "updatedAt": "2026-10-28T22:12:21Z"
+        }
+      ]
     },
     {
       "number": 3,
@@ -331,6 +339,32 @@
       "headRepository": "italobusi/simap-yang",
       "headRefName": "ip-scenarios",
       "headRefOid": "18b929a9312e3182368cf56e3eaea6c40b30d763",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOROd98s8AAAABLSvd_Q",
+      "title": "Draft updates for IETF 127",
+      "url": "https://github.com/italobusi/simap-yang/pull/9",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Added preliminary conclusions",
+      "createdAt": "2026-10-28T15:08:34Z",
+      "updatedAt": "2026-10-28T16:11:01Z",
+      "baseRepository": "italobusi/simap-yang",
+      "baseRefName": "main",
+      "baseRefOid": "4189e1961a8ccc98b4a60e2fe4baca4ca7641f6e",
+      "headRepository": "italobusi/simap-yang",
+      "headRefName": "ietf-127",
+      "headRefOid": "a662115ca47c1cb6bb3e3322058645efedb7857e",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
