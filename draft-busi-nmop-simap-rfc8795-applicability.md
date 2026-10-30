@@ -39,7 +39,7 @@ author:
   -
     name: Sergio Belotti
     org: Nokia
-    email: sergio.belotti@nokia.com
+    email: s.belotti.ietf@gmail.com
   -
     name: Tarek Saad
     org: Cisco Systems Inc.
@@ -93,7 +93,7 @@ TODO Conventions and Definitions
 
 # Gap Analysis
 
-## Bidirectional Links
+## Bidirectional Links {#bidir-link}
 
 Bidirectional links can be modelled as two unidirectional links, one for each direction,
 terminated on the same two termination points, as described in {{Section 4.4.5 of !RFC8345}}.
@@ -105,7 +105,7 @@ It is worth noting that a bidirectional link can be unambiguously distinguished 
 ~~~~
 {: #fig-bidir-link title="Difference between one bidirectional link and two unidirectional links"}
 
-## Multipoint Links
+## Multipoint Links {#multipoint-link}
 
 Multipoint links can be modelled as pseudonodes, as described in {{Section 4.4.5 of !RFC8345}}.
 
@@ -116,11 +116,11 @@ The type of multipoint link (e.g., point-to-multipoint or multipoint-to-multipoi
 
 > Note: some examples for multipoint links are described in {{Section 2.5 of ?I-D.ietf-teas-te-topology-profiles}}. More examples can be provided in future versions of this document.
 
-## Links and nodes down in topology
+## Links and nodes down in topology {#operational-status}
 
 {{!RFC8795}} defines the 'oper-status' attribute for nodes, links and termination points, therefore allowing to report links and nodes down in the topology, and to unambiguously distinguishing between nodes and links which are up or down.
 
-## Multi-Layer Topologies
+## Multi-Layer Topologies {#multi-layer-topo}
 
 As outlined in {{Section 2 of ?I-D.ietf-nmop-simap-concept}}:
 
@@ -151,11 +151,11 @@ Note: in this case each link is supported by a primary path composed by a single
 
 It is worth noting that modelling the bidirectional link is modelled as two unidirectional link instances allows also to unambiguously understand which unidirectional underlay link/path supports which direction (forward or reverse) of the overlay bidirectional link.
 
-## Multi-domain Links
+## Multi-domain Links {#multi-domain-link}
 
 Multi-domain links can be represented as open-ended links on each topology instance and unambiguously associated as multi-domain links using either the remote node ID / link ID attribute or the inter-domain-plug-id, as described in {{Section 4.2 of !RFC8795}}.
 
-# Design Considerations
+# Design Considerations {#design}
 
 Reusing existing YANG data models to support multiple applications is a key enabler to achieve multi-vendor interoperability.
 
@@ -189,6 +189,106 @@ Following this approach an existing application (e.g., Application-1) can be por
 
 Reusing RFC8795 YANG data model for SIMAP applications will allow TE and SIMAP application to co-exist on top of the same network controller, allowing seamless migration from network scenarios supporting only on of these application to network scenarios where both applications are supported at the same time or even scenarios where either or both applications are supported together with new applications not yet defined.
 
+# Conclusions
+
+This document provides the analysis of how the YANG data models defined in {{!RFC8345}} and in {{!RFC8795}} can support the following SIMAP requirements, defined in {{?I-D.ietf-nmop-simap-concept}}:
+
+- REQ-BASIC-MODEL-SUPPORT:
+: As outlined in {{Section 4.1.1 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
+: The YANG data model defined in {{!RFC8795}} defines also the tunnel termination points which are not needed by SIMAP applications and therefore can be profiled out, as described in {{deviation-example}}.
+
+- REQ-LAYERED-MODEL:
+: As outlined in {{multi-layer-topo}}.
+
+- REQ-PASSIVE-TOPO:
+: As outlined in {{Section 4.1.4 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
+
+- REQ-VIEWPOINTS:
+: As outlined in {{Section 4.1.3 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}
+: The YANG data model defined in {{!RFC8795}} defines also the possibility to provide customized/abstract topologies.
+
+- REQ-TOPOLOGY-ABSTRACTION:
+: To describe in a future version of the document how the overlay/underlay constructs, defined in {{!RFC8795}}, provide navigation between different customized/abstract topologies.
+
+- REQ-LIVE:
+: As outlined in {{Section 4.1.5 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
+
+- REQ-LAYER-NAVIGATE:
+: As outlined in {{multi-layer-topo}}.
+
+- REQ-DATA-PLANE-FLOW:
+: As outlined in {{multi-layer-topo}}.
+
+- REQ-CONTROL-PLANE:
+: To be further detailed in future versions of this document.
+
+- REQ-TOPO-ONLY:
+: As outlined in {{Section 4.1.1 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
+: The YANG data model defined in {{!RFC8795}} defines additional 'underlay' relationships to address the lack of semantic of the supporting relationship defined in {{!RFC8345}}, as outlined in {{multi-layer-topo}}
+: The YANG data model defined in {{!RFC8795}} also defines additional attributes which are not needed by SIMAP applications and therefore can be profiled out, as described in {{deviation-example}}.
+
+- REQ-SEMANTIC:
+: As outlined in {{multi-layer-topo}}.
+
+- REQ-BIDIR:
+: As outlined in {{bidir-link}}.
+
+- REQ-MULTI-POINT:
+: As outlined in {{multipoint-link}}.
+
+- REQ-MULTI-DOMAIN:
+: As outlined in {{multi-domain-link}}.
+
+- REQ-SUBNETWORK:
+: To describe in a future version of the document how the hierchical, abstraction and undelay constructs, defined in {{!RFC8795}}, address this SIMAP requirment.
+
+- REQ-RELATIONSHIPS:
+: As outlined in {{multi-layer-topo}}.
+
+The following SIMAP requirement defined in {{?I-D.ietf-nmop-simap-concept}} has been identified as an unavoidable gap, since, as outlined in {{design}}, the YANG data model in {{!RFC8795}} has been designed for supporting multiple applications to enable achieving multi-vendor interoperability:
+
+- REQ-USABILITY
+
+The following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} have been identified as gaps, noting that the proposed solutions in {{?I-D.havel-nmop-simap-features-yang}} can address these gaps, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not:
+
+- REQ-EXTENSIBLE
+- REQ-PROG-OPEN-MODEL
+- REQ-SNAPSHOT
+- REQ-POTENTIAL
+- REQ-TEMPO-HISTO
+- REQ-STD-API-BASED
+- REQ-PLUGG
+
+It is also worth noting that the following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} have no impacts on YANG data models and therefore have not been evaluated in this document:
+
+- REQ-COMMON-API
+- REQ-CONDITIONAL
+- REQ-SCALES
+- REQ-PERFORMANCE
+- REQ-DISCOVERY
+- REQ-SYNCH
+- REQ-SECURITY
+
+## Open issues
+
+Addressing the following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} requires more discussion within the NMOP WG:
+
+- REQ-GRAPH-TRAVERSAL:
+: It can be added as an feature so that an implementation of {{!RFC8795}} can pick it or not.
+
+- REQ-INTENDED:
+: Need to check whether this requirement is already met by {{!RFC8345}} with NMDA.
+
+- REQ-STATUS:
+: Need to evaluate whether the solution in {{operational-status}} is suffient or there is a need to provide additional lifecycle information.
+
+- REQ-PROPERTIES:
+: The YANG data model in {{!RFC8795}}, already defines a common "name" attribute for the topological elements, but the other attributes defined in {{Section 6.2.1 of ?I-D.havel-nmop-simap-yang}} are missing.
+
+- REQ-SUPPORTING:
+: To describe in a future version of the document how the undelay constructs, defined in {{!RFC8795}}, associates an abstract node to its underlay topology.
+: The use cases requring to associate a link termination point with a node need further discussion and analysis to assess whether they can be addressed by {{!RFC8795}} or there is a gap to addressed by revising the YANG data model defined in {{!RFC8795}} or defining a new YANG data model augmentation.
+
 # Security Considerations
 
 TODO Security
@@ -199,7 +299,7 @@ This document has no IANA actions.
 
 --- back
 
-# Example of deviation statements
+# Example of deviation statements {#deviation-example}
 
 {{?I-D.ietf-teas-te-topology-profiles}} notes that existing implementations of {{!RFC8795}} have described the implemented profiled by manually pruning/profiling the YANG tree generated fom the YANG module defined in {{!RFC8795}} and those pruned/profiled YANG trees provided sufficient input for the implementers to generate proper APIs.
 
