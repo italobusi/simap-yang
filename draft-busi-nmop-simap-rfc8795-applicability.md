@@ -194,24 +194,24 @@ Reusing RFC8795 YANG data model for SIMAP applications will allow TE and SIMAP a
 This document provides the analysis of how the YANG data models defined in {{!RFC8345}} and in {{!RFC8795}} can support the following SIMAP requirements, defined in {{?I-D.ietf-nmop-simap-concept}}:
 
 - REQ-BASIC-MODEL-SUPPORT:
-: As outlined in {{Section 4.2 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
+: As outlined in {{Section 4.1.1 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
 : The YANG data model defined in {{!RFC8795}} defines also the tunnel termination points which are not needed by SIMAP applications and therefore can be profiled out, as described in {{deviation-example}}.
 
 - REQ-LAYERED-MODEL:
 : As outlined in {{multi-layer-topo}}.
 
 - REQ-PASSIVE-TOPO:
-: As outlined in {{Section 4.2 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
+: As outlined in {{Section 4.1.4 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
 
 - REQ-VIEWPOINTS:
-: As outlined in {{Section 4.2 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}
+: As outlined in {{Section 4.1.3 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}
 : The YANG data model defined in {{!RFC8795}} defines also the possibility to provide customized/abstract topologies.
 
 - REQ-TOPOLOGY-ABSTRACTION:
 : To describe in a future version of the document how the overlay/underlay constructs, defined in {{!RFC8795}}, provide navigation between different customized/abstract topologies.
 
 - REQ-LIVE:
-: As outlined in {{Section 4.2 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
+: As outlined in {{Section 4.1.5 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not.
 
 - REQ-LAYER-NAVIGATE:
 : As outlined in {{multi-layer-topo}}.
@@ -223,8 +223,9 @@ This document provides the analysis of how the YANG data models defined in {{!RF
 : To be further detailed in future versions of this document.
 
 - REQ-TOPO-ONLY:
-: As outlined in {{Section 4.2 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
-: The YANG data model defined in {{!RFC8795}} defines additional attributes which are not needed by SIMAP applications and therefore can be profiled out, as described in {{deviation-example}}.
+: As outlined in {{Section 4.1.1 of ?I-D.havel-nmop-simap-yang}}, this requirement is already met by {{!RFC8345}}.
+: The YANG data model defined in {{!RFC8795}} defines additional 'underlay' relationships to address the lack of semantic of the supporting relationship defined in {{!RFC8345}}, as outlined in {{multi-layer-topo}}
+: The YANG data model defined in {{!RFC8795}} also defines additional attributes which are not needed by SIMAP applications and therefore can be profiled out, as described in {{deviation-example}}.
 
 - REQ-SEMANTIC:
 : As outlined in {{multi-layer-topo}}.
@@ -248,15 +249,15 @@ The following SIMAP requirement defined in {{?I-D.ietf-nmop-simap-concept}} has 
 
 - REQ-USABILITY
 
-The following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} have been identified as gaps, noting that the proposed solutions in {{?I-D.havel-nmop-simap-yang}} can address these gaps, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not:
+The following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} have been identified as gaps, noting that the proposed solutions in {{?I-D.havel-nmop-simap-features-yang}} can address these gaps, regardless of whether the YANG data model augmentations defined in {{!RFC8795}} are used or not:
 
+- REQ-EXTENSIBLE
 - REQ-PROG-OPEN-MODEL
-- REQ-STD-API-BASED
 - REQ-SNAPSHOT
 - REQ-POTENTIAL
-- REQ-EXTENSIBLE
-- REQ-PLUGG
 - REQ-TEMPO-HISTO
+- REQ-STD-API-BASED
+- REQ-PLUGG
 
 It is also worth noting that the following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-concept}} have no impacts on YANG data models and therefore have not been evaluated in this document:
 
@@ -282,7 +283,7 @@ Addressing the following SIMAP requirements defined in {{?I-D.ietf-nmop-simap-co
 : Need to evaluate whether the solution in {{operational-status}} is suffient or there is a need to provide additional lifecycle information.
 
 - REQ-PROPERTIES:
-: The YANG data model in {{!RFC8795}}, already defines a common "name" attribute for the topological elements, but the other attributes defined in {{Section 7.2.1.2 of ?I-D.havel-nmop-simap-yang}} are missing.
+: The YANG data model in {{!RFC8795}}, already defines a common "name" attribute for the topological elements, but the other attributes defined in {{Section 6.2.1 of ?I-D.havel-nmop-simap-yang}} are missing.
 
 - REQ-SUPPORTING:
 : To describe in a future version of the document how the undelay constructs, defined in {{!RFC8795}}, associates an abstract node to its underlay topology.
