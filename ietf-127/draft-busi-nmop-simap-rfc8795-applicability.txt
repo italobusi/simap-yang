@@ -5,7 +5,7 @@
 Network Management Operations                                    I. Busi
 Internet-Draft                                                    Huawei
 Intended status: Informational                                    A. Guo
-Expires: 1 May 2027                               Futurewei Technologies
+Expires: 3 May 2027                               Futurewei Technologies
                                                             V. P. Beeram
                                                                      HPE
                                                               S. Belotti
@@ -14,7 +14,7 @@ Expires: 1 May 2027                               Futurewei Technologies
                                                       Cisco Systems Inc.
                                                                J. Meuric
                                                                   Orange
-                                                         28 October 2026
+                                                         30 October 2026
 
 
            Applicability of RFC8795 YANG data model to SIMAP
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 May 2027.
+   This Internet-Draft will expire on 3 May 2027.
 
 Copyright Notice
 
@@ -424,7 +424,7 @@ Table of Contents
    defined in [RFC8345] and in [RFC8795] can support the following SIMAP
    requirements, defined in [I-D.ietf-nmop-simap-concept]:
 
-   *  REQ-BASIC-MODEL-SUPPORT:  As outlined in Section 4.2 of
+   *  REQ-BASIC-MODEL-SUPPORT:  As outlined in Section 4.1.1 of
          [I-D.havel-nmop-simap-yang], this requirement is already met by
          [RFC8345].
 
@@ -435,12 +435,12 @@ Table of Contents
 
    *  REQ-LAYERED-MODEL:  As outlined in Section 3.4.
 
-   *  REQ-PASSIVE-TOPO:  As outlined in Section 4.2 of
+   *  REQ-PASSIVE-TOPO:  As outlined in Section 4.1.4 of
          [I-D.havel-nmop-simap-yang], this requirement is already met by
          [RFC8345], regardless of whether the YANG data model
          augmentations defined in [RFC8795] are used or not.
 
-   *  REQ-VIEWPOINTS:  As outlined in Section 4.2 of
+   *  REQ-VIEWPOINTS:  As outlined in Section 4.1.3 of
          [I-D.havel-nmop-simap-yang], this requirement is already met by
          [RFC8345]
 
@@ -452,7 +452,7 @@ Table of Contents
          [RFC8795], provide navigation between different customized/
          abstract topologies.
 
-   *  REQ-LIVE:  As outlined in Section 4.2 of
+   *  REQ-LIVE:  As outlined in Section 4.1.5 of
          [I-D.havel-nmop-simap-yang], this requirement is already met by
          [RFC8345], regardless of whether the YANG data model
          augmentations defined in [RFC8795] are used or not.
@@ -464,13 +464,19 @@ Table of Contents
    *  REQ-CONTROL-PLANE:  To be further detailed in future versions of
          this document.
 
-   *  REQ-TOPO-ONLY:  As outlined in Section 4.2 of
+   *  REQ-TOPO-ONLY:  As outlined in Section 4.1.1 of
          [I-D.havel-nmop-simap-yang], this requirement is already met by
          [RFC8345].
 
          The YANG data model defined in [RFC8795] defines additional
-         attributes which are not needed by SIMAP applications and
-         therefore can be profiled out, as described in Appendix A.
+         'underlay' relationships to address the lack of semantic of the
+         supporting relationship defined in [RFC8345], as outlined in
+         Section 3.4
+
+         The YANG data model defined in [RFC8795] also defines
+         additional attributes which are not needed by SIMAP
+         applications and therefore can be profiled out, as described in
+         Appendix A.
 
    *  REQ-SEMANTIC:  As outlined in Section 3.4.
 
@@ -496,23 +502,23 @@ Table of Contents
 
    The following SIMAP requirements defined in
    [I-D.ietf-nmop-simap-concept] have been identified as gaps, noting
-   that the proposed solutions in [I-D.havel-nmop-simap-yang] can
-   address these gaps, regardless of whether the YANG data model
+   that the proposed solutions in [I-D.havel-nmop-simap-features-yang]
+   can address these gaps, regardless of whether the YANG data model
    augmentations defined in [RFC8795] are used or not:
 
-   *  REQ-PROG-OPEN-MODEL
+   *  REQ-EXTENSIBLE
 
-   *  REQ-STD-API-BASED
+   *  REQ-PROG-OPEN-MODEL
 
    *  REQ-SNAPSHOT
 
    *  REQ-POTENTIAL
 
-   *  REQ-EXTENSIBLE
+   *  REQ-TEMPO-HISTO
+
+   *  REQ-STD-API-BASED
 
    *  REQ-PLUGG
-
-   *  REQ-TEMPO-HISTO
 
    It is also worth noting that the following SIMAP requirements defined
    in [I-D.ietf-nmop-simap-concept] have no impacts on YANG data models
@@ -550,7 +556,7 @@ Table of Contents
 
    *  REQ-PROPERTIES:  The YANG data model in [RFC8795], already defines
          a common "name" attribute for the topological elements, but the
-         other attributes defined in Section 7.2.1.2 of
+         other attributes defined in Section 6.2.1 of
          [I-D.havel-nmop-simap-yang] are missing.
 
    *  REQ-SUPPORTING:  To describe in a future version of the document
@@ -588,12 +594,20 @@ Table of Contents
 
 8.2.  Informative References
 
+   [I-D.havel-nmop-simap-features-yang]
+              Havel, O., Davis, N., de Dios, O. G., and T. Graf, "A YANG
+              Data Model for SIMAP Additional Features", Work in
+              Progress, Internet-Draft, draft-havel-nmop-simap-features-
+              yang-01, 30 October 2026,
+              <https://datatracker.ietf.org/doc/html/draft-havel-nmop-
+              simap-features-yang-01>.
+
    [I-D.havel-nmop-simap-yang]
               Havel, O., Davis, N., de Dios, O. G., and T. Graf, "A YANG
-              Data Model for SIMAP", Work in Progress, Internet-Draft,
-              draft-havel-nmop-simap-yang-03, 7 July 2026,
-              <https://datatracker.ietf.org/doc/html/draft-havel-nmop-
-              simap-yang-03>.
+              Data Model for SIMAP Core Topology", Work in Progress,
+              Internet-Draft, draft-havel-nmop-simap-yang-04, 28 October
+              2026, <https://datatracker.ietf.org/doc/html/draft-havel-
+              nmop-simap-yang-04>.
 
    [I-D.ietf-nmop-simap-concept]
               Havel, O., Claise, B., de Dios, O. G., and T. Graf,
