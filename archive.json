@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-29T05:03:38.143442+00:00",
+  "timestamp": "2026-11-01T05:14:38.791536+00:00",
   "repo": "italobusi/simap-yang",
   "labels": [
     {
@@ -351,24 +351,26 @@
       "id": "PR_kwDOROd98s8AAAABLSvd_Q",
       "title": "Draft updates for IETF 127",
       "url": "https://github.com/italobusi/simap-yang/pull/9",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "italobusi",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Added preliminary conclusions",
       "createdAt": "2026-10-28T15:08:34Z",
-      "updatedAt": "2026-10-28T16:11:01Z",
+      "updatedAt": "2026-10-30T18:31:27Z",
       "baseRepository": "italobusi/simap-yang",
       "baseRefName": "main",
       "baseRefOid": "4189e1961a8ccc98b4a60e2fe4baca4ca7641f6e",
       "headRepository": "italobusi/simap-yang",
       "headRefName": "ietf-127",
-      "headRefOid": "a662115ca47c1cb6bb3e3322058645efedb7857e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "63e07aa7c92657c2c39c936e41aaabda79d4ab5a",
+      "closedAt": "2026-10-30T18:31:27Z",
+      "mergedAt": "2026-10-30T18:31:26Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "0fc587e5a746f57008447e0be28644d0fcd2a9e3"
+      },
       "comments": [],
       "reviews": []
     }
